@@ -1,5 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class Model {
 
@@ -38,11 +44,25 @@ public class Model {
 
       public void loginUser(String username, String password) {
           // Implementation of user login
-          
+
+          BufferedReader reader = new BufferedReader(new FileReader());
+          String userData = reader.readLine();
+          String [] userDataArray = userData.split(delimiter);
+
+          for(String loginValidator : userDataArray){
+            
+            if(loginValidator.equals(username) && loginValidator.equals(password)){
+                //continue to proragm
+            }
+            else{
+                //continue loop and ask 
+            }
+          }
       }
 
       public void saveUserPreferences(User user, UserPreferences preferences) {
           // Implementation of saving user preferences
+
       }
   }
 
