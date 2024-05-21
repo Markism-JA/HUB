@@ -30,7 +30,7 @@ public class Model {
 
       public boolean checkCompatibility(PCBuild pcBuild) {
           // Implementation of compatibility checking logic
-         //kinasanimark
+         //kinasanimarkpogi
 
           return true; // Dummy return
       }
