@@ -1,5 +1,14 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Writer;
 import java.util.Scanner;
+
+import Model.Component.CPU.CSVReader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Model {
 
@@ -162,13 +171,385 @@ public class Model {
       // ...
   }
 
-  // Component Class (example)
+  // Component Class: class definition for each PC parts
   public class Component {
-      private String name;
-      private String type;
-      private int price;
 
-      // Getters and setters for the fields
-      // ...
-  }
+    public static class CPU {
+        private String model;
+        private String brand;
+        private float frequency;
+        private double price;
+        private String socket;
+        private int wattage;
+
+        public CPU(String model, String brand, float frequency, double price, String socket, int wattage) {
+            this.model = model;
+            this.brand = brand;
+            this.frequency = frequency;
+            this.price = price;
+            this.socket = socket;
+            this.wattage = wattage;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public float getFrequency() {
+            return frequency;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public String getSocket() {
+            return socket;
+        }
+
+        public int getWattage() {
+            return wattage;
+        }
+
+        @Override
+        public String toString() {
+            return "CPU{" +
+                    "model='" + model + '\'' +
+                    ", brand='" + brand + '\'' +
+                    ", frequency=" + frequency +
+                    ", price=" + price +
+                    ", socket='" + socket + '\'' +
+                    ", wattage=" + wattage +
+                    '}';
+        }
+
+        public static class CSVReader {
+            public static List<CPU> readCPUsFromCSV(String fileName) {
+                List<CPU> cpus = new ArrayList<>();
+                String line = "";
+                String splitBy = ",";
+    
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    br.readLine(); // Skip the header
+    
+                    while ((line = br.readLine())!= null) {
+                        String[] data = line.split(splitBy);
+                        CPU cpu = new CPU(data[0], data[1], Float.parseFloat(data[2]), Double.parseDouble(data[3]), data[4], Integer.parseInt(data[5]));
+                        cpus.add(cpu);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+    
+                return cpus;
+            }
+        }
+    
+    }
+
+    public static class GPU {
+        private String chipset;
+        private String brand;
+        private int memory;
+        private double price;
+        private int wattage;
+
+        public GPU(String chipset, String brand, int memory, double price, int wattage) {
+            this.chipset = chipset;
+            this.brand = brand;
+            this.memory = memory;
+            this.price = price;
+            this.wattage = wattage;
+        }
+
+        public String getChipset() {
+            return chipset;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public int getMemory() {
+            return memory;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getWattage() {
+            return wattage;
+        }
+
+        @Override
+        public String toString() {
+            return "GPU{" +
+                    "chipset='" + chipset + '\'' +
+                    ", brand='" + brand + '\'' +
+                    ", memory=" + memory +
+                    ", price=" + price +
+                    ", wattage=" + wattage +
+                    '}';
+        }
+
+        public static class CSVReader {
+            public static List<GPU> readGPUsFromCSV(String fileName) {
+                List<GPU> gpus = new ArrayList<>();
+                String line = "";
+                String splitBy = ",";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    br.readLine();
+
+                    while ((line = br.readLine())!= null) {
+                        String[] data = line.split(splitBy);
+                        GPU gpu = new GPU(data[0], data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]));
+                        gpus.add(gpu); // Add the GPU to the list
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return gpus;
+            }
+        }
+    }
+
+    public static class Case {
+        private String brand;
+        private String model;
+        private String formFactor;
+        private double price;
+
+        public Case(String brand, String model, String formFactor, double price) {
+            this.brand = brand;
+            this.model = model;
+            this.formFactor = formFactor;
+            this.price = price;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public String getFormFactor() {
+            return formFactor;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        @Override
+        public String toString() {
+            return "Case{" +
+                    "brand='" + brand + '\'' +
+                    ", model='" + model + '\'' +
+                    ", formFactor='" + formFactor + '\'' +
+                    ", price=" + price +
+                    '}';
+        }
+
+        public static class CSVReader {
+            public static List<Case> readCasesFromCSV(String fileName) {
+                List<Case> cases = new ArrayList<>();
+                String line = "";
+                String splitBy = ",";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    br.readLine(); // Skip the header
+
+                    while ((line = br.readLine())!= null) {
+                        String[] data = line.split(splitBy);
+                        Case case1 = new Case(data[0], data[1], data[2], Double.parseDouble(data[3]));
+                        cases.add(case1); // Add the Case to the list
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return cases;
+            }
+        }
+    }
+
+    public static class MotherBoard {
+        private String brand;
+        private String model;
+        private String formFactor;
+        private String socket;
+        private double price;
+        private int wattage;
+
+        public MotherBoard(String brand, String model, String formFactor, String socket, double price, int wattage) {
+            this.brand = brand;
+            this.model = model;
+            this.formFactor = formFactor;
+            this.socket = socket;
+            this.price = price;
+            this.wattage = wattage;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public String getFormFactor() {
+            return formFactor;
+        }
+
+        public String getSocket() {
+            return socket;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getWattage() {
+            return wattage;
+        }
+
+        @Override
+        public String toString() {
+            return "MotherBoard{" +
+                    "brand='" + brand + '\'' +
+                    ", model='" + model + '\'' +
+                    ", formFactor='" + formFactor + '\'' +
+                    ", socket='" + socket + '\'' +
+                    ", price=" + price +
+                    ", wattage=" + wattage +
+                    '}';
+        }
+
+        public static class CSVReader {
+            public static List<MotherBoard> readMotherBoardsFromCSV(String fileName) {
+                List<MotherBoard> motherBoards = new ArrayList<>();
+                String line = "";
+                String splitBy = ",";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    br.readLine();
+
+                    while ((line = br.readLine())!= null) {
+                        String[] data = line.split(splitBy);
+                        MotherBoard motherBoard = new MotherBoard(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), Integer.parseInt(data[5]));
+                        motherBoards.add(motherBoard);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                return motherBoards;
+            }
+        }
+    }
+    
+    public static class Ram {
+        private String brand;
+        private String model;
+        private double price;
+        private int wattage;
+        private int frequency;
+
+        public Ram(String brand, String model, double price, int wattage, int frequency) {
+            this.brand = brand;
+            this.model = model;
+            this.price = price;
+            this.wattage = wattage;
+            this.frequency = frequency;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getWattage() {
+            return wattage;
+        }
+
+        public int getFrequency() {
+            return frequency;
+        }
+
+        @Override
+        public String toString() {
+            return "Ram{" +
+                    "brand='" + brand + '\'' +
+                    ", model='" + model + '\'' +
+                    ", price=" + price +
+                    ", wattage=" + wattage +
+                    ", frequency=" + frequency +
+                    '}';
+        }
+
+        public static class CSVReader {
+            public static List<Ram> readRamsFromCSV(String fileName) {
+                List<Ram> rams = new ArrayList<>();
+                String line = "";
+                String splitBy = ",";
+
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    while ((line = br.readLine())!= null) {
+                        String[] data = line.split(splitBy);
+                        Ram ram = new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]));
+                        rams.add(ram);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                    return rams;
+                }
+            }
+        }
+
+    public static class PSU {
+        private String brand;
+
+        brand, price, wattage, string rate
+
+    }
+
+    public static class HDD {
+        private String brand, storage size, wattage
+
+    }
+
+    public static class SDD {
+        private String brand, storage size, wattage
+    }
+
+    public static class InternalStorage {
+        private String brand, storage size, wattage
+    }
+
+    public static class Fans {
+        
+    }
+
+    }
 }
+
+
