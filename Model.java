@@ -1,3 +1,6 @@
+import java.io.Writer;
+import java.util.Scanner;
+
 public class Model {
 
   // Recommendation Module
@@ -11,12 +14,31 @@ public class Model {
   // User Account Management Module
   public class UserAccountManagement {
       // Fields and methods for managing user accounts
+      String username;
+      String password;
+      String usercredentials;
+    
       public void registerUser(User user) {
           // Implementation of user registration
+        Scanner scan = new Scanner(System.in);
+
+        username = scan.nextLine();
+        password = scan.nextLine();
+        usercredentials = username + password;
+
+          try{
+            Writer output = new FileWriter("")
+            output.write(usercredentials);
+            output.close();
+          }
+          catch (Exception e) {
+            e.getStackTrace();
+        }
       }
 
       public void loginUser(String username, String password) {
           // Implementation of user login
+          
       }
 
       public void saveUserPreferences(User user, UserPreferences preferences) {
