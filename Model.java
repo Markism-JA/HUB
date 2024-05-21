@@ -2,13 +2,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedReader;
 import java.io.Writer;
-import java.util.Scanner;
-
-import Model.Component.CPU.CSVReader;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Matcher;
 
 public class Model {
 
@@ -23,11 +22,10 @@ public class Model {
   // User Account Management Module
   public class UserAccountManagement {
       // Fields and methods for managing user accounts
-      String username;
-      String password;
+
       String usercredentials;
     
-      public void registerUser(User user) {
+      public void registerUser(String username, String password) {
           // Implementation of user registration
         Scanner scan = new Scanner(System.in);
 
@@ -47,11 +45,25 @@ public class Model {
 
       public void loginUser(String username, String password) {
           // Implementation of user login
-          
+
+          BufferedReader reader = new BufferedReader(new FileReader());
+          String userData = reader.readLine();
+          String [] userDataArray = userData.split(delimiter);
+
+          for(String loginValidator : userDataArray){
+
+            if(loginValidator.equals(username) && loginValidator.equals(password)){
+                //continue to proragm
+            }
+            else{
+                //continue loop and ask 
+            }
+          }
       }
 
       public void saveUserPreferences(User user, UserPreferences preferences) {
           // Implementation of saving user preferences
+
       }
   }
 
@@ -134,8 +146,19 @@ public class Model {
   // Price Comparison Module
   public class PriceComparison {
       // Fields and methods for comparing prices of components
-      public void comparePrices(Component component) {
-          // Implementation of price comparison logic
+      String userDecision;
+      public void comparePrices(Component component, int price) {
+        // Implementation of price comparison logic
+        if(userDecision == "High"){
+        //list all high end component
+        }
+        if(userDecision == "Mid"){
+        //list all mid end component
+        }
+        else{
+        //list all low end component
+        }
+        
       }
   }
 
