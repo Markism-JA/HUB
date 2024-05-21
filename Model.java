@@ -20,11 +20,10 @@ public class Model {
   // User Account Management Module
   public class UserAccountManagement {
       // Fields and methods for managing user accounts
-      String username;
-      String password;
+
       String usercredentials;
     
-      public void registerUser(User user) {
+      public void registerUser(String username, String password) {
           // Implementation of user registration
         Scanner scan = new Scanner(System.in);
 
@@ -50,7 +49,7 @@ public class Model {
           String [] userDataArray = userData.split(delimiter);
 
           for(String loginValidator : userDataArray){
-            
+
             if(loginValidator.equals(username) && loginValidator.equals(password)){
                 //continue to proragm
             }
@@ -145,8 +144,19 @@ public class Model {
   // Price Comparison Module
   public class PriceComparison {
       // Fields and methods for comparing prices of components
-      public void comparePrices(Component component) {
-          // Implementation of price comparison logic
+      String userDecision;
+      public void comparePrices(Component component, int price) {
+        // Implementation of price comparison logic
+        if(userDecision == "High"){
+        //list all high end component
+        }
+        if(userDecision == "Mid"){
+        //list all mid end component
+        }
+        else{
+        //list all low end component
+        }
+        
       }
   }
 
@@ -191,4 +201,6 @@ public class Model {
       // Getters and setters for the fields
       // ...
   }
+
+
 }
