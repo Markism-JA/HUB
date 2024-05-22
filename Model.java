@@ -147,22 +147,82 @@ public class Model {
 
   // Price Comparison Module
   public class PriceComparison {
-      // Fields and methods for comparing prices of components
-      String userDecision;
-      public void comparePrices(Component component, int price) {
-        // Implementation of price comparison logic
-        if(userDecision == "High"){
-        //list all high end component
+    
+  // Fields and methods for comparing prices of components
+  String userDecision;
+
+  public PriceComparison(String userDecision) {
+    this.userDecision = userDecision;
+}
+
+public void comparePricesCPU(List<Component.CPU> components) {
+    List<Component.CPU> highEnd = new ArrayList<>();
+    List<Component.CPU> midEnd = new ArrayList<>();
+    List<Component.CPU> lowEnd = new ArrayList<>();
+
+    for (Component.CPU component : components) {
+        double price = component.getPrice();
+
+        if (price >= 1 && price <= 30) {
+            highEnd.add(component);
+        } else if (price > 30 && price <= 60) {
+            midEnd.add(component);
+        } else {
+            lowEnd.add(component);
         }
-        if(userDecision == "Mid"){
-        //list all mid end component
+    }
+
+    if ("High".equalsIgnoreCase(userDecision)) {
+        listComponentsCPU(highEnd, "High End Components");
+    } else if ("Mid".equalsIgnoreCase(userDecision)) {
+        listComponentsCPU(midEnd, "Mid End Components");
+    } else {
+        listComponentsCPU(lowEnd, "Low End Components");
+    }
+}
+
+private void listComponentsCPU(List<Component.CPU> components, String category) {
+    System.out.println(category + ":");
+    for (Component.CPU component : components) {
+        System.out.println(component);
+    }
+}
+
+
+public void comparePricesGPU(List<Component.GPU> components) {
+    List<Component.GPU> highEnd = new ArrayList<>();
+    List<Component.GPU> midEnd = new ArrayList<>();
+    List<Component.GPU> lowEnd = new ArrayList<>();
+
+    for (Component.GPU component : components) {
+        double price = component.getPrice();
+
+        if (price >= 1 && price <= 30) {
+            highEnd.add(component);
+        } else if (price > 30 && price <= 60) {
+            midEnd.add(component);
+        } else {
+            lowEnd.add(component);
         }
-        else{
-        //list all low end component
-        }
-        
-      }
-  }
+    }
+
+    if ("High".equalsIgnoreCase(userDecision)) {
+        listComponentsGPU(highEnd, "High End Components");
+    } else if ("Mid".equalsIgnoreCase(userDecision)) {
+        listComponentsGPU(midEnd, "Mid End Components");
+    } else {
+        listComponentsGPU(lowEnd, "Low End Components");
+    }
+}
+
+private void listComponentsGPU(List<Component.GPU> components, String category) {
+    System.out.println(category + ":");
+    for (Component.GPU component : components) {
+        System.out.println(component);
+    }
+}
+}
+
 
   // User Preferences Class (example)
   public class UserPreferences {
