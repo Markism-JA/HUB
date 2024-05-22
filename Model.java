@@ -15,7 +15,7 @@ public class Model {
   public class RecommendationModule {
       // Fields and methods for generating recommendations based on user inputs and predefined rules
       public void generateRecommendations(UserPreferences preferences) {
-          // Implementation of recommendation logic
+          //TODO Implementation of recommendation logic
       }
   }
 
@@ -34,7 +34,7 @@ public class Model {
         usercredentials = username + password;
 
           try{
-            Writer output = new FileWriter("")
+            Writer output = new FileWriter("");
             output.write(usercredentials);
             output.close();
           }
@@ -81,36 +81,140 @@ public class Model {
 
   // Data Storage Module
   public class DataStorage {
-      // Fields and methods for data storage and management
+    private List<Model.Component.CPU> cpus;
+    private List<Model.Component.GPU> gpus;
+    private List<Model.Component.Case> cases;
+    private List<Model.Component.MotherBoard> motherboards;
+    private List<Model.Component.Ram> rams;
+    private List<Model.Component.PSU> psus;
+    private List<Model.Component.HDD> hdds;
 
-      public void loadData() {
-          // Implementation of data loading from files or database
+    public DataStorage() {
+        loadDataFromCSV();
+    }
 
-      }
+    private void loadDataFromCSV() {
+        cpus = loadCPU(null);
+        gpus = loadGPU(null);
+        cases = loadCase(null);
+        motherboards = loadMotherBoard(null);
+        rams = loadRam(null);
+        psus = loadPSU(null);
+        hdds = loadHDD(null);
+    }
 
-      public void saveData() {
-          // Implementation of saving data to files or database
+    private List<Model.Component.CPU> loadCPU(String filePath) {
+        try {
+            return Component.CPU.CSVReader.readCPUsFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
 
-      }
-  }
+    private List<Model.Component.GPU> loadGPU(String filePath) {
+        try {
+            return Component.GPU.CSVReader.readGPUsFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
+    private List<Model.Component.Case> loadCase(String filePath) {
+        try {
+            return Component.Case.CSVReader.readCasesFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
+    private List<Model.Component.MotherBoard> loadMotherBoard(String filePath) {
+        try {
+            return Component.MotherBoard.CSVReader.readMotherBoardsFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
+    private List<Model.Component.Ram> loadRam(String filePath) {
+        try {
+            return Component.Ram.CSVReader.readRamsFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
+    private List<Model.Component.PSU> loadPSU(String filePath) {
+        try {
+            return Component.PSU.CSVReader.readPSUsFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
+    private List<Model.Component.HDD> loadHDD(String filePath) {
+        try {
+            return Component.HDD.CSVReader.readHDDsFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
+    // Getters for the loaded data
+    public List<Model.Component.CPU> getCpus() {
+        return cpus;
+    }
+
+    public List<Model.Component.GPU> getGpus() {
+        return gpus;
+    }
+
+    public List<Model.Component.Case> getCases() {
+        return cases;
+    }
+
+    public List<Model.Component.MotherBoard> getMotherboards() {
+        return motherboards;
+    }
+
+    public List<Model.Component.Ram> getRams() {
+        return rams;
+    }
+
+    public List<Model.Component.PSU> getPsus() {
+        return psus;
+    }
+
+    public List<Model.Component.HDD> getHdds() {
+        return hdds;
+    }
+
+    public void saveData() {
+        // Implementation of saving data to files or database
+    }
+}
+
 
   // Database Management
   public class Database {
-      Component component1 = new Component();
-      
-
       public class InventoryManagement {
           // Fields and methods for managing inventory data
           public void addInventoryItem(Component component) {
-              // Implementation of adding inventory item
+              //TODO Implementation of adding inventory item
           }
 
           public void removeInventoryItem(Component component) {
-              // Implementation of removing inventory item
+              //TODO Implementation of removing inventory item
           }
 
           public List<Component> getInventoryItems() {
-              // Implementation of getting inventory items
+              //TODO Implementation of getting inventory items
               return new ArrayList<>(); // Dummy return
           }
       }
@@ -119,15 +223,15 @@ public class Model {
       public class MarketReferenceData {
           // Fields and methods for managing market reference data
           public void addMarketData(Component component) {
-              // Implementation of adding market data
+              //tODO Implementation of adding market data
           }
 
           public void removeMarketData(Component component) {
-              // Implementation of removing market data
+              //TODO Implementation of removing market data
           }
 
           public List<Component> getMarketData() {
-              // Implementation of getting market data
+              //TODO Implementation of getting market data
               return new ArrayList<>(); // Dummy return
           }
       }
@@ -137,11 +241,11 @@ public class Model {
   public class AdminDatabaseAccess {
       // Fields and methods for admin access to the database
       public void updateInventory(Component component) {
-          // Implementation of updating inventory data
+          //TODO Implementation of updating inventory data
       }
 
       public void updateMarketData(Component component) {
-          // Implementation of updating market data
+          //TODO Implementation of updating market data
       }
   }
 
@@ -149,78 +253,81 @@ public class Model {
   public class PriceComparison {
     
   // Fields and methods for comparing prices of components
-  String userDecision;
+    String userDecision;
 
-  public PriceComparison(String userDecision) {
-    this.userDecision = userDecision;
-}
+    public PriceComparison(String userDecision) {
+        this.userDecision = userDecision;
+    }
 
-public void comparePricesCPU(List<Component.CPU> components) {
-    List<Component.CPU> highEnd = new ArrayList<>();
-    List<Component.CPU> midEnd = new ArrayList<>();
-    List<Component.CPU> lowEnd = new ArrayList<>();
 
-    for (Component.CPU component : components) {
-        double price = component.getPrice();
+    //FIXME Ron gumawa ako ng loadMethod para reusable yong code natin sa database gamitin mo dito
+    
+    public void comparePricesCPU(List<Component.CPU> components) {
+        List<Component.CPU> highEnd = new ArrayList<>();
+        List<Component.CPU> midEnd = new ArrayList<>();
+        List<Component.CPU> lowEnd = new ArrayList<>();
 
-        if (price >= 1 && price <= 30) {
-            highEnd.add(component);
-        } else if (price > 30 && price <= 60) {
-            midEnd.add(component);
+        for (Component.CPU component : components) {
+            double price = component.getPrice();
+
+            if (price >= 1 && price <= 30) {
+                highEnd.add(component);
+            } else if (price > 30 && price <= 60) {
+                midEnd.add(component);
+            } else {
+                lowEnd.add(component);
+            }
+        }
+
+        if ("High".equalsIgnoreCase(userDecision)) {
+            listComponentsCPU(highEnd, "High End Components");
+        } else if ("Mid".equalsIgnoreCase(userDecision)) {
+            listComponentsCPU(midEnd, "Mid End Components");
         } else {
-            lowEnd.add(component);
+            listComponentsCPU(lowEnd, "Low End Components");
         }
     }
 
-    if ("High".equalsIgnoreCase(userDecision)) {
-        listComponentsCPU(highEnd, "High End Components");
-    } else if ("Mid".equalsIgnoreCase(userDecision)) {
-        listComponentsCPU(midEnd, "Mid End Components");
-    } else {
-        listComponentsCPU(lowEnd, "Low End Components");
-    }
-}
-
-private void listComponentsCPU(List<Component.CPU> components, String category) {
-    System.out.println(category + ":");
-    for (Component.CPU component : components) {
-        System.out.println(component);
-    }
-}
-
-
-public void comparePricesGPU(List<Component.GPU> components) {
-    List<Component.GPU> highEnd = new ArrayList<>();
-    List<Component.GPU> midEnd = new ArrayList<>();
-    List<Component.GPU> lowEnd = new ArrayList<>();
-
-    for (Component.GPU component : components) {
-        double price = component.getPrice();
-
-        if (price >= 1 && price <= 30) {
-            highEnd.add(component);
-        } else if (price > 30 && price <= 60) {
-            midEnd.add(component);
-        } else {
-            lowEnd.add(component);
+    private void listComponentsCPU(List<Component.CPU> components, String category) {
+        System.out.println(category + ":");
+        for (Component.CPU component : components) {
+            System.out.println(component);
         }
     }
 
-    if ("High".equalsIgnoreCase(userDecision)) {
-        listComponentsGPU(highEnd, "High End Components");
-    } else if ("Mid".equalsIgnoreCase(userDecision)) {
-        listComponentsGPU(midEnd, "Mid End Components");
-    } else {
-        listComponentsGPU(lowEnd, "Low End Components");
-    }
-}
 
-private void listComponentsGPU(List<Component.GPU> components, String category) {
-    System.out.println(category + ":");
-    for (Component.GPU component : components) {
-        System.out.println(component);
+    public void comparePricesGPU(List<Component.GPU> components) {
+        List<Component.GPU> highEnd = new ArrayList<>();
+        List<Component.GPU> midEnd = new ArrayList<>();
+        List<Component.GPU> lowEnd = new ArrayList<>();
+
+        for (Component.GPU component : components) {
+            double price = component.getPrice();
+
+            if (price >= 1 && price <= 30) {
+                highEnd.add(component);
+            } else if (price > 30 && price <= 60) {
+                midEnd.add(component);
+            } else {
+                lowEnd.add(component);
+            }
+        }
+
+        if ("High".equalsIgnoreCase(userDecision)) {
+            listComponentsGPU(highEnd, "High End Components");
+        } else if ("Mid".equalsIgnoreCase(userDecision)) {
+            listComponentsGPU(midEnd, "Mid End Components");
+        } else {
+            listComponentsGPU(lowEnd, "Low End Components");
+        }
     }
-}
+
+    private void listComponentsGPU(List<Component.GPU> components, String category) {
+        System.out.println(category + ":");
+        for (Component.GPU component : components) {
+            System.out.println(component);
+        }
+    }
 }
 
 
@@ -309,6 +416,8 @@ private void listComponentsGPU(List<Component.GPU> components, String category) 
                     ", wattage=" + wattage +
                     '}';
         }
+
+
 
         public static class CSVReader {
             public static List<CPU> readCPUsFromCSV(String fileName) {
@@ -822,7 +931,7 @@ private void listComponentsGPU(List<Component.GPU> components, String category) 
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine()) != null) {
                         String[] storage = line.split(splitBy);
-                        InternalStorage internalStorage = new InternalStorage(storage[0], Integer.parseInt(storage[1]), Integer.parseInt(storage[2])));
+                        InternalStorage internalStorage = new InternalStorage(storage[0], Integer.parseInt(storage[1]), Integer.parseInt(storage[2]));
                         internalStorages.add(internalStorage);
                     }
                 } catch (IOException e) {
