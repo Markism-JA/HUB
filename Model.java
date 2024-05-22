@@ -90,6 +90,7 @@ public class Model {
     private List<Model.Component.Ram> rams;
     private List<Model.Component.PSU> psus;
     private List<Model.Component.HDD> hdds;
+    private List<Model.Component.SDD> sdds;
 
     public DataStorage() {
         loadDataFromCSV();
@@ -103,6 +104,7 @@ public class Model {
         rams = loadRam(null);
         psus = loadPSU(null);
         hdds = loadHDD(null);
+        sdds = loadSDD(null);
     }
 
     private List<Model.Component.CPU> loadCPU(String filePath) {
@@ -168,6 +170,15 @@ public class Model {
         }
     }
 
+    private List<Model.Component.SDD> loadSDD(String filePath) {
+        try {
+            return Component.SDD.CSVReader.readHDDsFromCSV(filePath);
+        } catch (Exception e) {
+            // TODO: handle exception
+            return new ArrayList<>();
+        }
+    }
+
     // Getters for the loaded data
     public List<Model.Component.CPU> getCpus() {
         return cpus;
@@ -195,6 +206,10 @@ public class Model {
 
     public List<Model.Component.HDD> getHdds() {
         return hdds;
+    }
+
+    public List<Model.Component.SDD> getSdds() {
+        return sdds;
     }
 
     public void saveData() {
