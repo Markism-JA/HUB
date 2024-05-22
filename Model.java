@@ -381,8 +381,49 @@ public class Model {
       private String username;
       private String password;
 
-      // Getters and setters for the fields
-      // ...
+      public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+      }
+
+      public String getUserName() {
+        return username;
+      }
+
+      public String getPassword() {
+        return password;
+      }
+
+      @Override
+      public String toString() {
+        return "User [username=" + username + ", password=" + password + "]";
+      }
+
+      public static class CSVReader {
+        public static List<User> readUsersFromCSV(String fileName) {
+            List<User> users = new ArrayList<>();
+            String line = "";
+            String splitBy = ",";
+
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                br.readLine();
+                while ((line = br.readLine()) != null) {
+                    String[] data = line.split(splitBy);
+                    User user = new User(data[0], data[0]);
+                    users.add(user);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return users;
+        }
+    }
+}
+
+
+
+
   }
 
   // PC Build Class (example)
