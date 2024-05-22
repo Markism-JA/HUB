@@ -45,7 +45,7 @@ public class Model {
 
       public void loginUser(String username, String password) {
           // Implementation of user login
-
+          
           String delimiter = ",";
 
           BufferedReader reader = new BufferedReader(new FileReader(null));
@@ -174,7 +174,7 @@ public class Model {
         try {
             return Component.SDD.CSVReader.readHDDsFromCSV(filePath);
         } catch (Exception e) {
-            // TODO: handle exception
+            // Handle exception
             return new ArrayList<>();
         }
     }
@@ -383,14 +383,12 @@ public class Model {
 
     public static class CPU {
         private String model, brand, socket;
-        private float frequency;
         private double price;
         private int wattage;
 
-        public CPU(String model, String brand, float frequency, double price, String socket, int wattage) {
+        public CPU(String model, String brand, double price, String socket, int wattage) {
             this.model = model;
             this.brand = brand;
-            this.frequency = frequency;
             this.price = price;
             this.socket = socket;
             this.wattage = wattage;
@@ -402,10 +400,6 @@ public class Model {
 
         public String getBrand() {
             return brand;
-        }
-
-        public float getFrequency() {
-            return frequency;
         }
 
         public double getPrice() {
@@ -425,7 +419,6 @@ public class Model {
             return "CPU{" +
                     "model='" + model + '\'' +
                     ", brand='" + brand + '\'' +
-                    ", frequency=" + frequency +
                     ", price=" + price +
                     ", socket='" + socket + '\'' +
                     ", wattage=" + wattage +
@@ -445,7 +438,7 @@ public class Model {
     
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        CPU cpu = new CPU(data[0], data[1], Float.parseFloat(data[2]), Double.parseDouble(data[3]), data[4], Integer.parseInt(data[5]));
+                        CPU cpu = new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]));
                         cpus.add(cpu);
                     }
                 } catch (IOException e) {
