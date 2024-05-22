@@ -262,12 +262,12 @@ public class Model {
         this.userDecision = userDecision;
     }
     
-    public void comparePricesCPU(List<Component.CPU> components) {
-        List<Component.CPU> highEnd = new ArrayList<>();
-        List<Component.CPU> midEnd = new ArrayList<>();
-        List<Component.CPU> lowEnd = new ArrayList<>();
+    public void comparePricesCPU(List<Model.Component.CPU> components) {
+        List<Model.Component.CPU> highEnd = new ArrayList<>();
+        List<Model.Component.CPU> midEnd = new ArrayList<>();
+        List<Model.Component.CPU> lowEnd = new ArrayList<>();
 
-        for (Component.CPU component : components) {
+        for (Model.Component.CPU component : components) {
             double price = component.getPrice();
 
             if (price >= 1 && price <= 30) {
@@ -288,9 +288,9 @@ public class Model {
         }
     }
 
-    private void listComponentsCPU(List<Component.CPU> components, String category) {
+    private void listComponentsCPU(List<Model.Component.CPU> components, String category) {
         System.out.println(category + ":");
-        for (Component.CPU component : components) {
+        for (Model.Component.CPU component : components) {
             System.out.println(component);
         }
     }
