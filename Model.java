@@ -895,11 +895,13 @@ public class Model {
     public static class InternalStorage {
         private String brand;
         private int storageSize, wattage;
+        private double price;
 
-        public InternalStorage (String brand, int storageSize, int wattage) {
+        public InternalStorage (String brand, int storageSize, int wattage, double price) {
             this.brand = brand;
             this.storageSize = storageSize;
             this.wattage = wattage;
+            this.price = price;
         }
 
         public String getBrand() {
@@ -910,8 +912,12 @@ public class Model {
             return storageSize;
         }
 
-        public int wattage() {
+        public int getWattage() {
             return wattage;
+        }
+
+        public double getPrice() {
+            return price;
         }
 
         @Override
@@ -930,8 +936,8 @@ public class Model {
                 String splitBy = ",";
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine()) != null) {
-                        String[] storage = line.split(splitBy);
-                        InternalStorage internalStorage = new InternalStorage(storage[0], Integer.parseInt(storage[1]), Integer.parseInt(storage[2]));
+                        String[] data = line.split(splitBy);
+                        InternalStorage internalStorage = new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]));
                         internalStorages.add(internalStorage);
                     }
                 } catch (IOException e) {
