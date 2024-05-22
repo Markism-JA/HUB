@@ -303,23 +303,22 @@ public class Model {
       }
   }
 
-  // Price Comparison Module
-    //FIXME Ron gumawa ako ng loadMethod para reusable yong code natin sa database gamitin mo dito
-  public class PriceComparison {
-    
-  // Fields and methods for comparing prices of components
-    String userDecision;
+public class PriceComparison {
+    private String userDecision;
 
     public PriceComparison(String userDecision) {
         this.userDecision = userDecision;
     }
-    
-    public void comparePricesCPU(List<Model.Component.CPU> components) {
-        List<Model.Component.CPU> highEnd = new ArrayList<>();
-        List<Model.Component.CPU> midEnd = new ArrayList<>();
-        List<Model.Component.CPU> lowEnd = new ArrayList<>();
 
-        for (Model.Component.CPU component : components) {
+    public void comparePricesCPU() {
+        DataManager dataManager = new DataManager("./data/");
+        List<Component.CPU> cpus = dataManager.getCpus();
+
+        List<Component.CPU> highEnd = new ArrayList<>();
+        List<Component.CPU> midEnd = new ArrayList<>();
+        List<Component.CPU> lowEnd = new ArrayList<>();
+
+        for (Component.CPU component : cpus) {
             double price = component.getPrice();
 
             if (price >= 1 && price <= 30) {
@@ -340,20 +339,22 @@ public class Model {
         }
     }
 
-    private void listComponentsCPU(List<Model.Component.CPU> components, String category) {
+    private void listComponentsCPU(List<Component.CPU> components, String category) {
         System.out.println(category + ":");
-        for (Model.Component.CPU component : components) {
+        for (Component.CPU component : components) {
             System.out.println(component);
         }
     }
 
+    public void comparePricesGPU() {
+        DataManager dataManager = new DataManager("./data/");
+        List<Component.GPU> gpus = dataManager.getGpus();
 
-    public void comparePricesGPU(List<Model.Component.GPU> components) {
-        List<Model.Component.GPU> highEnd = new ArrayList<>();
-        List<Model.Component.GPU> midEnd = new ArrayList<>();
-        List<Model.Component.GPU> lowEnd = new ArrayList<>();
+        List<Component.GPU> highEnd = new ArrayList<>();
+        List<Component.GPU> midEnd = new ArrayList<>();
+        List<Component.GPU> lowEnd = new ArrayList<>();
 
-        for (Model.Component.GPU component : components) {
+        for (Component.GPU component : gpus) {
             double price = component.getPrice();
 
             if (price >= 1 && price <= 30) {
@@ -374,9 +375,9 @@ public class Model {
         }
     }
 
-    private void listComponentsGPU(List<Model.Component.GPU> components, String category) {
+    private void listComponentsGPU(List<Component.GPU> components, String category) {
         System.out.println(category + ":");
-        for (Model.Component.GPU component : components) {
+        for (Component.GPU component : components) {
             System.out.println(component);
         }
     }
