@@ -353,12 +353,12 @@ public class Model {
     }
 
 
-    public void comparePricesGPU(List<Component.GPU> components) {
-        List<Component.GPU> highEnd = new ArrayList<>();
-        List<Component.GPU> midEnd = new ArrayList<>();
-        List<Component.GPU> lowEnd = new ArrayList<>();
+    public void comparePricesGPU(List<Model.Component.GPU> components) {
+        List<Model.Component.GPU> highEnd = new ArrayList<>();
+        List<Model.Component.GPU> midEnd = new ArrayList<>();
+        List<Model.Component.GPU> lowEnd = new ArrayList<>();
 
-        for (Component.GPU component : components) {
+        for (Model.Component.GPU component : components) {
             double price = component.getPrice();
 
             if (price >= 1 && price <= 30) {
@@ -379,9 +379,9 @@ public class Model {
         }
     }
 
-    private void listComponentsGPU(List<Component.GPU> components, String category) {
+    private void listComponentsGPU(List<Model.Component.GPU> components, String category) {
         System.out.println(category + ":");
-        for (Component.GPU component : components) {
+        for (Model.Component.GPU component : components) {
             System.out.println(component);
         }
     }
@@ -1113,4 +1113,3 @@ public class Model {
         }
     }
 }
-
