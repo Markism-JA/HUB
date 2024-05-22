@@ -96,7 +96,7 @@ public class Model {
     private List<Model.Component.Ram> rams;
     private List<Model.Component.PSU> psus;
     private List<Model.Component.HDD> hdds;
-    private List<Model.Component.SSD> sdds;
+    private List<Model.Component.SSD> ssds;
     private List<Model.Component.Fan> fans;
 
     //User
@@ -236,8 +236,8 @@ public class Model {
         return hdds;
     }
 
-    public List<Model.Component.SSD> getSdds() {
-        return sdds;
+    public List<Model.Component.SSD> getSsds() {
+        return ssds;
     }
 
     public List<Model.Component.Fan> getFans() {
