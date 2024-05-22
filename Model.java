@@ -88,7 +88,7 @@ public class Model {
   }
 
   // Data Storage Module
-  public class DataStorage {
+  public class DataManager {
     private List<Model.Component.CPU> cpus;
     private List<Model.Component.GPU> gpus;
     private List<Model.Component.Case> cases;
@@ -96,30 +96,25 @@ public class Model {
     private List<Model.Component.Ram> rams;
     private List<Model.Component.PSU> psus;
     private List<Model.Component.HDD> hdds;
-    private List<Model.Component.SDD> sdds;
+    private List<Model.Component.SSD> sdds;
     private List<Model.Component.Fan> fans;
 
     //User
     private List<Model.User> users;
 
-    public DataStorage() {
-        loadDataFromCSV();
+    public DataManager(String basePath) {
+        cpus = loadCPU(basePath + "cpu.csv");
+        gpus = loadGPU(basePath + "gpu.csv");
+        cases = loadCase(basePath + "case.csv");
+        motherboards = loadMotherBoard(basePath + "motherboard.csv");
+        rams = loadRam(basePath + "ram.csv");
+        psus = loadPSU(basePath + "psu.csv");
+        hdds = loadHDD(basePath + "hdd.csv");
+        ssds = loadSSD(basePath + "ssd.csv");
+        fans = loadFan(basePath + "fan.csv");
+        users = loadUsers(basePath + "user.csv");
     }
 
-    private void loadDataFromCSV() {
-        cpus = loadCPU(null);
-        gpus = loadGPU(null);
-        cases = loadCase(null);
-        motherboards = loadMotherBoard(null);
-        rams = loadRam(null);
-        psus = loadPSU(null);
-        hdds = loadHDD(null);
-        sdds = loadSDD(null);
-        fans = loadFans(null);
-
-        //User
-        users = loadUsers(null);
-    }
 
     private List<Model.Component.CPU> loadCPU(String filePath) {
         try {
@@ -184,16 +179,16 @@ public class Model {
         }
     }
 
-    private List<Model.Component.SDD> loadSDD(String filePath) {
+    private List<Model.Component.SSD> loadSSD(String filePath) {
         try {
-            return Component.SDD.CSVReader.readHDDsFromCSV(filePath);
+            return Component.SSD.CSVReader.readHDDsFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
         }
     }
 
-    private List<Model.Component.Fan> loadFans(String filePath) {
+    private List<Model.Component.Fan> loadFan(String filePath) {
         try {
             return Component.Fan.CSVReader.readFansFromCSV(filePath);
         } catch (Exception e) {
@@ -241,7 +236,7 @@ public class Model {
         return hdds;
     }
 
-    public List<Model.Component.SDD> getSdds() {
+    public List<Model.Component.SSD> getSdds() {
         return sdds;
     }
 
@@ -929,12 +924,12 @@ public class Model {
             }
         }
 
-    public static class SDD {
+    public static class SSD {
         private String brand;
         private int storageSize, wattage;
         private double price;
 
-        public SDD (String brand, int storageSize, int wattage, double price) {
+        public SSD (String brand, int storageSize, int wattage, double price) {
             this.brand = brand;
             this.storageSize = storageSize;
             this.wattage = wattage;
@@ -968,15 +963,15 @@ public class Model {
         }
 
         public static class CSVReader {
-            public static List<SDD> readHDDsFromCSV(String fileName) {
-                List<SDD> sdds = new ArrayList<>();
+            public static List<SSD> readHDDsFromCSV(String fileName) {
+                List<SSD> sdds = new ArrayList<>();
                 String line = "";
                 String splitBy = ",";
 
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        SDD hdd = new SDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]));
+                        SSD hdd = new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]));
                         sdds.add(hdd);
                     }
                 } catch (IOException e) {
