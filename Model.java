@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
@@ -91,6 +92,7 @@ public class Model {
     private List<Model.Component.PSU> psus;
     private List<Model.Component.HDD> hdds;
     private List<Model.Component.SDD> sdds;
+    private List<Model.Component.Fan> fans;
 
     public DataStorage() {
         loadDataFromCSV();
@@ -105,6 +107,7 @@ public class Model {
         psus = loadPSU(null);
         hdds = loadHDD(null);
         sdds = loadSDD(null);
+        fans = loadFans(null);
     }
 
     private List<Model.Component.CPU> loadCPU(String filePath) {
@@ -179,6 +182,14 @@ public class Model {
         }
     }
 
+    private List<Model.Component.Fan> loadFans(String filePath) {
+        try {
+            return Component.Fan.CSVReader.readFansFromCSV(filePath);
+        } catch (Exception e) {
+            // handle exception
+            return new ArrayList<>();
+        }
+    }
     // Getters for the loaded data
     public List<Model.Component.CPU> getCpus() {
         return cpus;
@@ -210,6 +221,10 @@ public class Model {
 
     public List<Model.Component.SDD> getSdds() {
         return sdds;
+    }
+
+    public List<Model.Component.Fan> getFans() {
+        return fans;
     }
 
     public void saveData() {
@@ -957,10 +972,72 @@ public class Model {
         }
     }
 
-    public static class Fans {
-        
-        }
 
+    public static class Fan {
+        private String brand, model;
+        private int wattage, size;
+        private double price;
+    
+        public Fan(String brand, String model, int wattage, int size, double price) {
+            this.brand = brand;
+            this.model = model;
+            this.wattage = wattage;
+            this.size = size;
+            this.price = price;
+        }
+    
+        public String getBrand() {
+            return brand;
+        }
+    
+        public String getModel() {
+            return model;
+        }
+    
+        public int getWattage() {
+            return wattage;
+        }
+    
+        public int getSize() {
+            return size;
+        }
+    
+        public double getPrice() {
+            return price;
+        }
+    
+        @Override
+        public String toString() {
+            return "Fan{" +
+                    "brand='" + brand + '\'' +
+                    ", model='" + model + '\'' +
+                    ", wattage=" + wattage +
+                    ", size=" + size +
+                    ", price=" + price +
+                    '}';
+        }
+    
+        public static class CSVReader {
+            public static List<Fan> readFansFromCSV(String fileName) {
+                List<Fan> fans = new ArrayList<>();
+                String line;
+                String splitBy = ",";
+    
+                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                    while ((line = br.readLine()) != null) {
+                        String[] data = line.split(splitBy);
+                        Fan fan = new Fan(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]));
+                        fans.add(fan);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+    
+                return fans;
+                }
+            }
+
+        }
     }
 }
 
