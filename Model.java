@@ -99,6 +99,9 @@ public class Model {
     private List<Model.Component.SDD> sdds;
     private List<Model.Component.Fan> fans;
 
+    //User
+    private List<Model.User> users;
+
     public DataStorage() {
         loadDataFromCSV();
     }
@@ -113,6 +116,9 @@ public class Model {
         hdds = loadHDD(null);
         sdds = loadSDD(null);
         fans = loadFans(null);
+
+        //User
+        users = loadUsers(null);
     }
 
     private List<Model.Component.CPU> loadCPU(String filePath) {
@@ -195,6 +201,17 @@ public class Model {
             return new ArrayList<>();
         }
     }
+
+    //Users
+    private List<Model.User> loadUsers(String filePath) {
+        try {
+            return User.CSVReader.readUsersFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception
+            return new ArrayList<>();
+        }
+    }
+
     // Getters for the loaded data
     public List<Model.Component.CPU> getCpus() {
         return cpus;
@@ -230,6 +247,11 @@ public class Model {
 
     public List<Model.Component.Fan> getFans() {
         return fans;
+    }
+
+    //Users
+    public List<Model.User> getUsers() {
+        return users;
     }
 
     public void saveData() {
@@ -382,7 +404,7 @@ public class Model {
   }
 
   // User Class (example)
-  public class User {
+  public static class User {
       private String username;
       private String password;
 
@@ -397,6 +419,11 @@ public class Model {
 
       public String getPassword() {
         return password;
+      }
+
+      //hash password
+      private String hashPassword(String password) {
+
       }
 
       @Override
