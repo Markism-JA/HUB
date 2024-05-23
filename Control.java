@@ -17,12 +17,12 @@ public class Control extends Model {
 
     if (componentType.equalsIgnoreCase("CPU")) {  
         // Read CPUs from CSV
-        List<Component.CPU> cpus = Component.CPU.CSVReader.readCPUsFromCSV("cpus.csv");
+        List<Component.CPU> cpus = Component.CPU.readCPUFromCSV("cpus.csv");
         // Perform price comparison for CPUs
         inner.comparePricesCPU(cpus);
     } else if (componentType.equalsIgnoreCase("GPU")) {
         // Read GPUs from CSV
-        List<Component.GPU> gpus = Component.GPU.CSVReader.readGPUsFromCSV("gpus.csv");
+        List<Component.GPU> gpus = Component.GPU.readGPUFromCSV("gpus.csv");
         // Perform price comparison for GPUs
        inner.comparePricesGPU(gpus);
     } else {
