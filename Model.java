@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
+import java.util.function.Function;
+
+//TODO: Incorporate a filewriter "CSV Writer" in the component class
+//TODO: Add a sorting and searching function to the Database class
 
 
 //hashing
@@ -118,7 +122,7 @@ public class Model {
 
     private List<Model.Component.CPU> loadCPU(String filePath) {
         try {
-            return Component.CPU.CSVReader.readCPUsFromCSV(filePath);
+            return Component.CPU.readCPUFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -127,7 +131,7 @@ public class Model {
 
     private List<Model.Component.GPU> loadGPU(String filePath) {
         try {
-            return Component.GPU.CSVReader.readGPUsFromCSV(filePath);
+            return Component.GPU.readGPUFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -136,7 +140,7 @@ public class Model {
 
     private List<Model.Component.Case> loadCase(String filePath) {
         try {
-            return Component.Case.CSVReader.readCasesFromCSV(filePath);
+            return Component.Case.readCaseFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -145,7 +149,7 @@ public class Model {
 
     private List<Model.Component.MotherBoard> loadMotherBoard(String filePath) {
         try {
-            return Component.MotherBoard.CSVReader.readMotherBoardsFromCSV(filePath);
+            return Component.MotherBoard.readMotherBoardFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -154,7 +158,7 @@ public class Model {
 
     private List<Model.Component.Ram> loadRam(String filePath) {
         try {
-            return Component.Ram.CSVReader.readRamsFromCSV(filePath);
+            return Component.Ram.readRamFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -163,7 +167,7 @@ public class Model {
 
     private List<Model.Component.PSU> loadPSU(String filePath) {
         try {
-            return Component.PSU.CSVReader.readPSUsFromCSV(filePath);
+            return Component.PSU.readPSUFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -172,7 +176,7 @@ public class Model {
 
     private List<Model.Component.HDD> loadHDD(String filePath) {
         try {
-            return Component.HDD.CSVReader.readHDDsFromCSV(filePath);
+            return Component.HDD.readHDDFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -181,7 +185,7 @@ public class Model {
 
     private List<Model.Component.SSD> loadSSD(String filePath) {
         try {
-            return Component.SSD.CSVReader.readHDDsFromCSV(filePath);
+            return Component.SSD.readHDDFromCSV(filePath);
         } catch (Exception e) {
             // Handle exception
             return new ArrayList<>();
@@ -190,7 +194,7 @@ public class Model {
 
     private List<Model.Component.Fan> loadFan(String filePath) {
         try {
-            return Component.Fan.CSVReader.readFansFromCSV(filePath);
+            return Component.Fan.readFanFromCSV(filePath);
         } catch (Exception e) {
             // handle exception
             return new ArrayList<>();
@@ -257,6 +261,8 @@ public class Model {
 
   // Database Management
   public class Database {
+    
+
       public class InventoryManagement {
           // Fields and methods for managing inventory data
           public void addInventoryItem(Component component) {
@@ -466,6 +472,7 @@ public class PriceComparison {
   //TODO need to add additional dataField for each component. Handles whether a specific product is available in the inventory. Boolean Data type
   // Component Class: class definition for each PC parts
   public class Component {
+    Model.CSVUtils Reader = new CSVUtils();
 
     public static class CPU {
         private String model, brand, socket;
@@ -484,63 +491,36 @@ public class PriceComparison {
 
         public String getModel() {
             return model;
-        }
+            }
 
         public String getBrand() {
             return brand;
-        }
+            }
 
         public double getPrice() {
             return price;
-        }
+            }
 
         public String getSocket() {
             return socket;
-        }
+            }
 
         public int getWattage() {
             return wattage;
-        }
+            }
 
         public boolean getStatus() {
             return status;
-        }
+            }
 
         @Override
         public String toString() {
-            return "CPU{" +
-                    "model='" + model + '\'' +
-                    ", brand='" + brand + '\'' +
-                    ", price=" + price +
-                    ", socket='" + socket + '\'' +
-                    ", wattage=" + wattage +
-                    ", status=" + status +
-                    '}';
-        }
-
-
-
-        public static class CSVReader {
-            public static List<CPU> readCPUsFromCSV(String fileName) {
-                List<CPU> cpus = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-    
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    br.readLine(); // Skip the header
-    
-                    while ((line = br.readLine())!= null) {
-                        String[] data = line.split(splitBy);
-                        CPU cpu = new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]));
-                        cpus.add(cpu);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-    
-                return cpus;
+            return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
             }
-        }
+
+        public static List<CPU> readCPUFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+            }
     
     }
 
@@ -561,61 +541,37 @@ public class PriceComparison {
 
         public String getChipset() {
             return chipset;
-        }
+            }
 
         public String getBrand() {
             return brand;
-        }
+            }
 
         public int getMemory() {
             return memory;
-        }
+            }
 
         public double getPrice() {
             return price;
-        }
+            }
 
         public int getWattage() {
             return wattage;
-        }
+            }
 
         public boolean getStatus() {
             return status;
-        }
+            }
 
         @Override
         public String toString() {
-            return "GPU{" +
-                    "chipset='" + chipset + '\'' +
-                    ", brand='" + brand + '\'' +
-                    ", memory=" + memory +
-                    ", price=" + price +
-                    ", wattage=" + wattage +
-                    ", status=" + status +
-                    '}';
-        }
-
-        public static class CSVReader {
-            public static List<GPU> readGPUsFromCSV(String fileName) {
-                List<GPU> gpus = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    br.readLine();
-
-                    while ((line = br.readLine())!= null) {
-                        String[] data = line.split(splitBy);
-                        GPU gpu = new GPU(data[0], data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]));
-                        gpus.add(gpu); // Add the GPU to the list
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                return gpus;
+            return "GPU{" + "chipset='" + chipset + '\'' + ", brand='" + brand + '\'' + ", memory=" + memory + ", price=" + price + ", wattage=" + wattage + ", status=" + status + '}';
             }
-        }
+
+        public static List<GPU> readGPUFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new GPU(data[0], data[1],Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+            }
+
     }
 
     public static class Case {
@@ -653,35 +609,12 @@ public class PriceComparison {
 
         @Override
         public String toString() {
-            return "Case{" +
-                    "brand='" + brand + '\'' +
-                    ", model='" + model + '\'' +
-                    ", formFactor='" + formFactor + '\'' +
-                    ", price=" + price +
-                    '}';
-        }
-
-        public static class CSVReader {
-            public static List<Case> readCasesFromCSV(String fileName) {
-                List<Case> cases = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    br.readLine(); // Skip the header
-
-                    while ((line = br.readLine())!= null) {
-                        String[] data = line.split(splitBy);
-                        Case case1 = new Case(data[0], data[1], data[2], Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
-                        cases.add(case1); // Add the Case to the list
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                return cases;
+            return "Case{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", formFactor='" + formFactor + '\'' + ", price=" + price + ", status=" + status + '}';
             }
-        }
+        
+        public static List<Case> readCaseFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new Case(data[0], data[1], data[2], Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+            }
     }
 
     public static class MotherBoard {
@@ -730,39 +663,13 @@ public class PriceComparison {
 
         @Override
         public String toString() {
-            return "MotherBoard{" +
-                    "brand='" + brand + '\'' +
-                    ", model='" + model + '\'' +
-                    ", formFactor='" + formFactor + '\'' +
-                    ", socket='" + socket + '\'' +
-                    ", price=" + price +
-                    ", wattage=" + wattage +
-                    ", status=" + status +
-                    '}';
-        }
-
-        public static class CSVReader {
-            public static List<MotherBoard> readMotherBoardsFromCSV(String fileName) {
-                List<MotherBoard> motherBoards = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    br.readLine();
-
-                    while ((line = br.readLine())!= null) {
-                        String[] data = line.split(splitBy);
-                        MotherBoard motherBoard = new MotherBoard(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), Integer.parseInt(data[5]), Boolean.parseBoolean(data[6]));
-                        motherBoards.add(motherBoard);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    }
-
-                return motherBoards;
-                }
+            return "MotherBoard{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", formFactor='" + formFactor + '\'' + ", socket='" + socket + '\'' + ", price=" + price + ", wattage=" + wattage + ", status=" + status + '}';
             }
-        }
+            
+        public static List<MotherBoard> readMotherBoardFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new MotherBoard(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), Integer.parseInt(data[5]), Boolean.parseBoolean(data[6])));
+            }
+    }
     
     public static class Ram {
         private String brand, model;
@@ -806,36 +713,13 @@ public class PriceComparison {
 
         @Override
         public String toString() {
-            return "Ram{" +
-                    "brand='" + brand + '\'' +
-                    ", model='" + model + '\'' +
-                    ", price=" + price +
-                    ", wattage=" + wattage +
-                    ", frequency=" + frequency +
-                    ", status=" + status +
-                    '}';
-        }
-
-        public static class CSVReader {
-            public static List<Ram> readRamsFromCSV(String fileName) {
-                List<Ram> rams = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    while ((line = br.readLine())!= null) {
-                        String[] data = line.split(splitBy);
-                        Ram ram = new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Float.parseFloat(data[4]), Boolean.parseBoolean(data[5]));
-                        rams.add(ram);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                    return rams;
-                }
+            return "Ram{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", wattage=" + wattage + ", frequency=" + frequency + ", status=" + status + '}';
             }
-        }
+
+        public static List<Ram> readRamFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+            }
+    }
 
     public static class PSU {
         private String brand, model, rate;
@@ -878,35 +762,12 @@ public class PriceComparison {
     
             @Override
             public String toString() {
-                return "PSU{" +
-                        "brand='" + brand + '\'' +
-                        ", model='" + model + '\'' +
-                        ", price=" + price +
-                        ", rate='" + rate + '\'' +
-                        ", wattage=" + wattage +
-                        ", status=" + status +
-                        '}';
-            }
-    
-            public static class CSVReader {
-                public static List<PSU> readPSUsFromCSV(String fileName) {
-                    List<PSU> psus = new ArrayList<>();
-                    String line = "";
-                    String splitBy = ",";
-    
-                    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                        while ((line = br.readLine())!= null) {
-                            String[] data = line.split(splitBy);
-                            PSU psu = new PSU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]));
-                            psus.add(psu);
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-    
-                    return psus;
+                return "PSU{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", rate='" + rate + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
                 }
-            }
+
+            public static List<PSU> readPSUFromCSV(String fileName) {
+                return CSVUtils.readFromCSV(fileName, data -> new PSU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+                }
         }
 
     public static class HDD {
@@ -945,33 +806,12 @@ public class PriceComparison {
     
             @Override
             public String toString() {
-                return "HDD{" +
-                        "brand='" + brand + '\'' +
-                        ", storageSize=" + storageSize +
-                        ", wattage=" + wattage +
-                        ", price=" + price +
-                        '}';
-            }
-    
-            public static class CSVReader {
-                public static List<HDD> readHDDsFromCSV(String fileName) {
-                    List<HDD> hdds = new ArrayList<>();
-                    String line = "";
-                    String splitBy = ",";
-    
-                    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                        while ((line = br.readLine())!= null) {
-                            String[] data = line.split(splitBy);
-                            HDD hdd = new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
-                            hdds.add(hdd);
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-    
-                    return hdds;
+                return "HDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage + ", price=" + price + '}';
                 }
-            }
+            
+            public static List<HDD> readHDDFromCSV(String fileName) {
+                return CSVUtils.readFromCSV(fileName, data -> new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+                }
         }
 
     public static class SSD {
@@ -1010,34 +850,12 @@ public class PriceComparison {
 
         @Override
         public String toString() {
-            return "SDD{" +
-                    "brand='" + brand + '\'' +
-                    ", storageSize=" + storageSize +
-                    ", wattage=" + wattage +
-                    ", price=" + price +
-                    ", status=" + status +
-                    '}';
-        }
-
-        public static class CSVReader {
-            public static List<SSD> readHDDsFromCSV(String fileName) {
-                List<SSD> sdds = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    while ((line = br.readLine())!= null) {
-                        String[] data = line.split(splitBy);
-                        SSD hdd = new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
-                        sdds.add(hdd);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                return sdds;
+            return "SDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +  ", price=" + price + ", status=" + status + '}';
             }
-        }
+
+            public static List<SSD> readHDDFromCSV(String fileName) {
+                return CSVUtils.readFromCSV(fileName, data -> new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+                }           
     }
 
     public static class InternalStorage {
@@ -1070,33 +888,18 @@ public class PriceComparison {
             return price;
         }
 
+        public boolean getStatus() {
+            return status;
+        }
+
         @Override
         public String toString() {
-            return "InternalStorage{" +
-                "brand='" + brand + '\'' +
-                ", storageSize=" + storageSize +
-                ", wattage=" + wattage +
-                '}';
-        }
-
-        public static class CSVReader {
-            public static List<InternalStorage> readCSV(String fileName) {
-                List<InternalStorage> internalStorages = new ArrayList<>();
-                String line = "";
-                String splitBy = ",";
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    while ((line = br.readLine()) != null) {
-                        String[] data = line.split(splitBy);
-                        InternalStorage internalStorage = new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
-                        internalStorages.add(internalStorage);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                return internalStorages;
+            return "InternalStorage{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +", price=" + price + ", status=" + status + '}';
             }
-        }
+
+        public static List<InternalStorage> readInternalStorageFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+            }
     }
 
 
@@ -1141,36 +944,42 @@ public class PriceComparison {
     
         @Override
         public String toString() {
-            return "Fan{" +
-                    "brand='" + brand + '\'' +
-                    ", model='" + model + '\'' +
-                    ", wattage=" + wattage +
-                    ", size=" + size +
-                    ", price=" + price +
-                    ", status=" + status +
-                    '}';
-        }
-    
-        public static class CSVReader {
-            public static List<Fan> readFansFromCSV(String fileName) {
-                List<Fan> fans = new ArrayList<>();
-                String line;
-                String splitBy = ",";
-    
-                try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-                    while ((line = br.readLine()) != null) {
-                        String[] data = line.split(splitBy);
-                        Fan fan = new Fan(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]), Boolean.parseBoolean(data[5]));
-                        fans.add(fan);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-    
-                return fans;
-                }
+            return "Fan{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", wattage=" + wattage + ", size=" + size + ", price=" + price + ", status=" + status + '}';
             }
 
+        public static List<Fan> readFanFromCSV(String fileName) {
+            return CSVUtils.readFromCSV(fileName, data -> new Fan(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]), Boolean.parseBoolean(data[5])));
+            }
         }
     }
+
+    public class CSVUtils {
+
+        //CSVReader
+        public static <T> List<T> readFromCSV(String fileName, Function<String[], T> mapper) {
+            List<T> items = new ArrayList<>();
+            String line;
+            String splitBy = ",";
+
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                while ((line = br.readLine()) != null) {
+                    String[] data = line.split(splitBy);
+                    items.add(mapper.apply(data));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return items;
+            }
+        
+        //TODO: Creater CSVWriter method
+        
+
+        }
+
+    public class Test {
+        
+    }
+    
 }
