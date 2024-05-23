@@ -9,6 +9,9 @@ import java.util.ListIterator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
+//TODO: Incorporate a filewriter "CSV Writer" in the component class
+//TODO: Add a sorting and searching function to the Database class
+
 
 //hashing
 import java.security.MessageDigest;
@@ -257,6 +260,8 @@ public class Model {
 
   // Database Management
   public class Database {
+    
+
       public class InventoryManagement {
           // Fields and methods for managing inventory data
           public void addInventoryItem(Component component) {
@@ -962,7 +967,7 @@ public class PriceComparison {
                     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                         while ((line = br.readLine())!= null) {
                             String[] data = line.split(splitBy);
-                            HDD hdd = new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]));
+                            HDD hdd = new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
                             hdds.add(hdd);
                         }
                     } catch (IOException e) {
