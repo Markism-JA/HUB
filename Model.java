@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+//TODO need to add additional dataField for each component that handles whethe a specific product is available in the inventory.
 
 public class Model {
 
