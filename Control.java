@@ -30,5 +30,8 @@ public class Control extends Model {
     }
 
     scanner.close();
+
+
+
 }
 }

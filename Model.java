@@ -303,23 +303,22 @@ public class Model {
       }
   }
 
-  // Price Comparison Module
-    //FIXME Ron gumawa ako ng loadMethod para reusable yong code natin sa database gamitin mo dito
-  public class PriceComparison {
-    
-  // Fields and methods for comparing prices of components
-    String userDecision;
+public class PriceComparison {
+    private String userDecision;
 
     public PriceComparison(String userDecision) {
         this.userDecision = userDecision;
     }
-    
-    public void comparePricesCPU(List<Model.Component.CPU> components) {
-        List<Model.Component.CPU> highEnd = new ArrayList<>();
-        List<Model.Component.CPU> midEnd = new ArrayList<>();
-        List<Model.Component.CPU> lowEnd = new ArrayList<>();
 
-        for (Model.Component.CPU component : components) {
+    public void comparePricesCPU() {
+        DataManager dataManager = new DataManager("./data/");
+        List<Component.CPU> cpus = dataManager.getCpus();
+
+        List<Component.CPU> highEnd = new ArrayList<>();
+        List<Component.CPU> midEnd = new ArrayList<>();
+        List<Component.CPU> lowEnd = new ArrayList<>();
+
+        for (Component.CPU component : cpus) {
             double price = component.getPrice();
 
             if (price >= 1 && price <= 30) {
@@ -340,20 +339,22 @@ public class Model {
         }
     }
 
-    private void listComponentsCPU(List<Model.Component.CPU> components, String category) {
+    private void listComponentsCPU(List<Component.CPU> components, String category) {
         System.out.println(category + ":");
-        for (Model.Component.CPU component : components) {
+        for (Component.CPU component : components) {
             System.out.println(component);
         }
     }
 
+    public void comparePricesGPU() {
+        DataManager dataManager = new DataManager("./data/");
+        List<Component.GPU> gpus = dataManager.getGpus();
 
-    public void comparePricesGPU(List<Model.Component.GPU> components) {
-        List<Model.Component.GPU> highEnd = new ArrayList<>();
-        List<Model.Component.GPU> midEnd = new ArrayList<>();
-        List<Model.Component.GPU> lowEnd = new ArrayList<>();
+        List<Component.GPU> highEnd = new ArrayList<>();
+        List<Component.GPU> midEnd = new ArrayList<>();
+        List<Component.GPU> lowEnd = new ArrayList<>();
 
-        for (Model.Component.GPU component : components) {
+        for (Component.GPU component : gpus) {
             double price = component.getPrice();
 
             if (price >= 1 && price <= 30) {
@@ -374,9 +375,9 @@ public class Model {
         }
     }
 
-    private void listComponentsGPU(List<Model.Component.GPU> components, String category) {
+    private void listComponentsGPU(List<Component.GPU> components, String category) {
         System.out.println(category + ":");
-        for (Model.Component.GPU component : components) {
+        for (Component.GPU component : components) {
             System.out.println(component);
         }
     }
@@ -461,6 +462,8 @@ public class Model {
       // ...
   }
 
+
+  //TODO need to add additional dataField for each component. Handles whether a specific product is available in the inventory. Boolean Data type
   // Component Class: class definition for each PC parts
   public class Component {
 
@@ -468,13 +471,15 @@ public class Model {
         private String model, brand, socket;
         private double price;
         private int wattage;
+        private boolean status;
 
-        public CPU(String model, String brand, double price, String socket, int wattage) {
+        public CPU(String model, String brand, double price, String socket, int wattage, boolean status) {
             this.model = model;
             this.brand = brand;
             this.price = price;
             this.socket = socket;
             this.wattage = wattage;
+            this.status = status;
         }
 
         public String getModel() {
@@ -497,6 +502,10 @@ public class Model {
             return wattage;
         }
 
+        public boolean getStatus() {
+            return status;
+        }
+
         @Override
         public String toString() {
             return "CPU{" +
@@ -505,6 +514,7 @@ public class Model {
                     ", price=" + price +
                     ", socket='" + socket + '\'' +
                     ", wattage=" + wattage +
+                    ", status=" + status +
                     '}';
         }
 
@@ -521,7 +531,7 @@ public class Model {
     
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        CPU cpu = new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]));
+                        CPU cpu = new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]));
                         cpus.add(cpu);
                     }
                 } catch (IOException e) {
@@ -538,13 +548,15 @@ public class Model {
         private String chipset, brand;
         private int memory, wattage;
         private double price;
+        private boolean status;
 
-        public GPU(String chipset, String brand, int memory, double price, int wattage) {
+        public GPU(String chipset, String brand, int memory, double price, int wattage, boolean status) {
             this.chipset = chipset;
             this.brand = brand;
             this.memory = memory;
             this.price = price;
             this.wattage = wattage;
+            this.status = status;
         }
 
         public String getChipset() {
@@ -567,6 +579,10 @@ public class Model {
             return wattage;
         }
 
+        public boolean getStatus() {
+            return status;
+        }
+
         @Override
         public String toString() {
             return "GPU{" +
@@ -575,6 +591,7 @@ public class Model {
                     ", memory=" + memory +
                     ", price=" + price +
                     ", wattage=" + wattage +
+                    ", status=" + status +
                     '}';
         }
 
@@ -589,7 +606,7 @@ public class Model {
 
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        GPU gpu = new GPU(data[0], data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]));
+                        GPU gpu = new GPU(data[0], data[1], Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]));
                         gpus.add(gpu); // Add the GPU to the list
                     }
                 } catch (IOException e) {
@@ -604,12 +621,14 @@ public class Model {
     public static class Case {
         private String brand, model, formFactor;
         private double price;
+        private boolean status;
 
-        public Case(String brand, String model, String formFactor, double price) {
+        public Case(String brand, String model, String formFactor, double price, boolean status) {
             this.brand = brand;
             this.model = model;
             this.formFactor = formFactor;
             this.price = price;
+            this.status = status;
         }
 
         public String getBrand() {
@@ -626,6 +645,10 @@ public class Model {
 
         public double getPrice() {
             return price;
+        }
+
+        public boolean getStatus() {
+            return status;
         }
 
         @Override
@@ -649,7 +672,7 @@ public class Model {
 
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        Case case1 = new Case(data[0], data[1], data[2], Double.parseDouble(data[3]));
+                        Case case1 = new Case(data[0], data[1], data[2], Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
                         cases.add(case1); // Add the Case to the list
                     }
                 } catch (IOException e) {
@@ -665,14 +688,16 @@ public class Model {
         private String brand, model, formFactor, socket;
         private double price;
         private int wattage;
+        private boolean status;
 
-        public MotherBoard(String brand, String model, String formFactor, String socket, double price, int wattage) {
+        public MotherBoard(String brand, String model, String formFactor, String socket, double price, int wattage, boolean status) {
             this.brand = brand;
             this.model = model;
             this.formFactor = formFactor;
             this.socket = socket;
             this.price = price;
             this.wattage = wattage;
+            this.status = status;
         }
 
         public String getBrand() {
@@ -699,6 +724,10 @@ public class Model {
             return wattage;
         }
 
+        public boolean getStatus() {
+            return status;
+        }
+
         @Override
         public String toString() {
             return "MotherBoard{" +
@@ -708,6 +737,7 @@ public class Model {
                     ", socket='" + socket + '\'' +
                     ", price=" + price +
                     ", wattage=" + wattage +
+                    ", status=" + status +
                     '}';
         }
 
@@ -722,7 +752,7 @@ public class Model {
 
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        MotherBoard motherBoard = new MotherBoard(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), Integer.parseInt(data[5]));
+                        MotherBoard motherBoard = new MotherBoard(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), Integer.parseInt(data[5]), Boolean.parseBoolean(data[6]));
                         motherBoards.add(motherBoard);
                     }
                 } catch (IOException e) {
@@ -739,13 +769,15 @@ public class Model {
         private double price;
         private int wattage; 
         private float frequency;
+        private boolean status;
 
-        public Ram(String brand, String model, double price, int wattage, float frequency) {
+        public Ram(String brand, String model, double price, int wattage, float frequency, boolean status) {
             this.brand = brand;
             this.model = model;
             this.price = price;
             this.wattage = wattage;
             this.frequency = frequency;
+            this.status = status;
         }
 
         public String getBrand() {
@@ -768,6 +800,10 @@ public class Model {
             return frequency;
         }
 
+        public boolean getStatus() {
+            return status;
+        }
+
         @Override
         public String toString() {
             return "Ram{" +
@@ -776,6 +812,7 @@ public class Model {
                     ", price=" + price +
                     ", wattage=" + wattage +
                     ", frequency=" + frequency +
+                    ", status=" + status +
                     '}';
         }
 
@@ -788,7 +825,7 @@ public class Model {
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        Ram ram = new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Float.parseFloat(data[4]));
+                        Ram ram = new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Float.parseFloat(data[4]), Boolean.parseBoolean(data[5]));
                         rams.add(ram);
                     }
                 } catch (IOException e) {
@@ -804,13 +841,15 @@ public class Model {
         private String brand, model, rate;
         private double price;
         private int wattage;
+        private boolean status;
     
-            public PSU(String brand, String model, double price, String rate, int wattage) {
+            public PSU(String brand, String model, double price, String rate, int wattage, boolean status) {
                 this.brand = brand;
                 this.model = model;
                 this.price = price;
                 this.rate = rate;
                 this.wattage = wattage;
+                this.status = status;
             }
     
             public String getBrand() {
@@ -832,6 +871,10 @@ public class Model {
             public int getWattage() {
                 return wattage;
             }
+
+            public boolean getStatus() {
+                return status;
+            }
     
             @Override
             public String toString() {
@@ -841,6 +884,7 @@ public class Model {
                         ", price=" + price +
                         ", rate='" + rate + '\'' +
                         ", wattage=" + wattage +
+                        ", status=" + status +
                         '}';
             }
     
@@ -853,7 +897,7 @@ public class Model {
                     try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                         while ((line = br.readLine())!= null) {
                             String[] data = line.split(splitBy);
-                            PSU psu = new PSU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]));
+                            PSU psu = new PSU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]));
                             psus.add(psu);
                         }
                     } catch (IOException e) {
@@ -869,12 +913,14 @@ public class Model {
             private String brand;
             private int storageSize, wattage;
             private double price;
+            private boolean status;
     
-            public HDD(String brand, int storageSize, int wattage, double price) {
+            public HDD(String brand, int storageSize, int wattage, double price, boolean status) {
                 this.brand = brand;
                 this.storageSize = storageSize;
                 this.wattage = wattage;
                 this.price = price;
+                this.status = status;
             }
     
             public String getBrand() {
@@ -891,6 +937,10 @@ public class Model {
     
             public double getPrice() {
                 return price;
+            }
+
+            public boolean getStatus() {
+                return status;
             }
     
             @Override
@@ -928,12 +978,14 @@ public class Model {
         private String brand;
         private int storageSize, wattage;
         private double price;
+        private boolean status;
 
-        public SSD (String brand, int storageSize, int wattage, double price) {
+        public SSD (String brand, int storageSize, int wattage, double price, boolean status) {
             this.brand = brand;
             this.storageSize = storageSize;
             this.wattage = wattage;
             this.price = price;
+            this.status = status;
         }
 
         public String getBrand() {
@@ -952,6 +1004,10 @@ public class Model {
             return price;
         }
 
+        public boolean getStatus() {
+            return status;
+        }
+
         @Override
         public String toString() {
             return "SDD{" +
@@ -959,6 +1015,7 @@ public class Model {
                     ", storageSize=" + storageSize +
                     ", wattage=" + wattage +
                     ", price=" + price +
+                    ", status=" + status +
                     '}';
         }
 
@@ -971,7 +1028,7 @@ public class Model {
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine())!= null) {
                         String[] data = line.split(splitBy);
-                        SSD hdd = new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]));
+                        SSD hdd = new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
                         sdds.add(hdd);
                     }
                 } catch (IOException e) {
@@ -987,12 +1044,14 @@ public class Model {
         private String brand;
         private int storageSize, wattage;
         private double price;
+        private boolean status;
 
-        public InternalStorage (String brand, int storageSize, int wattage, double price) {
+        public InternalStorage (String brand, int storageSize, int wattage, double price, boolean status) {
             this.brand = brand;
             this.storageSize = storageSize;
             this.wattage = wattage;
             this.price = price;
+            this.status = status;
         }
 
         public String getBrand() {
@@ -1028,7 +1087,7 @@ public class Model {
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine()) != null) {
                         String[] data = line.split(splitBy);
-                        InternalStorage internalStorage = new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]));
+                        InternalStorage internalStorage = new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4]));
                         internalStorages.add(internalStorage);
                     }
                 } catch (IOException e) {
@@ -1045,13 +1104,15 @@ public class Model {
         private String brand, model;
         private int wattage, size;
         private double price;
+        private boolean status;
     
-        public Fan(String brand, String model, int wattage, int size, double price) {
+        public Fan(String brand, String model, int wattage, int size, double price, boolean status) {
             this.brand = brand;
             this.model = model;
             this.wattage = wattage;
             this.size = size;
             this.price = price;
+            this.status = status;
         }
     
         public String getBrand() {
@@ -1073,6 +1134,10 @@ public class Model {
         public double getPrice() {
             return price;
         }
+
+        public boolean getStatus() {
+            return status;
+        }
     
         @Override
         public String toString() {
@@ -1082,6 +1147,7 @@ public class Model {
                     ", wattage=" + wattage +
                     ", size=" + size +
                     ", price=" + price +
+                    ", status=" + status +
                     '}';
         }
     
@@ -1094,7 +1160,7 @@ public class Model {
                 try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
                     while ((line = br.readLine()) != null) {
                         String[] data = line.split(splitBy);
-                        Fan fan = new Fan(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]));
+                        Fan fan = new Fan(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]), Boolean.parseBoolean(data[5]));
                         fans.add(fan);
                     }
                 } catch (IOException e) {
