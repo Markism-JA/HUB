@@ -396,6 +396,7 @@ public class Model {
                 System.out.println(component);
             }
         }
+
         public void comparePricesCase() {
             DataManager dataManager = new DataManager("./data/");
             List<Component.Case> cases = dataManager.getCases();
@@ -431,6 +432,7 @@ public class Model {
                 System.out.println(component);
             }
         }
+
         public void comparePricesMotherBoard() {
             DataManager dataManager = new DataManager("./data/");
             List<Component.MotherBoard> MotherBoard = dataManager.getMotherboards();
@@ -466,6 +468,189 @@ public class Model {
                 System.out.println(component);
             }
         }
+
+        public void comparePricesRam() {
+            DataManager dataManager = new DataManager("./data/");
+            List<Component.Ram> Ram = dataManager.getRams();
+    
+            List<Component.Ram> highEnd = new ArrayList<>();
+            List<Component.Ram> midEnd = new ArrayList<>();
+            List<Component.Ram> lowEnd = new ArrayList<>();
+    
+            for (Component.Ram component : Ram) {
+                double price = component.getPrice();
+    
+                if (price >= 1 && price <= 30) {
+                    highEnd.add(component);
+                } else if (price > 30 && price <= 60) {
+                    midEnd.add(component);
+                } else {
+                    lowEnd.add(component);
+                }
+            }
+    
+            if ("High".equalsIgnoreCase(userDecision)) {
+                listComponentsRam(highEnd, "High End Components");
+            } else if ("Mid".equalsIgnoreCase(userDecision)) {
+                listComponentsRam(midEnd, "Mid End Components");
+            } else {
+                listComponentsRam(lowEnd, "Low End Components");
+            }
+        }
+    
+        private void listComponentsRam(List<Component.Ram> components, String category) {
+            System.out.println(category + ":");
+            for (Component.Ram component : components) {
+                System.out.println(component);
+            }
+        }
+
+        public void comparePricesPSU() {
+            DataManager dataManager = new DataManager("./data/");
+            List<Component.PSU> Psu = dataManager.getPsus();
+    
+            List<Component.PSU> highEnd = new ArrayList<>();
+            List<Component.PSU> midEnd = new ArrayList<>();
+            List<Component.PSU> lowEnd = new ArrayList<>();
+    
+            for (Component.PSU component : Psu) {
+                double price = component.getPrice();
+    
+                if (price >= 1 && price <= 30) {
+                    highEnd.add(component);
+                } else if (price > 30 && price <= 60) {
+                    midEnd.add(component);
+                } else {
+                    lowEnd.add(component);
+                }
+            }
+    
+            if ("High".equalsIgnoreCase(userDecision)) {
+                listComponentsPSU(highEnd, "High End Components");
+            } else if ("Mid".equalsIgnoreCase(userDecision)) {
+                listComponentsPSU(midEnd, "Mid End Components");
+            } else {
+                listComponentsPSU(lowEnd, "Low End Components");
+            }
+        }
+    
+        private void listComponentsPSU(List<Component.PSU> components, String category) {
+            System.out.println(category + ":");
+            for (Component.PSU component : components) {
+                System.out.println(component);
+            }
+        }
+
+        public void comparePricesHDD() {
+            DataManager dataManager = new DataManager("./data/");
+            List<Component.HDD> Hdd = dataManager.getHdds();
+    
+            List<Component.HDD> highEnd = new ArrayList<>();
+            List<Component.HDD> midEnd = new ArrayList<>();
+            List<Component.HDD> lowEnd = new ArrayList<>();
+    
+            for (Component.HDD component : Hdd) {
+                double price = component.getPrice();
+    
+                if (price >= 1 && price <= 30) {
+                    highEnd.add(component);
+                } else if (price > 30 && price <= 60) {
+                    midEnd.add(component);
+                } else {
+                    lowEnd.add(component);
+                }
+            }
+    
+            if ("High".equalsIgnoreCase(userDecision)) {
+                listComponentsHDD(highEnd, "High End Components");
+            } else if ("Mid".equalsIgnoreCase(userDecision)) {
+                listComponentsHDD(midEnd, "Mid End Components");
+            } else {
+                listComponentsHDD(lowEnd, "Low End Components");
+            }
+        }
+    
+        private void listComponentsHDD(List<Component.HDD> components, String category) {
+            System.out.println(category + ":");
+            for (Component.HDD component : components) {
+                System.out.println(component);
+            }
+        }
+
+        public void comparePricesSSD() {
+            DataManager dataManager = new DataManager("./data/");
+            List<Component.SSD> Ssd = dataManager.getSsds();
+    
+            List<Component.SSD> highEnd = new ArrayList<>();
+            List<Component.SSD> midEnd = new ArrayList<>();
+            List<Component.SSD> lowEnd = new ArrayList<>();
+    
+            for (Component.SSD component : Ssd) {
+                double price = component.getPrice();
+    
+                if (price >= 1 && price <= 30) {
+                    highEnd.add(component);
+                } else if (price > 30 && price <= 60) {
+                    midEnd.add(component);
+                } else {
+                    lowEnd.add(component);
+                }
+            }
+    
+            if ("High".equalsIgnoreCase(userDecision)) {
+                listComponentsSSD(highEnd, "High End Components");
+            } else if ("Mid".equalsIgnoreCase(userDecision)) {
+                listComponentsSSD(midEnd, "Mid End Components");
+            } else {
+                listComponentsSSD(lowEnd, "Low End Components");
+            }
+        }
+    
+        private void listComponentsSSD(List<Component.SSD> components, String category) {
+            System.out.println(category + ":");
+            for (Component.SSD component : components) {
+                System.out.println(component);
+            }
+        }
+
+        public void comparePricesFan() {
+            DataManager dataManager = new DataManager("./data/");
+            List<Component.Fan> fan = dataManager.getFans();
+    
+            List<Component.Fan> highEnd = new ArrayList<>();
+            List<Component.Fan> midEnd = new ArrayList<>();
+            List<Component.Fan> lowEnd = new ArrayList<>();
+    
+            for (Component.Fan component : fan) {
+                double price = component.getPrice();
+    
+                if (price >= 1 && price <= 30) {
+                    highEnd.add(component);
+                } else if (price > 30 && price <= 60) {
+                    midEnd.add(component);
+                } else {
+                    lowEnd.add(component);
+                }
+            }
+    
+            if ("High".equalsIgnoreCase(userDecision)) {
+                listComponentsFan(highEnd, "High End Components");
+            } else if ("Mid".equalsIgnoreCase(userDecision)) {
+                listComponentsFan(midEnd, "Mid End Components");
+            } else {
+                listComponentsFan(lowEnd, "Low End Components");
+            }
+        }
+    
+        private void listComponentsFan(List<Component.Fan> components, String category) {
+            System.out.println(category + ":");
+            for (Component.Fan component : components) {
+                System.out.println(component);
+            }
+        }
+
+
+
     }
 
   // User Preferences Class (example)
@@ -480,7 +665,70 @@ public class Model {
         private String specificFeatures;
 
         // Getters and setters for the fields
-        // ...
+
+        public int getBudget() {
+            return budget;
+        }
+    
+        public void setBudget(int budget) {
+            this.budget = budget;
+        }
+    
+        public String getPrimaryPurpose() {
+            return primaryPurpose;
+        }
+    
+        public void setPrimaryPurpose(String primaryPurpose) {
+            this.primaryPurpose = primaryPurpose;
+        }
+    
+        public String getPreferredCPUBrand() {
+            return preferredCPUBrand;
+        }
+    
+        public void setPreferredCPUBrand(String preferredCPUBrand) {
+            this.preferredCPUBrand = preferredCPUBrand;
+        }
+    
+        public String getPreferredGPUBrand() {
+            return preferredGPUBrand;
+        }
+    
+        public void setPreferredGPUBrand(String preferredGPUBrand) {
+            this.preferredGPUBrand = preferredGPUBrand;
+        }
+    
+        public int getStorageCapacity() {
+            return storageCapacity;
+        }
+    
+        public void setStorageCapacity(int storageCapacity) {
+            this.storageCapacity = storageCapacity;
+        }
+        
+        public int getRam() {
+            return ram;
+        }
+    
+        public void setRam(int ram) {
+            this.ram = ram;
+        }
+    
+        public String getFormFactor() {
+            return formFactor;
+        }
+    
+        public void setFormFactor(String formFactor) {
+            this.formFactor = formFactor;
+        }
+    
+        public String getSpecificFeatures() {
+            return specificFeatures;
+        }
+    
+        public void setSpecificFeatures(String specificFeatures) {
+            this.specificFeatures = specificFeatures;
+        }
     }
 
     // User Class (example)
