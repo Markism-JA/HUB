@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.function.Function;
 
 //TODO: Incorporate a filewriter "CSV Writer" in the component class
+//TODO: Incoporate a load method in DataManager
 //TODO: Add a sorting and searching function to the Database class
 
 
@@ -20,6 +21,12 @@ import java.security.NoSuchAlgorithmException;
 
 
 public class Model {
+
+    @FunctionalInterface
+    public interface CSVMapper<T> {
+        String apply(T t);
+    }
+
 
     // Recommendation Module
     public class RecommendationModule {
@@ -522,46 +529,49 @@ public class Model {
             private int wattage;
             private boolean status;
 
-            public CPU(String model, String brand, double price, String socket, int wattage, boolean status) {
-                this.model = model;
-                this.brand = brand;
-                this.price = price;
-                this.socket = socket;
-                this.wattage = wattage;
-                this.status = status;
-            }
-
-            public String getModel() {
-                return model;
+                public CPU(String model, String brand, double price, String socket, int wattage, boolean status) {
+                    this.model = model;
+                    this.brand = brand;
+                    this.price = price;
+                    this.socket = socket;
+                    this.wattage = wattage;
+                    this.status = status;
                 }
 
-            public String getBrand() {
-                return brand;
+                public String getModel() { return model; }
+                public void setModel(String model) { this.model = model;}
+
+                public String getBrand() { return brand; }
+                public void setBrand(String model) { this.model = model;}
+
+                public double getPrice() { return price; }
+                public void setPrice(double price) { this.price = price; }
+
+                public String getSocket() { return socket; }
+                public void setSocket(String socket) { this.socket = socket; }
+
+                public int getWattage() { return wattage; }
+                public void setWattage(int wattage) { this.wattage = wattage; }
+
+                public boolean getStatus() { return status; }
+                public void setStatus(boolean status) { this.status = status; }
+
+                @Override
+                public String toString() {
+                    return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
+                    }
+
+                public static List<CPU> readCPUFromCSV(String fileName) {
+                    return CSVUtils.readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+                    }
+
+                public String toCSVString() {
+                    return String.join(",", model, brand, Double.toString(price), socket, Integer.toString(wattage), Boolean.toString(status));
                 }
 
-            public double getPrice() {
-                return price;
-                }
-
-            public String getSocket() {
-                return socket;
-                }
-
-            public int getWattage() {
-                return wattage;
-                }
-
-            public boolean getStatus() {
-                return status;
-                }
-
-            @Override
-            public String toString() {
-                return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
-                }
-
-            public static List<CPU> readCPUFromCSV(String fileName) {
-                return CSVUtils.readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+                public static void writeCPUToCSV(String fileName, List<CPU> cpus) { 
+                    String header = "model,brand,price,socket,wattage,status";
+                    CSVUtils.writeToCSV(fileName, cpus, header, CPU::toCSVString);
                 }
 
         }
@@ -572,46 +582,49 @@ public class Model {
             private double price;
             private boolean status;
 
-            public GPU(String chipset, String brand, int memory, double price, int wattage, boolean status) {
-                this.chipset = chipset;
-                this.brand = brand;
-                this.memory = memory;
-                this.price = price;
-                this.wattage = wattage;
-                this.status = status;
-            }
-
-            public String getChipset() {
-                return chipset;
+                public GPU(String chipset, String brand, int memory, double price, int wattage, boolean status) {
+                    this.chipset = chipset;
+                    this.brand = brand;
+                    this.memory = memory;
+                    this.price = price;
+                    this.wattage = wattage;
+                    this.status = status;
                 }
 
-            public String getBrand() {
-                return brand;
+                public String getChipset() { return chipset; }
+                public void setChipset(String chipset) { this.chipset = chipset; }
+
+                public String getBrand() { return brand; }
+                public void setBrand(String brand) { this.brand = brand; }
+
+                public int getMemory() { return memory; }
+                public void setMemory(int memory) { this.memory = memory; }
+
+                public double getPrice() { return price; }
+                public void setPrice(double price) { this.price = price; }
+
+                public int getWattage() { return wattage; }
+                public void setWattage(int wattage) { this.wattage = wattage; }
+
+                public boolean getStatus() { return status; }
+                public void setStatus(boolean status) { this.status = status; }
+
+                @Override
+                public String toString() {
+                    return "GPU{" + "chipset='" + chipset + '\'' + ", brand='" + brand + '\'' + ", memory=" + memory + ", price=" + price + ", wattage=" + wattage + ", status=" + status + '}';
+                    }
+
+                public static List<GPU> readGPUFromCSV(String fileName) {
+                    return CSVUtils.readFromCSV(fileName, data -> new GPU(data[0], data[1],Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+                    }
+
+                public String toCSVString() {
+                    return String.join(",", chipset, brand, Integer.toString(memory), Double.toString(price), Integer.toString(wattage), Boolean.toString(status));
                 }
 
-            public int getMemory() {
-                return memory;
-                }
-
-            public double getPrice() {
-                return price;
-                }
-
-            public int getWattage() {
-                return wattage;
-                }
-
-            public boolean getStatus() {
-                return status;
-                }
-
-            @Override
-            public String toString() {
-                return "GPU{" + "chipset='" + chipset + '\'' + ", brand='" + brand + '\'' + ", memory=" + memory + ", price=" + price + ", wattage=" + wattage + ", status=" + status + '}';
-                }
-
-            public static List<GPU> readGPUFromCSV(String fileName) {
-                return CSVUtils.readFromCSV(fileName, data -> new GPU(data[0], data[1],Integer.parseInt(data[2]), Double.parseDouble(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+                public static void writeGPUToCSV(String fileNmae, List<GPU> cpus) { 
+                    String header = "model,brand,price,socket,wattage,status";
+                    CSVUtils.writeToCSV(fileNmae, cpus, header, GPU::toCSVString);
                 }
 
         }
@@ -621,41 +634,45 @@ public class Model {
             private double price;
             private boolean status;
 
-            public Case(String brand, String model, String formFactor, double price, boolean status) {
-                this.brand = brand;
-                this.model = model;
-                this.formFactor = formFactor;
-                this.price = price;
-                this.status = status;
-            }
-
-            public String getBrand() {
-                return brand;
-            }
-
-            public String getModel() {
-                return model;
-            }
-
-            public String getFormFactor() {
-                return formFactor;
-            }
-
-            public double getPrice() {
-                return price;
-            }
-
-            public boolean getStatus() {
-                return status;
-            }
-
-            @Override
-            public String toString() {
-                return "Case{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", formFactor='" + formFactor + '\'' + ", price=" + price + ", status=" + status + '}';
+                public Case(String brand, String model, String formFactor, double price, boolean status) {
+                    this.brand = brand;
+                    this.model = model;
+                    this.formFactor = formFactor;
+                    this.price = price;
+                    this.status = status;
                 }
-            
-            public static List<Case> readCaseFromCSV(String fileName) {
-                return CSVUtils.readFromCSV(fileName, data -> new Case(data[0], data[1], data[2], Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+
+                public String getBrand() { return brand; }
+                public void setBrand(String brand) { this.brand = brand; }
+
+                public String getModel() { return model; }
+                public void setModel(String model) { this.model = model; }
+
+                public String getFormFactor() { return formFactor; }
+                public void setFormFactor(String formFactor) { this.formFactor = formFactor; }
+
+                public double getPrice() { return price; }
+                public void setPrice(double price) { this.price = price; }
+
+                public boolean getStatus() { return status; }
+                public void setStatus(boolean status) { this.status = status; }
+
+                @Override
+                public String toString() {
+                    return "Case{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", formFactor='" + formFactor + '\'' + ", price=" + price + ", status=" + status + '}';
+                    }
+                
+                public static List<Case> readCaseFromCSV(String fileName) {
+                    return CSVUtils.readFromCSV(fileName, data -> new Case(data[0], data[1], data[2], Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+                    }
+
+                public String toCSVString() {
+                    return String.join(",", brand, model, Double.toString(price), Boolean.toString(status));
+                }
+
+                public static void writeCaseToCSV(String fileName, List<Case> cases) {
+                    String header = "brand,model,formFactor,price,status";
+                    CSVUtils.writeToCSV(fileName, cases, header, Case::toCSVString);
                 }
         }
 
@@ -675,33 +692,26 @@ public class Model {
                 this.status = status;
             }
 
-            public String getBrand() {
-                return brand;
-            }
+            public String getBrand() { return brand; }
+            public void setBrand (String brand) { this.brand = brand; }
 
-            public String getModel() {
-                return model;
-            }
+            public String getModel() { return model; }
+            public void setModel (String model) { this.model = model; }
 
-            public String getFormFactor() {
-                return formFactor;
-            }
+            public String getFormFactor() { return formFactor; }
+            public void setFormFactor (String formFactor) { this.formFactor = formFactor; }
 
-            public String getSocket() {
-                return socket;
-            }
+            public String getSocket() { return socket; }
+            public void setSocket (String socket) { this.socket = socket; }
 
-            public double getPrice() {
-                return price;
-            }
+            public double getPrice() { return price; }
+            public void setPrice( double price) { this.price = price; };
+ 
+            public int getWattage() { return wattage; }
+            public void setWattage (int wattage) { this.wattage = wattage; }
 
-            public int getWattage() {
-                return wattage;
-            }
-
-            public boolean getStatus() {
-                return status;
-            }
+            public boolean getStatus() { return status; }
+            public void setStatus(boolean status) { this.status = status; }
 
             @Override
             public String toString() {
@@ -711,6 +721,15 @@ public class Model {
             public static List<MotherBoard> readMotherBoardFromCSV(String fileName) {
                 return CSVUtils.readFromCSV(fileName, data -> new MotherBoard(data[0], data[1], data[2], data[3], Double.parseDouble(data[4]), Integer.parseInt(data[5]), Boolean.parseBoolean(data[6])));
                 }
+
+            public String toCSVString() {
+                return String.join(",", brand, model, formFactor, socket, Double.toString(price), Integer.toString(wattage), Boolean.toString(status));
+            }
+
+            public static void writMotherBoardToCSV(String fileName, List<MotherBoard> motherBoards) {
+                String header = "brand,model,formFactor,socket,price,wattage,status";
+                CSVUtils.writeToCSV(fileName, motherBoards, header, MotherBoard::toCSVString);
+            }
         }
 
         public static class Ram {
@@ -720,46 +739,49 @@ public class Model {
             private float frequency;
             private boolean status;
 
-            public Ram(String brand, String model, double price, int wattage, float frequency, boolean status) {
-                this.brand = brand;
-                this.model = model;
-                this.price = price;
-                this.wattage = wattage;
-                this.frequency = frequency;
-                this.status = status;
-            }
-
-            public String getBrand() {
-                return brand;
-            }
-
-            public String getModel() {
-                return model;
-            }
-
-            public double getPrice() {
-                return price;
-            }
-
-            public int getWattage() {
-                return wattage;
-            }
-
-            public float getFrequency() {
-                return frequency;
-            }
-
-            public boolean getStatus() {
-                return status;
-            }
-
-            @Override
-            public String toString() {
-                return "Ram{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", wattage=" + wattage + ", frequency=" + frequency + ", status=" + status + '}';
+                public Ram(String brand, String model, double price, int wattage, float frequency, boolean status) {
+                    this.brand = brand;
+                    this.model = model;
+                    this.price = price;
+                    this.wattage = wattage;
+                    this.frequency = frequency;
+                    this.status = status;
                 }
 
-            public static List<Ram> readRamFromCSV(String fileName) {
-                return CSVUtils.readFromCSV(fileName, data -> new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+                public String getBrand() { return brand; }
+                public void setBrand(String brand) { this.brand = brand; }
+
+                public String getModel() { return model; }
+                public void setModel (String model) { this.model = model; }
+
+                public double getPrice() { return price; }
+                public void setPrice(double price) { this.price = price; };
+
+                public int getWattage() { return wattage; }
+                public void setWattage (int wattage) { this.wattage = wattage; }
+
+                public float getFrequency() { return frequency; }
+                public void setFrequency (float frequency) { this.frequency = frequency; }
+
+                public boolean getStatus() { return status; }
+                public void setStatus(boolean status) { this.status = status; }
+
+                @Override
+                public String toString() {
+                    return "Ram{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", wattage=" + wattage + ", frequency=" + frequency + ", status=" + status + '}';
+                    }
+
+                public static List<Ram> readRamFromCSV(String fileName) {
+                    return CSVUtils.readFromCSV(fileName, data -> new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Float.parseFloat(data[4]), Boolean.parseBoolean(data[5])));
+                    }
+
+                public String toCSVString() {
+                    return String.join(",", brand, model, Double.toString(price), Integer.toString(wattage), Float.toString(frequency), Boolean.toString(status));
+                }
+
+                public static void writeRamToCSV(String fileName, List<Ram> rams) {
+                    String header = "brand,model,price,wattage,frequency,status";
+                    CSVUtils.writeToCSV(fileName, rams, header, Ram::toCSVString);
                 }
         }
 
@@ -778,38 +800,42 @@ public class Model {
                     this.status = status;
                 }
 
-                public String getBrand() {
-                    return brand;
-                }
+                public String getBrand() { return brand; }
+                public void setBrand(String brand) { this.brand = brand; }
 
-                public String getModel() {
-                    return model;
-                }
+                public String getModel() { return model; }
+                public void setModel(String model) { this.model = model; }
 
-                public double getPrice() {
-                    return price;
-                }
+                public double getPrice() { return price; }
+                public void setPrice(double price) { this.price = price; }
 
-                public String getRate() {
-                    return rate;
-                }
+                public String getRate() { return rate; }
+                public void setRate(String rate) { this.rate = rate; }
 
-                public int getWattage() {
-                    return wattage;
-                }
+                public int getWattage() { return wattage; }
+                public void setWattage(int wattage) { this.wattage = wattage; }
 
-                public boolean getStatus() {
-                    return status;
-                }
+                public boolean getStatus() { return status; }
+                public void setStatus(boolean status) { this.status = status; }
 
                 @Override
                 public String toString() {
                     return "PSU{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", rate='" + rate + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
-                    }
+                }
 
                 public static List<PSU> readPSUFromCSV(String fileName) {
                     return CSVUtils.readFromCSV(fileName, data -> new PSU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
-                    }
+                }
+
+                public String toCSVString() {
+                    return String.join(",", brand, model, Double.toString(price), rate, Integer.toString(wattage), Boolean.toString(status));
+                }
+
+                public static void writePSUToCSV(String fileName, List<PSU> psus) {
+                    String header = "brand,model,price,rate,wattage,status";
+                    CSVUtils.writeToCSV(fileName, psus, header, PSU::toCSVString);
+                }
+
             }
 
         public static class HDD {
@@ -818,41 +844,40 @@ public class Model {
                 private double price;
                 private boolean status;
 
-                public HDD(String brand, int storageSize, int wattage, double price, boolean status) {
-                    this.brand = brand;
-                    this.storageSize = storageSize;
-                    this.wattage = wattage;
-                    this.price = price;
-                    this.status = status;
-                }
-
-                public String getBrand() {
-                    return brand;
-                }
-
-                public int getStorageSize() {
-                    return storageSize;
-                }
-
-                public int getWattage() {
-                    return wattage;
-                }
-
-                public double getPrice() {
-                    return price;
-                }
-
-                public boolean getStatus() {
-                    return status;
-                }
-
-                @Override
-                public String toString() {
-                    return "HDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage + ", price=" + price + '}';
+                    public HDD(String brand, int storageSize, int wattage, double price, boolean status) {
+                        this.brand = brand;
+                        this.storageSize = storageSize;
+                        this.wattage = wattage;
+                        this.price = price;
+                        this.status = status;
                     }
-                
-                public static List<HDD> readHDDFromCSV(String fileName) {
-                    return CSVUtils.readFromCSV(fileName, data -> new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+
+                    public String getBrand() { return brand; }
+                    public void setBrand(String brand) { this.brand = brand; }
+
+                    public int getStorageSize() { return storageSize; }
+                    public void setStorageSize(int storageSize) { this.storageSize = storageSize; }
+
+                    public int getWattage() { return wattage; }
+                    public void setWattage(int wattage) { this.wattage = wattage; }
+
+                    public double getPrice() { return price; }
+                    public void setPrice(double price) { this.price = price; }
+
+                    public boolean getStatus() { return status; }
+                    public void setStatus(boolean status) { this.status = status; }
+
+                    @Override
+                    public String toString() {
+                        return "HDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage + ", price=" + price + '}';
+                        }
+                    
+                    public static List<HDD> readHDDFromCSV(String fileName) {
+                        return CSVUtils.readFromCSV(fileName, data -> new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+                        }
+
+                    public String toCSVString() {
+
                     }
             }
 
@@ -862,38 +887,33 @@ public class Model {
             private double price;
             private boolean status;
 
-            public SSD (String brand, int storageSize, int wattage, double price, boolean status) {
-                this.brand = brand;
-                this.storageSize = storageSize;
-                this.wattage = wattage;
-                this.price = price;
-                this.status = status;
-            }
-
-            public String getBrand() {
-                return brand;
-            }
-
-            public int getStorageSize() {
-                return storageSize;
-            }
-
-            public int getWattage() {
-                return wattage;
-            }
-
-            public double getPrice() {
-                return price;
-            }
-
-            public boolean getStatus() {
-                return status;
-            }
-
-            @Override
-            public String toString() {
-                return "SDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +  ", price=" + price + ", status=" + status + '}';
+                public SSD (String brand, int storageSize, int wattage, double price, boolean status) {
+                    this.brand = brand;
+                    this.storageSize = storageSize;
+                    this.wattage = wattage;
+                    this.price = price;
+                    this.status = status;
                 }
+
+                public String getBrand() { return brand; }
+                public void setBrand(String brand) { this.brand = brand; }
+
+                public int getStorageSize() { return storageSize; }
+                public void setStorageSize(int storageSize)  { this.storageSize = storageSize; }
+
+                public int getWattage() { return wattage; }
+                public void setWattage(int wattage) { this.wattage = wattage; } 
+
+                public double getPrice() { return price; }
+                public void setPrice(double price) { this.price = price; }
+
+                public boolean getStatus() { return status; }
+                public void setStatus(boolean status) { this.status = status; }
+
+                @Override
+                public String toString() {
+                    return "SDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +  ", price=" + price + ", status=" + status + '}';
+                    }
 
                 public static List<SSD> readHDDFromCSV(String fileName) {
                     return CSVUtils.readFromCSV(fileName, data -> new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
@@ -914,25 +934,20 @@ public class Model {
                 this.status = status;
             }
 
-            public String getBrand() {
-                return brand;
-            }
+            public String getBrand() { return brand; }
+            public void setBrand(String brand) { this.brand = brand; }
 
-            public int getStorageSize() {
-                return storageSize;
-            }
+            public int getStorageSize() { return storageSize; }
+            public void setStorageSize(int storageSize)  { this.storageSize = storageSize; }
 
-            public int getWattage() {
-                return wattage;
-            }
+            public int getWattage() { return wattage; }
+            public void setWattage(int wattage) { this.wattage = wattage; }
 
-            public double getPrice() {
-                return price;
-            }
+            public double getPrice() { return price; }
+            public void setPrice(double price) { this.price = price; }
 
-            public boolean getStatus() {
-                return status;
-            }
+            public boolean getStatus() { return status; }
+            public void setStatus(boolean status) { this.status = status; }
 
             @Override
             public String toString() {
@@ -960,29 +975,23 @@ public class Model {
                 this.status = status;
             }
 
-            public String getBrand() {
-                return brand;
-            }
+            public String getBrand() { return brand; }
+            public void setBrand(String brand) { this.brand = brand; }
 
-            public String getModel() {
-                return model;
-            }
+            public String getModel() { return model; }
+            public void setModel(String model) { this.model = model; }
 
-            public int getWattage() {
-                return wattage;
-            }
+            public int getWattage() { return wattage; }
+            public void setWattage(int wattage) { this.wattage = wattage; }
 
-            public int getSize() {
-                return size;
-            }
+            public int getSize() { return size; }
+            public void setSize(int size) { this.size = size; }
 
-            public double getPrice() {
-                return price;
-            }
+            public double getPrice() { return price; }
+            public void setPrice(double price) { this.price = price; }
 
-            public boolean getStatus() {
-                return status;
-            }
+            public boolean getStatus() { return status; }
+            public void setStatus(boolean status) { this.status = status; }
 
             @Override
             public String toString() {
@@ -1016,14 +1025,19 @@ public class Model {
             return items;
             }
 
-        
-        //TODO: Create CSVWriter method
-        public static <T> void writeToCSV(String fileName, List<T> items) {
-
+        public static <T> void writeToCSV(String fileName, List<T> items, String header, CSVMapper<T> mapper) {
+            try (FileWriter writer = new FileWriter(fileName)) {
+                writer.write(header + "\n"); // Write header
+    
+                for (T item : items) {
+                    writer.write(mapper.apply(item) + "\n");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        
 
-        }
+    }
 
     public class Test {
         
