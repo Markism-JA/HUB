@@ -19,6 +19,10 @@ import java.util.function.Function;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+//String Builder
+import java.lang.reflect.Field;
+import java.util.StringJoiner;
+
 
 public class Model {
 
@@ -570,8 +574,7 @@ public class Model {
                 }
 
                 public static void writeCPUToCSV(String fileName, List<CPU> cpus) { 
-                    String header = "model,brand,price,socket,wattage,status";
-                    CSVUtils.writeToCSV(fileName, cpus, header, CPU::toCSVString);
+                    CSVUtils.writeToCSV(fileName, cpus, CPU::toCSVString);
                 }
 
         }
@@ -622,9 +625,8 @@ public class Model {
                     return String.join(",", chipset, brand, Integer.toString(memory), Double.toString(price), Integer.toString(wattage), Boolean.toString(status));
                 }
 
-                public static void writeGPUToCSV(String fileNmae, List<GPU> cpus) { 
-                    String header = "model,brand,price,socket,wattage,status";
-                    CSVUtils.writeToCSV(fileNmae, cpus, header, GPU::toCSVString);
+                public static void writeGPUToCSV(String fileName, List<GPU> gpus) { 
+                    CSVUtils.writeToCSV(fileName, gpus, GPU::toCSVString);
                 }
 
         }
@@ -671,8 +673,7 @@ public class Model {
                 }
 
                 public static void writeCaseToCSV(String fileName, List<Case> cases) {
-                    String header = "brand,model,formFactor,price,status";
-                    CSVUtils.writeToCSV(fileName, cases, header, Case::toCSVString);
+                    CSVUtils.writeToCSV(fileName, cases, Case::toCSVString);
                 }
         }
 
@@ -726,9 +727,8 @@ public class Model {
                 return String.join(",", brand, model, formFactor, socket, Double.toString(price), Integer.toString(wattage), Boolean.toString(status));
             }
 
-            public static void writMotherBoardToCSV(String fileName, List<MotherBoard> motherBoards) {
-                String header = "brand,model,formFactor,socket,price,wattage,status";
-                CSVUtils.writeToCSV(fileName, motherBoards, header, MotherBoard::toCSVString);
+            public static void writeMotherBoardToCSV(String fileName, List<MotherBoard> motherBoards) {
+                CSVUtils.writeToCSV(fileName, motherBoards, MotherBoard::toCSVString);
             }
         }
 
@@ -780,8 +780,7 @@ public class Model {
                 }
 
                 public static void writeRamToCSV(String fileName, List<Ram> rams) {
-                    String header = "brand,model,price,wattage,frequency,status";
-                    CSVUtils.writeToCSV(fileName, rams, header, Ram::toCSVString);
+                    CSVUtils.writeToCSV(fileName, rams, Ram::toCSVString);
                 }
         }
 
@@ -832,8 +831,7 @@ public class Model {
                 }
 
                 public static void writePSUToCSV(String fileName, List<PSU> psus) {
-                    String header = "brand,model,price,rate,wattage,status";
-                    CSVUtils.writeToCSV(fileName, psus, header, PSU::toCSVString);
+                    CSVUtils.writeToCSV(fileName, psus, PSU::toCSVString);
                 }
 
             }
@@ -871,13 +869,17 @@ public class Model {
                     public String toString() {
                         return "HDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage + ", price=" + price + '}';
                         }
-                    
+                
                     public static List<HDD> readHDDFromCSV(String fileName) {
                         return CSVUtils.readFromCSV(fileName, data -> new HDD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
-                        }
+                    }
 
                     public String toCSVString() {
+                        return String.join(",", brand, Integer.toString(storageSize), Integer.toString(wattage), Double.toString(price), Boolean.toString(status));
+                    }
 
+                    public static void writeHDDToCSV(String fileName, List<HDD> hdds) {
+                        CSVUtils.writeToCSV(fileName, hdds, HDD::toCSVString);
                     }
             }
 
@@ -915,9 +917,17 @@ public class Model {
                     return "SDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +  ", price=" + price + ", status=" + status + '}';
                     }
 
-                public static List<SSD> readHDDFromCSV(String fileName) {
+                public static List<SSD> readSDDFromCSV(String fileName) {
                     return CSVUtils.readFromCSV(fileName, data -> new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
-                    }           
+                    } 
+                    
+                public String toCSVString() {
+                    return String.join(",", brand, Integer.toString(storageSize), Integer.toString(wattage), Double.toString(price), Boolean.toString(status));
+                }
+
+                public static void writeSSDToCSV(String fileName, List<SSD> sdds) {
+                    CSVUtils.writeToCSV(fileName, sdds, SSD::toCSVString);
+                }
         }
 
         public static class InternalStorage {
@@ -952,11 +962,19 @@ public class Model {
             @Override
             public String toString() {
                 return "InternalStorage{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +", price=" + price + ", status=" + status + '}';
-                }
+            }
 
             public static List<InternalStorage> readInternalStorageFromCSV(String fileName) {
                 return CSVUtils.readFromCSV(fileName, data -> new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
-                }
+            }
+
+            public String toCSVString() {
+                return String.join(",", brand, Integer.toString(storageSize), Integer.toString(wattage), Double.toString(price), Boolean.toString(status));
+            }
+
+            public static void writeInternalStorageToCSV(String fileName, List<InternalStorage> internalStorages) {
+                CSVUtils.writeToCSV(fileName, internalStorages, InternalStorage::toCSVString);
+            }
         }
 
 
@@ -996,16 +1014,35 @@ public class Model {
             @Override
             public String toString() {
                 return "Fan{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", wattage=" + wattage + ", size=" + size + ", price=" + price + ", status=" + status + '}';
-                }
+            }
 
             public static List<Fan> readFanFromCSV(String fileName) {
                 return CSVUtils.readFromCSV(fileName, data -> new Fan(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]), Boolean.parseBoolean(data[5])));
-                }
             }
+            
+
+            public String toCSVString() {
+                return String.join(",", brand, model, Integer.toString(wattage), Integer.toString(size), Double.toString(price), Boolean.toString(status));
+            }
+
+            public static void writeHDDToCSV(String fileName, List<Fan> fans) {
+                CSVUtils.writeToCSV(fileName, fans, Fan::toCSVString);
+            }
+
+        }
     }
 
     //CSV Reader and Writer
     public class CSVUtils {
+
+        //getHeader for each component class
+        public static String getHeader(Class<?> clazz) {
+            StringBuilder header = new StringBuilder();
+            for (Field field : clazz.getDeclaredFields()) {
+                header.append(field.getName()).append(",");
+            }
+            return header.toString().replaceAll(",$", ""); // remove trailing comma
+        }
 
         //CSVReader
         public static <T> List<T> readFromCSV(String fileName, Function<String[], T> mapper) {
@@ -1025,22 +1062,22 @@ public class Model {
             return items;
             }
 
-        public static <T> void writeToCSV(String fileName, List<T> items, String header, CSVMapper<T> mapper) {
-            try (FileWriter writer = new FileWriter(fileName)) {
-                writer.write(header + "\n"); // Write header
-    
-                for (T item : items) {
-                    writer.write(mapper.apply(item) + "\n");
+            public static <T> void writeToCSV(String fileName, List<T> items, CSVMapper<T> mapper) {
+                String header = getHeader(items.get(0).getClass());
+                try (FileWriter writer = new FileWriter(fileName)) {
+                    writer.write(header + "\n"); // Write header
+        
+                    for (T item : items) {
+                        writer.write(mapper.apply(item) + "\n");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        }
 
     }
 
-    public class Test {
-        
+    public static void main(String[] args) {
     }
     
 }
