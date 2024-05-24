@@ -196,7 +196,7 @@ public class Model {
 
         private List<Component.SSD> loadSSD(String filePath) {
             try {
-                return Component.SSD.readHDDFromCSV(filePath);
+                return Component.SSD.readSDDFromCSV(filePath);
             } catch (Exception e) {
                 // Handle exception
                 return new ArrayList<>();
@@ -976,7 +976,6 @@ public class Model {
                 CSVUtils.writeToCSV(fileName, internalStorages, InternalStorage::toCSVString);
             }
         }
-
 
         public static class Fan {
             private String brand, model;
