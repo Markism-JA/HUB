@@ -21,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Model {
 
-  // Recommendation Module
+    // Recommendation Module
     public class RecommendationModule {
       // Fields and methods for generating recommendations based on user inputs and predefined rules
       public void generateRecommendations(UserPreferences preferences) {
@@ -29,7 +29,7 @@ public class Model {
       }
     }
 
-  // User Account Management Module
+    // User Account Management Module
     public class UserAccountManagement {
       // Fields and methods for managing user accounts
 
@@ -79,7 +79,7 @@ public class Model {
       }
     }
 
-  // Compatibility Checking Module
+    // Compatibility Checking Module
     public class CompatibilityChecking {
       // Fields and methods for checking compatibility of selected parts
 
@@ -91,7 +91,7 @@ public class Model {
         }
     }
 
-  // Data Storage Module
+    // Data Storage Module
     public class DataManager {
         private List<Component.CPU> cpus;
         private List<Component.GPU> gpus;
@@ -258,7 +258,7 @@ public class Model {
         }
 }
 
-// Database Management
+    // Database Management
     public class Database {
 
         public class InventoryManagement {
@@ -295,7 +295,7 @@ public class Model {
         }
     }
 
-  // Admin Database Access
+    // Admin Database Access
     public class AdminDatabaseAccess {
         // Fields and methods for admin access to the database
         public void updateInventory(Component component) {
@@ -388,8 +388,7 @@ public class Model {
         }
     }
 
-
-  // User Preferences Class (example)
+    // User Preferences Class (example)
     public class UserPreferences {
         private int budget;
         private String primaryPurpose;
@@ -404,7 +403,7 @@ public class Model {
         // ...
     }
 
-  // User Class (example)
+    // User Class (example)
     public static class User {
         private String username;
         private String password;
@@ -437,7 +436,7 @@ public class Model {
         }
     }
 
-  // PC Build Class (example)
+    // PC Build Class (example)
     public class PCBuild {
       private List<Component> components;
 
@@ -445,7 +444,7 @@ public class Model {
       // ...
     }
 
-  // Component Class: class definition for each PC parts
+    // Component Class: class definition for each PC parts
     public class Component {
 
         public static class CPU {
@@ -927,6 +926,7 @@ public class Model {
             }
     }
 
+    //CSV Reader and Writer
     public class CSVUtils {
 
         //CSVReader
@@ -948,7 +948,7 @@ public class Model {
             }
 
         
-        //TODO: Creater CSVWriter method
+        //TODO: Create CSVWriter method
         public static <T> void writeToCSV(String fileName, List<T> items) {
 
         }
