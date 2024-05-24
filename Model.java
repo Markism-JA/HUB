@@ -438,7 +438,7 @@ public class Model {
     }
 
   // PC Build Class (example)
-  public class PCBuild {
+    public class PCBuild {
       private List<Component> components;
 
       // Getters and setters for the fields
@@ -950,7 +950,7 @@ public class Model {
             }
 
         
-        //TODO: Creater CSVWriter method
+        //TODO: Create CSVWriter method
         public static <T> void writeToCSV(String fileName, List<T> items) {
 
         }
