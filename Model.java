@@ -438,15 +438,13 @@ public class Model {
     }
 
   // PC Build Class (example)
-  public class PCBuild {
+    public class PCBuild {
       private List<Component> components;
 
       // Getters and setters for the fields
       // ...
     }
 
-
-  //TODO need to add additional dataField for each component. Handles whether a specific product is available in the inventory. Boolean Data type
   // Component Class: class definition for each PC parts
     public class Component {
 
