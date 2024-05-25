@@ -1,7 +1,6 @@
 package main.Model;
 
 import java.util.List;
-
 import main.Model.CSVUtil;
 
 public class User extends CSVUtil {
@@ -33,5 +32,13 @@ public class User extends CSVUtil {
 
   public static List<User> readUsersFromCSV(String fileName) {
       return readFromCSV(fileName, data -> new User(data[0], data[1]));
+  }
+
+  public String toCSVString() {
+    return String.join(",", username, password);
+  }
+
+  public static void writeUserToCSV(String fileName, List<User> users) {
+    writeToCSV(fileName, users, User::toCSVString);
   }
 }

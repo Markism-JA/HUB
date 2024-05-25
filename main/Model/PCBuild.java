@@ -1,6 +1,4 @@
 package main.Model;
 
-public class PCBuild {
-  String CPU
-  
+public class PCBuild { 
 }
