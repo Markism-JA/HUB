@@ -51,7 +51,7 @@ public class Fan extends CSVUtil{
       return String.join(",", brand, model, Integer.toString(wattage), Integer.toString(size), Double.toString(price), Boolean.toString(status));
   }
 
-  public static void writeHDDToCSV(String fileName, List<Fan> fans) {
+  public static void writeFanToCSV(String fileName, List<Fan> fans) {
       writeToCSV(fileName, fans, Fan::toCSVString);
   }
 

@@ -1,172 +1,107 @@
 package main.Model;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.Map;
+import java.util.HashMap;
 
 import main.Model.Components.*;
 
-
 public class DataManager {
-  private List<CPU> cpus;
-  private List<GPU> gpus;
-  private List<Case> cases;
-  private List<MotherBoard> motherboards;
-  private List<Ram> rams;
-  private List<PSU> psus;
-  private List<HDD> hdds;
-  private List<SSD> ssds;
-  private List<Fan> fans;
+    private Map<String, List<?>> components;
+    private List<User> users;
+    private String basePath;
 
-  //User
-  private List<User> users;
+    public DataManager(String basePath) {
+        this.basePath = basePath;
+        components = new HashMap<>();
+        loadData();
+    }
 
-  public DataManager(String basePath) {
-      cpus = loadCPU(basePath + "cpu.csv");
-      gpus = loadGPU(basePath + "gpu.csv");
-      cases = loadCase(basePath + "case.csv");
-      motherboards = loadMotherBoard(basePath + "motherboard.csv");
-      rams = loadRam(basePath + "ram.csv");
-      psus = loadPSU(basePath + "psu.csv");
-      hdds = loadHDD(basePath + "hdd.csv");
-      ssds = loadSSD(basePath + "ssd.csv");
-      fans = loadFan(basePath + "fan.csv");
-      users = loadUsers(basePath + "user.csv");
-  }
+    public void loadData() {
+        loadComponent("CPU", CPU::readCPUFromCSV);
+        loadComponent("GPU", GPU::readGPUFromCSV);
+        loadComponent("Case", Case::readCaseFromCSV);
+        loadComponent("MotherBoard", MotherBoard::readMotherBoardFromCSV);
+        loadComponent("Ram", Ram::readRamFromCSV);
+        loadComponent("PSU", PSU::readPSUFromCSV);
+        loadComponent("HDD", HDD::readHDDFromCSV);
+        loadComponent("SSD", SSD::readSDDFromCSV);
+        loadComponent("Fan", Fan::readFanFromCSV);
+        users = loadUsers();
+    }
 
+    private <T> void loadComponent(String componentType, Function<String, List<T>> loader) {
+        String filePath = basePath + componentType.toLowerCase() + ".csv";
+        try {
+            components.put(componentType, loader.apply(filePath));
+        } catch (Exception e) {
+            // Handle exception and log error message
+            System.err.println("Error loading component: " + componentType + " from " + filePath + ". Error: " + e.getMessage());
+            components.put(componentType, new ArrayList<>());
+        }
+    }
 
-  private List<CPU> loadCPU(String filePath) {
-      try {
-          return CPU.readCPUFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
+    private List<User> loadUsers() {
+        String filePath = basePath + "user.csv";
+        try {
+            return User.readUsersFromCSV(filePath);
+        } catch (Exception e) {
+            // Handle exception and log error message
+            System.err.println("Error loading users from " + filePath + ". Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
 
-  private List<GPU> loadGPU(String filePath) {
-      try {
-          return GPU.readGPUFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
+    public void saveData() {
+        saveComponent("CPU", CPU::writeCPUToCSV);
+        saveComponent("GPU", GPU::writeGPUToCSV);
+        saveComponent("Case", Case::writeCaseToCSV);
+        saveComponent("MotherBoard", MotherBoard::writeMotherBoardToCSV);
+        saveComponent("Ram", Ram::writeRamToCSV);
+        saveComponent("PSU", PSU::writePSUToCSV);
+        saveComponent("HDD", HDD::writeHDDToCSV);
+        saveComponent("SSD", SSD::writeSSDToCSV);
+        saveComponent("Fan", Fan::writeFanToCSV);
+        saveUsers();
+    }
 
-  private List<Case> loadCase(String filePath) {
-      try {
-          return Case.readCaseFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
+    @SuppressWarnings("unchecked")
+    private <T> void saveComponent(String componentType, BiConsumer<String, List<T>> saver) {
+        String filePath = basePath + componentType.toLowerCase() + ".csv";
+        List<T> componentList = (List<T>) components.get(componentType);
+        if (componentList != null) {
+            saver.accept(filePath, componentList);
+        }
+    }
 
-  private List<MotherBoard> loadMotherBoard(String filePath) {
-      try {
-          return MotherBoard.readMotherBoardFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
+    private void saveUsers() {
+        String filePath = basePath + "user.csv";
+        try {
+            User.writeUserToCSV(filePath, users);
+        } catch (Exception e) {
+            // Handle exception and log error message
+            System.err.println("Error saving users to " + filePath + ". Error: " + e.getMessage());
+        }
+    }
 
-  private List<Ram> loadRam(String filePath) {
-      try {
-          return Ram.readRamFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
+    // Getters for the loaded data
+    public List<CPU> getCpus() { return getComponents("CPU"); }
+    public List<GPU> getGpus() { return getComponents("GPU"); }
+    public List<Case> getCases() { return getComponents("Case"); }
+    public List<MotherBoard> getMotherboards() { return getComponents("MotherBoard"); }
+    public List<Ram> getRams() { return getComponents("Ram"); }
+    public List<PSU> getPsus() { return getComponents("PSU"); }
+    public List<HDD> getHdds() { return getComponents("HDD"); }
+    public List<SSD> getSsds() { return getComponents("SSD"); }
+    public List<Fan> getFans() { return getComponents("Fan"); }
 
-  private List<PSU> loadPSU(String filePath) {
-      try {
-          return PSU.readPSUFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
+    public List<User> getUsers() { return users; }
 
-  private List<HDD> loadHDD(String filePath) {
-      try {
-          return HDD.readHDDFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
-
-  private List<SSD> loadSSD(String filePath) {
-      try {
-          return SSD.readSDDFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
-
-  private List<Fan> loadFan(String filePath) {
-      try {
-          return Fan.readFanFromCSV(filePath);
-      } catch (Exception e) {
-          // handle exception
-          return new ArrayList<>();
-      }
-  }
-
-  //Users
-  private List<User> loadUsers(String filePath) {
-      try {
-          return User.readUsersFromCSV(filePath);
-      } catch (Exception e) {
-          // Handle exception
-          return new ArrayList<>();
-      }
-  }
-
-  // Getters for the loaded data
-  public List<CPU> getCpus() {
-      return cpus;
-  }
-
-  public List<GPU> getGpus() {
-      return gpus;
-  }
-
-  public List<Case> getCases() {
-      return cases;
-  }
-
-  public List<MotherBoard> getMotherboards() {
-      return motherboards;
-  }
-
-  public List<Ram> getRams() {
-      return rams;
-  }
-
-  public List<PSU> getPsus() {
-      return psus;
-  }
-
-  public List<HDD> getHdds() {
-      return hdds;
-  }
-
-  public List<SSD> getSsds() {
-      return ssds;
-  }
-
-  public List<Fan> getFans() {
-      return fans;
-  }
-
-  //Users
-  public List<User> getUsers() {
-      return users;
-  }
-
-  public void saveData() {
-      // Implementation of saving data to files or database
-  }
+    @SuppressWarnings("unchecked")
+    private <T> List<T> getComponents(String type) {
+        return (List<T>) components.getOrDefault(type, new ArrayList<>());
+    }
 }

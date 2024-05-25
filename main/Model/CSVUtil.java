@@ -18,31 +18,32 @@ public class CSVUtil {
     }
 
     public static String getHeader(Class<?> clazz) {
-    StringBuilder header = new StringBuilder();
-    for (Field field : clazz.getDeclaredFields()) {
-        header.append(field.getName()).append(",");
-    }
-    return header.toString().replaceAll(",$", ""); // remove trailing comma
+        StringBuilder header = new StringBuilder();
+        for (Field field : clazz.getDeclaredFields()) {
+            header.append(field.getName()).append(",");
+        }
+        return header.toString().replaceAll(",$", ""); // remove trailing comma
     }
 
     //CSVReader
     public static <T> List<T> readFromCSV(String fileName, Function<String[], T> mapper) {
-    List<T> items = new ArrayList<>();
-    String line;
-    String splitBy = ",";
+        List<T> items = new ArrayList<>();
+        String line;
+        String splitBy = ",";
 
-    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split(splitBy);
-            items.add(mapper.apply(data));
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(splitBy);
+                items.add(mapper.apply(data));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+
+        return items;
     }
 
-    return items;
-    }
-
+    //CSVWriter
     public static <T> void writeToCSV(String fileName, List<T> items, CSVMapper<T> mapper) {
         String header = getHeader(items.get(0).getClass());
         try (FileWriter writer = new FileWriter(fileName)) {
