@@ -48,40 +48,10 @@ public class Model {
     
       public void registerUser(String username, String password) {
           // Implementation of user registration
-        Scanner scan = new Scanner(System.in);
-
-        username = scan.nextLine();
-        password = scan.nextLine();
-        usercredentials = username + password;
-
-          try{
-            Writer output = new FileWriter("");
-            output.write(usercredentials);
-            output.close();
-          }
-          catch (Exception e) {
-            e.getStackTrace();
-        }
+       
       }
 
       public void loginUser(String username, String password) {
-          // Implementation of user login
-          
-          String delimiter = ",";
-
-          BufferedReader reader = new BufferedReader(new FileReader(null));
-          String userData = reader.readLine();
-          String [] userDataArray = userData.split(delimiter);
-
-          for(String loginValidator : userDataArray){
-
-            if(loginValidator.equals(username) && loginValidator.equals(password)){
-                //continue to proragm
-            }
-            else{
-                //continue loop and ask 
-            }
-          }
       }
 
       public void saveUserPreferences(User user, UserPreferences preferences) {
