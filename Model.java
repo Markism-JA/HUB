@@ -13,6 +13,7 @@ import java.util.function.Function;
 //TODO: Incorporate a filewriter "CSV Writer" in the component class
 //TODO: Incoporate a load method in DataManager
 //TODO: Add a sorting and searching function to the Database class
+//TODO: 
 
 
 //hashing
