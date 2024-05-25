@@ -13,7 +13,6 @@ import java.util.function.Function;
 //TODO: Incorporate a filewriter "CSV Writer" in the component class
 //TODO: Incoporate a load method in DataManager
 //TODO: Add a sorting and searching function to the Database class
-//TODO: 
 
 
 //hashing
@@ -45,7 +44,7 @@ public class Model {
     public class UserAccountManagement {
       // Fields and methods for managing user accounts
 
-      String usercredentials;
+      private String usercredentials;
     
       public void registerUser(String username, String password) {
           // Implementation of user registration
