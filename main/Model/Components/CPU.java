@@ -9,14 +9,18 @@ public class CPU extends CSVUtil {
   private double price;
   private int wattage;
   private boolean status;
+  private double clockSpeed;
+  private int coreCount;
 
-      public CPU(String model, String brand, double price, String socket, int wattage, boolean status) {
+      public CPU(String model, String brand, double price, String socket, int wattage, boolean status, double clockSpeed, int coreCount) {
           this.model = model;
           this.brand = brand;
           this.price = price;
           this.socket = socket;
           this.wattage = wattage;
           this.status = status;
+          this.clockSpeed = clockSpeed;
+          this.coreCount = coreCount;
       }
 
       public String getModel() { return model; }
@@ -37,17 +41,23 @@ public class CPU extends CSVUtil {
       public boolean getStatus() { return status; }
       public void setStatus(boolean status) { this.status = status; }
 
+      public double getClockSpeed() { return clockSpeed; }
+      public void setClockSpeed(double clockSpeed) { this.clockSpeed = clockSpeed; }
+
+      public int getCoreCount() { return coreCount; }
+      public void setCoreCount(int coreCount) { this.coreCount = coreCount; }
+
       @Override
       public String toString() {
-          return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
+          return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", wattage=" + wattage + ", status=" + status + ", clockSpeed=" + clockSpeed + ", coreCount=" + coreCount + '}';
           }
 
       public static List<CPU> readCPUFromCSV(String fileName) {
-          return readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
+          return readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]), Double.parseDouble(data[6]), Integer.parseInt(data[7])));
           }
 
       public String toCSVString() {
-          return String.join(",", model, brand, Double.toString(price), socket, Integer.toString(wattage), Boolean.toString(status));
+          return String.join(",", model, brand, Double.toString(price), socket, Integer.toString(wattage), Boolean.toString(status), Double.toString(clockSpeed), Integer.toString(coreCount));
       }
 
       public static void writeCPUToCSV(String fileName, List<CPU> cpus) { 
