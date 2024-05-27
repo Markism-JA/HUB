@@ -104,4 +104,14 @@ public class DataManager {
     private <T> List<T> getComponents(String type) {
         return (List<T>) components.getOrDefault(type, new ArrayList<>());
     }
+
+    public static void main(String[] args) {
+        DataManager test = new DataManager("main/Resources/data");
+        test.loadData();
+
+
+
+        
+        test.saveData();
+    }
 }

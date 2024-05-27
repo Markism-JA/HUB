@@ -39,7 +39,7 @@ public class SSD extends CSVUtil{
       }
 
       public static List<SSD> readSDDFromCSV(String fileName) {
-        return readFromCSV(fileName, data -> new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+              return readFromCSV(fileName, data -> new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
       } 
           
       public String toCSVString() {

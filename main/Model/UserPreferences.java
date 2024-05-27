@@ -1,18 +1,21 @@
 package main.Model;
 
 public class UserPreferences {
-    private int budget;
-    private String primaryPurpose;
-    private String preferredCPUBrand;
-    private String preferredGPUBrand;
-    private int storageCapacity;
+<<<<<<< Updated upstream
+  
+=======
+    private double budget;
+    private String purpose;
+    private String cpuBrand;
+    private String gpuBrand;
+    private int storage;
     private int ram;
     private String formFactor;
     private String specificFeatures;
 
     // Getters and setters for the fields
 
-    public int getBudget() {
+    public double getBudget() {
         return budget;
     }
 
@@ -20,36 +23,36 @@ public class UserPreferences {
         this.budget = budget;
     }
 
-    public String getPrimaryPurpose() {
-        return primaryPurpose;
+    public String getPurpose() {
+        return purpose;
     }
 
-    public void setPrimaryPurpose(String primaryPurpose) {
-        this.primaryPurpose = primaryPurpose;
+    public void setPurpose(String primaryPurpose) {
+        this.purpose = primaryPurpose;
     }
 
-    public String getPreferredCPUBrand() {
-        return preferredCPUBrand;
+    public String getCpuBrand() {
+        return cpuBrand;
     }
 
-    public void setPreferredCPUBrand(String preferredCPUBrand) {
-        this.preferredCPUBrand = preferredCPUBrand;
+    public void setCpuBrand(String preferredCPUBrand) {
+        this.cpuBrand = preferredCPUBrand;
     }
 
-    public String getPreferredGPUBrand() {
-        return preferredGPUBrand;
+    public String getGpuBrand() {
+        return gpuBrand;
     }
 
-    public void setPreferredGPUBrand(String preferredGPUBrand) {
-        this.preferredGPUBrand = preferredGPUBrand;
+    public void setGpuBrand(String preferredGPUBrand) {
+        this.gpuBrand = preferredGPUBrand;
     }
 
-    public int getStorageCapacity() {
-        return storageCapacity;
+    public int getStorage() {
+        return storage;
     }
 
-    public void setStorageCapacity(int storageCapacity) {
-        this.storageCapacity = storageCapacity;
+    public void setStorage(int storageCapacity) {
+        this.storage = storageCapacity;
     }
     
     public int getRam() {
@@ -75,6 +78,5 @@ public class UserPreferences {
     public void setSpecificFeatures(String specificFeatures) {
         this.specificFeatures = specificFeatures;
     }
+>>>>>>> Stashed changes
 }
-
-
