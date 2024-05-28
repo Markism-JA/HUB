@@ -3,28 +3,67 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import main.Model.Components.*;
+import main.Model.Filters.*;
+import main.Model.Sorter.*;
+import main.Model.DataManager;
 
 public class Recommendation {
-  
   private DataManager dataManager;
-  
-  public Recommendation(DataManager dataManager) {
+  private UserPreferences userPreferences;
+
+  private PriceFilter priceFilter;
+  private PurposeFilter purposeFilter;
+  private BrandFilter brandFilter;
+  private OtherFilter otherFilter;
+  private StorageFilter storageFilter;
+
+  private SortPerformance sortPerformance;
+  private SortPrice sortPrice;
+  private SortSpecificAttributes sortSpecificAttributes;
+
+  public Recommendation(DataManager dataManager, UserPreferences userPreferences) {
     this.dataManager = dataManager;
+    this.userPreferences = userPreferences;
+
+    this.priceFilter = new PriceFilter();
+    this.purposeFilter = new PurposeFilter();
+    this.brandFilter = new BrandFilter();
+    this.otherFilter = new OtherFilter();
+    this.storageFilter = new StorageFilter();
+
+    this.sortPerformance = new SortPerformance();
+    this.sortPrice = new SortPrice();
+    this.sortSpecificAttributes = new SortSpecificAttributes();
   }
-  
-  public List<Component> recommendComponents(List<Component> components, String priceRange, String primaryPurpose, String cpuBrand, String gpuBrand, String storageNeeds, String ramNeeds, String formFactor) {
-    
-    //Filter components based on price range
-    Map<String, List<Component>> categorizedComponents = categorizeComponentsByPrice(components);
 
-    //Filter components based on primary purpose
-    categorizedComponents = filterComponentsByPrimaryPurpose(categorizedComponents, primaryPurpose);
+  public void recommendComponents() {
+    dataManager.loadData();
+    String PriceRange = userPreferences.getBudget();
+    String Purpose = userPreferences.getPurpose();
+    String CPUBrand = userPreferences.getCpuBrand();
+    String GPUBrand = userPreferences.getGpuBrand();
 
-    //Filter components based on user preferences
-    List<CPU> filteredCPUs = filterByBrand(categorizedComponents.get("CPU"), cpuBrand);
-    List<GPU> filteredGPUs = filterByBrand(categorizedComponents.get("GPU"), gpuBrand);
-    List<InternalStorage> filteredStorages = filterByStorageNeeds(categorizedComponents.get("Storage"), storageNeeds);
-    List<Ram> filteredRAMs = filterByRAMNeeds(categorizedComponents.get("RAM"), ramNeeds);
+    //Filter By PriceRange
+    List<CPU> PriceCPUs = priceFilter.filterCPUByPrice(dataManager.getCpus(), PriceRange);
+    List<GPU> PriceGPUs = priceFilter.filterGPUByPrice(dataManager.getGpus(), PriceRange);
+    List<Ram> PriceRAMs = priceFilter.filterRamByPrice(dataManager.getRams(), PriceRange);
+    List<InternalStorage> PriceInternalStorages = priceFilter.filterInternalStorageByPrice(dataManager.getInternalStorages(), PriceRange);
+    List<HDD> PriceHDDs = priceFilter.filterHddByPrice(dataManager.getHdds(), PriceRange);
+    List<SSD> PriceSSDs = priceFilter.filterSSDByPrice(dataManager.getSsds(), PriceRange);
+    List<MotherBoard> PriceMotherBoard = priceFilter.filterMotherBoardsByPrice(dataManager.getMotherboards(), PriceRange);
+    List<PSU> PricePSUs = priceFilter.filterPSUByPrice(dataManager.getPsus(), PriceRange);
+    List<Fan> PriceFans = priceFilter.filterFansByPrice(dataManager.getFans(), PriceRange);
+    List<Case> PriceCases = priceFilter.filterCaseByPrice(dataManager.getCases(), PriceRange);
 
+    //Filter By Purpose
+    List<CPU> PurposeCPUs = purposeFilter.filterCPUsByPurpose(PriceCPUs, Purpose);
+    List<GPU> PurposeGPUs = purposeFilter.filterGPUsByPurpose(PriceGPUs, Purpose);
+    List<Ram> PurposeRAMs = purposeFilter.filterRAMsByPurpose(PriceRAMs, Purpose);
+
+    //Filter By Brand
+    List<CPU> BrandCPUs = brandFilter.CPUfilterByBrand(PurposeCPUs, CPUBrand);
+    List<GPU> BrandGPUs = brandFilter.GPUfilterByBrand(PurposeGPUs, GPUBrand);
+
+    //Filter By Storage Needs
   }
 }

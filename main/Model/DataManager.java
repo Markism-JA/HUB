@@ -30,6 +30,7 @@ public class DataManager {
         loadComponent("HDD", HDD::readHDDFromCSV);
         loadComponent("SSD", SSD::readSDDFromCSV);
         loadComponent("Fan", Fan::readFanFromCSV);
+        loadComponent("InternalStorage", InternalStorage::readInternalStorageFromCSV);
         users = loadUsers();
     }
 
@@ -65,6 +66,7 @@ public class DataManager {
         saveComponent("HDD", HDD::writeHDDToCSV);
         saveComponent("SSD", SSD::writeSSDToCSV);
         saveComponent("Fan", Fan::writeFanToCSV);
+        saveComponent("InternalStorage", InternalStorage::writeInternalStorageToCSV);
         saveUsers();
     }
 
@@ -97,7 +99,7 @@ public class DataManager {
     public List<HDD> getHdds() { return getComponents("HDD"); }
     public List<SSD> getSsds() { return getComponents("SSD"); }
     public List<Fan> getFans() { return getComponents("Fan"); }
-
+    public List<InternalStorage> getInternalStorages() { return getComponents("InternalStorage"); }
     public List<User> getUsers() { return users; }
 
     @SuppressWarnings("unchecked")

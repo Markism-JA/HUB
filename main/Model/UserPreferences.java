@@ -1,10 +1,7 @@
 package main.Model;
 
 public class UserPreferences {
-<<<<<<< Updated upstream
-  
-=======
-    private double budget;
+    private String budget;
     private String purpose;
     private String cpuBrand;
     private String gpuBrand;
@@ -15,11 +12,11 @@ public class UserPreferences {
 
     // Getters and setters for the fields
 
-    public double getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(String budget) {
         this.budget = budget;
     }
 
@@ -78,5 +75,4 @@ public class UserPreferences {
     public void setSpecificFeatures(String specificFeatures) {
         this.specificFeatures = specificFeatures;
     }
->>>>>>> Stashed changes
 }
