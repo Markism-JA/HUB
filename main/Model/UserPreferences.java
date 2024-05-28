@@ -1,9 +1,7 @@
 package main.Model;
 
 public class UserPreferences {
-<<<<<<< Updated upstream
   
-=======
     private double budget;
     private String purpose;
     private String cpuBrand;
@@ -78,5 +76,4 @@ public class UserPreferences {
     public void setSpecificFeatures(String specificFeatures) {
         this.specificFeatures = specificFeatures;
     }
->>>>>>> Stashed changes
 }

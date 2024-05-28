@@ -22,14 +22,13 @@ public class Database {
 
     public void loadData() {
         loadComponent("CPU", CPUDatabase::readCPUFromCSV);
-        loadComponent("GPU", GPU::readGPUFromCSV);
+        loadComponent("GPU", GPUDataBase::readGPUFromCSV);
         loadComponent("Case", CaseDatabase::readCaseFromCSV);
-        loadComponent("MotherBoard", MotherBoard::readMotherBoardFromCSV);
-        loadComponent("Ram", Ram::readRamFromCSV);
-        loadComponent("PSU", PSU::readPSUFromCSV);
-        loadComponent("HDD", HDD::readHDDFromCSV);
-        loadComponent("SSD", SSD::readSDDFromCSV);
-        loadComponent("Fan", Fan::readFanFromCSV);
+        loadComponent("MotherBoard", MotherBoardDatabase::readMotherBoardFromCSV);
+        loadComponent("Ram", RamDatabase::readRamFromCSV);
+        loadComponent("PSU", PSUDatabase::readPSUFromCSV);
+        loadComponent("InternalStorageDatabas", InternalStorageDatabase::readInternalStorageFromCSV);
+        loadComponent("Fan", FanDatabase::readFanFromCSV);
         users = loadUsers();
     }
 
@@ -57,14 +56,13 @@ public class Database {
 
     public void saveData() {
         saveComponent("CPU", CPUDatabase::writeCPUToCSV);
-        saveComponent("GPU", GPU::writeGPUToCSV);
+        saveComponent("GPU", GPUDataBase::writeGPUToCSV);
         saveComponent("Case", CaseDatabase::writeCaseToCSV);
-        saveComponent("MotherBoard", MotherBoard::writeMotherBoardToCSV);
-        saveComponent("Ram", Ram::writeRamToCSV);
-        saveComponent("PSU", PSU::writePSUToCSV);
-        saveComponent("HDD", HDD::writeHDDToCSV);
-        saveComponent("SSD", SSD::writeSSDToCSV);
-        saveComponent("Fan", Fan::writeFanToCSV);
+        saveComponent("MotherBoard", MotherBoardDatabase::writeMotherBoardToCSV);
+        saveComponent("Ram", RamDatabase::writeRamToCSV);
+        saveComponent("PSU", PSUDatabase::writePSUToCSV);
+        saveComponent("InternalStorageDatabas", InternalStorageDatabase::writeHDDToCSV);
+        saveComponent("Fan", FanDatabase::writeFanToCSV);
         saveUsers();
     }
 
@@ -89,14 +87,13 @@ public class Database {
 
     // Getters for the loaded data
     public List<CPUDatabase> getCpus() { return getComponents("CPU"); }
-    public List<GPU> getGpus() { return getComponents("GPU"); }
+    public List<GPUDataBase> getGpus() { return getComponents("GPU"); }
     public List<CaseDatabase> getCases() { return getComponents("Case"); }
-    public List<MotherBoard> getMotherboards() { return getComponents("MotherBoard"); }
-    public List<Ram> getRams() { return getComponents("Ram"); }
-    public List<PSU> getPsus() { return getComponents("PSU"); }
-    public List<HDD> getHdds() { return getComponents("HDD"); }
-    public List<SSD> getSsds() { return getComponents("SSD"); }
-    public List<Fan> getFans() { return getComponents("Fan"); }
+    public List<MotherBoardDatabase> getMotherboards() { return getComponents("MotherBoard"); }
+    public List<RamDatabase> getRams() { return getComponents("Ram"); }
+    public List<PSUDatabase> getPsus() { return getComponents("PSU"); }
+    public List<InternalStorageDatabase> getHdds() { return getComponents("InternalStorageDatabas"); }
+    public List<FanDatabase> getFans() { return getComponents("Fan"); }
 
     public List<User> getUsers() { return users; }
 
