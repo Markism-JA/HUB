@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import main.Model.Components.*;
 public class OtherFilter {
+
   //FilterByRam
   public List<Ram> filterByRAMNeeds(List<Ram> rams, int ramNeeds) {
     return rams.stream().filter(ram -> ram.getCapacity() == ramNeeds).collect(Collectors.toList());
@@ -23,4 +24,5 @@ public class OtherFilter {
         throw new IllegalArgumentException("Invalid formFactor");
     }
   }
+
 }
