@@ -42,6 +42,7 @@ public class Recommendation {
     String Purpose = userPreferences.getPurpose();
     String CPUBrand = userPreferences.getCpuBrand();
     String GPUBrand = userPreferences.getGpuBrand();
+    String FormFactor = userPreferences.getFormFactor();
 
     //Filter By PriceRange
     List<CPU> PriceCPUs = priceFilter.filterCPUByPrice(dataManager.getCpus(), PriceRange);
@@ -65,5 +66,19 @@ public class Recommendation {
     List<GPU> BrandGPUs = brandFilter.GPUfilterByBrand(PurposeGPUs, GPUBrand);
 
     //Filter By Storage Needs
+
+    //Filter By Ram Needs
+
+    //Filter Case By formFactor
+    List<Case> FormFactorCases = otherFilter.filterByFormFactor(PriceCases, FormFactor);
+
+    //SortPerformance
+
+    //SortPrice
+
+    //SortSpecificAttributes
+
+    //SelectPCBuild from the List
+    
   }
 }
