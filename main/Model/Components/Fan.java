@@ -55,5 +55,6 @@ public class Fan extends CSVUtil{
       writeToCSV(fileName, fans, Fan::toCSVString);
   }
 
+  
 }
 

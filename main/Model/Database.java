@@ -29,7 +29,7 @@ public class Database {
         loadComponent("PSU", PSUDatabase::readPSUFromCSV);
         loadComponent("InternalStorageDatabas", InternalStorageDatabase::readInternalStorageFromCSV);
         loadComponent("Fan", FanDatabase::readFanFromCSV);
-        users = loadUsers();
+
     }
 
     private <T> void loadComponent(String componentType, Function<String, List<T>> loader) {
@@ -43,16 +43,6 @@ public class Database {
         }
     }
 
-    private List<User> loadUsers() {
-        String filePath = basePath + "user.csv";
-        try {
-            return User.readUsersFromCSV(filePath);
-        } catch (Exception e) {
-            // Handle exception and log error message
-            System.err.println("Error loading users from " + filePath + ". Error: " + e.getMessage());
-            return new ArrayList<>();
-        }
-    }
 
     public void saveData() {
         saveComponent("CPU", CPUDatabase::writeCPUToCSV);
@@ -63,7 +53,7 @@ public class Database {
         saveComponent("PSU", PSUDatabase::writePSUToCSV);
         saveComponent("InternalStorageDatabas", InternalStorageDatabase::writeHDDToCSV);
         saveComponent("Fan", FanDatabase::writeFanToCSV);
-        saveUsers();
+    
     }
 
     @SuppressWarnings("unchecked")
@@ -72,16 +62,6 @@ public class Database {
         List<T> componentList = (List<T>) components.get(componentType);
         if (componentList != null) {
             saver.accept(filePath, componentList);
-        }
-    }
-
-    private void saveUsers() {
-        String filePath = basePath + "user.csv";
-        try {
-            User.writeUserToCSV(filePath, users);
-        } catch (Exception e) {
-            // Handle exception and log error message
-            System.err.println("Error saving users to " + filePath + ". Error: " + e.getMessage());
         }
     }
 
@@ -105,8 +85,6 @@ public class Database {
     public static void main(String[] args) {
         DataManager test = new DataManager("main/Resources/data");
         test.loadData();
-
-
 
         
         test.saveData();
