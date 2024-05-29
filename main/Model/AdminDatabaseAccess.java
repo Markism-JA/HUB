@@ -8,11 +8,21 @@ public class AdminDatabaseAccess {
     private List<Fan> fans;
     private List<GPU> gpus;
     private List<HDD> hdds;
+    private List<InternalStorage> internalStorages;
+    private List<MotherBoard> motherBoards;
+    private List<PSU> psus;
+    private List<Ram> rams;
+    private List<SSD> ssds;
     private String caseFilePath;
     private String cpuFilePath;
     private String fanFilePath;
     private String gpuFilePath;
     private String hddFilePath;
+    private String internalStorageFilePath;
+    private String motherBoardFilePath;
+    private String psuFilePath;
+    private String ramFilePath;
+    private String ssdFilePath;
     
 public AdminDatabaseAccess(String caseFilePath) {
         this.caseFilePath = caseFilePath;
@@ -155,5 +165,138 @@ public AdminDatabaseAccess(String caseFilePath) {
         HDD.writeHDDToCSV(hddFilePath, hdds);
     }
 
+    public void addInternalStorage(InternalStorage newInternalStorage) {
+        internalStorages.add(newInternalStorage);
+        saveInternalStorages(); 
+    }
     
+    public void removeInternalStorage(int index) {
+        if (index >= 0 && index < internalStorages.size()) {
+            internalStorages.remove(index);
+            saveInternalStorages(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    public void updateInternalStorage(int index, InternalStorage updatedInternalStorage) {
+        if (index >= 0 && index < internalStorages.size()) {
+            internalStorages.set(index, updatedInternalStorage);
+            saveInternalStorages(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    private void saveInternalStorages() {
+        InternalStorage.writeInternalStorageToCSV(internalStorageFilePath, internalStorages);
+    }
+
+    public void addMotherBoard(MotherBoard newMotherBoard) {
+        motherBoards.add(newMotherBoard);
+        saveMotherBoards(); 
+    }
+    
+    public void removeMotherBoard(int index) {
+        if (index >= 0 && index < motherBoards.size()) {
+            motherBoards.remove(index);
+            saveMotherBoards(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    public void updateMotherBoard(int index, MotherBoard updatedMotherBoard) {
+        if (index >= 0 && index < motherBoards.size()) {
+            motherBoards.set(index, updatedMotherBoard);
+            saveMotherBoards(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    private void saveMotherBoards() {
+        MotherBoard.writeMotherBoardToCSV(motherBoardFilePath, motherBoards);
+    }
+
+    public void addPSU(PSU newPSU) {
+        psus.add(newPSU);
+        savePSUs(); 
+    }
+    
+    public void removePSU(int index) {
+        if (index >= 0 && index < psus.size()) {
+            psus.remove(index);
+            savePSUs(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    public void updatePSU(int index, PSU updatedPSU) {
+        if (index >= 0 && index < psus.size()) {
+            psus.set(index, updatedPSU);
+            savePSUs(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    private void savePSUs() {
+        PSU.writePSUToCSV(psuFilePath, psus);
+    }
+
+    public void addRam(Ram newRam) {
+        rams.add(newRam);
+        saveRams(); 
+    }
+    
+    public void removeRam(int index) {
+        if (index >= 0 && index < rams.size()) {
+            rams.remove(index);
+            saveRams(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    public void updateRam(int index, Ram updatedRam) {
+        if (index >= 0 && index < rams.size()) {
+            rams.set(index, updatedRam);
+            saveRams(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    private void saveRams() {
+        Ram.writeRamToCSV(ramFilePath, rams);
+    }
+
+    public void addSSD(SSD newSSD) {
+        ssds.add(newSSD);
+        saveSSDs(); 
+    }
+    
+    public void removeSSD(int index) {
+        if (index >= 0 && index < ssds.size()) {
+            ssds.remove(index);
+            saveSSDs(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    public void updateSSD(int index, SSD updatedSSD) {
+        if (index >= 0 && index < ssds.size()) {
+            ssds.set(index, updatedSSD);
+            saveSSDs(); 
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+    
+    private void saveSSDs() {
+        SSD.writeSSDToCSV(ssdFilePath, ssds);
+    }
 }
