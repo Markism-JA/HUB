@@ -40,7 +40,14 @@ import main.Model.Components.*;
       else{
         return false;
       }
-
+    }
+    public boolean RamGenCompatibilityChecker(Ram ram, MotherBoard motherboard){
+      if(ram.getDDR().equals(motherboard.getDDR())){
+        return true;
+      }
+      else{
+        return false; 
+      }
     }
       public boolean checkCompatibility(PCBuild pcBuild) {
           // Implementation of compatibility checking logic
@@ -48,7 +55,9 @@ import main.Model.Components.*;
           if(BottleNeckChecker(null, null) == false && 
           WattsComputation(null, null, null, null, null, null, null) == true && 
           SocketCompatibiliyChecker(null, null) == true && 
-          FormFactorCompatibilityChecker(null, null) == true){
+          FormFactorCompatibilityChecker(null, null) == true && 
+          RamGenCompatibilityChecker(null, null) == true)
+          {
             return true;
           }
           else{
