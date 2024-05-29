@@ -1,84 +1,231 @@
 package main.Model;
-import java.util.*;
-import java.util.stream.Collectors;
 
+import java.util.List;
 import main.Model.Components.*;
 import main.Model.Filters.*;
 import main.Model.Sorter.*;
-import main.Model.DataManager;
+import java.util.Map;
 
 public class Recommendation {
-  private DataManager dataManager;
-  private UserPreferences userPreferences;
+    private DataManager dataManager;
+    private UserPreferences userPreferences;
 
-  private PriceFilter priceFilter;
-  private PurposeFilter purposeFilter;
-  private BrandFilter brandFilter;
-  private OtherFilter otherFilter;
-  private StorageFilter storageFilter;
+    private PriceFilter priceFilter;
+    private PurposeFilter purposeFilter;
+    private BrandFilter brandFilter;
+    private OtherFilter otherFilter;
+    private StorageFilter storageFilter;
 
-  private SortPerformance sortPerformance;
-  private SortPrice sortPrice;
-  private SortSpecificAttributes sortSpecificAttributes;
+    private SortPerformance sortPerformance;
+    private SortPrice sortPrice;
+    private SortSpecificAttributes sortSpecificAttributes;
 
-  public Recommendation(DataManager dataManager, UserPreferences userPreferences) {
-    this.dataManager = dataManager;
-    this.userPreferences = userPreferences;
+    public Recommendation(DataManager dataManager, UserPreferences userPreferences) {
+        this.dataManager = dataManager;
+        this.userPreferences = userPreferences;
 
-    this.priceFilter = new PriceFilter();
-    this.purposeFilter = new PurposeFilter();
-    this.brandFilter = new BrandFilter();
-    this.otherFilter = new OtherFilter();
-    this.storageFilter = new StorageFilter();
+        this.priceFilter = new PriceFilter();
+        this.purposeFilter = new PurposeFilter();
+        this.brandFilter = new BrandFilter();
+        this.otherFilter = new OtherFilter();
+        this.storageFilter = new StorageFilter();
 
-    this.sortPerformance = new SortPerformance();
-    this.sortPrice = new SortPrice();
-    this.sortSpecificAttributes = new SortSpecificAttributes();
-  }
+        this.sortPerformance = new SortPerformance();
+        this.sortPrice = new SortPrice();
+        this.sortSpecificAttributes = new SortSpecificAttributes();
+    }
 
-  public void recommendComponents() {
-    dataManager.loadData();
-    String PriceRange = userPreferences.getBudget();
-    String Purpose = userPreferences.getPurpose();
-    String CPUBrand = userPreferences.getCpuBrand();
-    String GPUBrand = userPreferences.getGpuBrand();
-    String FormFactor = userPreferences.getFormFactor();
+    public void recommendComponents() {
+        dataManager.loadData();
+        String priceRange = userPreferences.getBudget();
 
-    //Filter By PriceRange
-    List<CPU> PriceCPUs = priceFilter.filterCPUByPrice(dataManager.getCpus(), PriceRange);
-    List<GPU> PriceGPUs = priceFilter.filterGPUByPrice(dataManager.getGpus(), PriceRange);
-    List<Ram> PriceRAMs = priceFilter.filterRamByPrice(dataManager.getRams(), PriceRange);
-    List<InternalStorage> PriceInternalStorages = priceFilter.filterInternalStorageByPrice(dataManager.getInternalStorages(), PriceRange);
-    List<HDD> PriceHDDs = priceFilter.filterHddByPrice(dataManager.getHdds(), PriceRange);
-    List<SSD> PriceSSDs = priceFilter.filterSSDByPrice(dataManager.getSsds(), PriceRange);
-    List<MotherBoard> PriceMotherBoard = priceFilter.filterMotherBoardsByPrice(dataManager.getMotherboards(), PriceRange);
-    List<PSU> PricePSUs = priceFilter.filterPSUByPrice(dataManager.getPsus(), PriceRange);
-    List<Fan> PriceFans = priceFilter.filterFansByPrice(dataManager.getFans(), PriceRange);
-    List<Case> PriceCases = priceFilter.filterCaseByPrice(dataManager.getCases(), PriceRange);
+        double totalBudget = totalBudget(priceRange, userPreferences);
+        String primaryPurpose = userPreferences.getPurpose();
 
-    //Filter By Purpose
-    List<CPU> PurposeCPUs = purposeFilter.filterCPUsByPurpose(PriceCPUs, Purpose);
-    List<GPU> PurposeGPUs = purposeFilter.filterGPUsByPurpose(PriceGPUs, Purpose);
-    List<Ram> PurposeRAMs = purposeFilter.filterRAMsByPurpose(PriceRAMs, Purpose);
+        Map<String, Double> budgetAllocation = allocateBudget(totalBudget, primaryPurpose);
 
-    //Filter By Brand
-    List<CPU> BrandCPUs = brandFilter.CPUfilterByBrand(PurposeCPUs, CPUBrand);
-    List<GPU> BrandGPUs = brandFilter.GPUfilterByBrand(PurposeGPUs, GPUBrand);
+        List<CPU> filteredCPUs = filterAndSortCPUs();
+        List<GPU> filteredGPUs = filterAndSortGPUs();
+        List<Ram> filteredRAMs = filterAndSortRAMs();
+        List<InternalStorage> filteredInternalStorages = filterAndSortInternalStorages();
+        List<HDD> filteredHDDs = filterAndSortHDDs();
+        List<SSD> filteredSSDs = filterAndSortSSDs();
+        List<Case> filteredCases = filterAndSortCases();
+        List<PSU> filteredPSUs = filterAndSortPSUs();
+        List<Fan> filteredFans = filterAndSortFans();
+        List<MotherBoard> filteredMotherBoards = filterAndSortMotherBoards();
 
-    //Filter By Storage Needs
+        // Further processing or selection logic for the final PC build
+        for (CPU cpu : filteredCPUs) {
+            if (cpu.getPrice() <= budgetAllocation.get("CPU")) {
+                for (MotherBoard motherboard : filteredMotherBoards) {
+                    if (compatibilityChecker.isCompatible(cpu, motherboard)) {
+                        for (GPU gpu : filteredGPUs) {
+                            if (gpu.getPrice() <= budgetAllocation.get("GPU") && compatibilityChecker.isCompatible(gpu, motherboard)) {
+                                for (Ram ram : filteredRAMs) {
+                                    if (ram.getPrice() <= budgetAllocation.get("RAM") && compatibilityChecker.isCompatible(ram, motherboard)) {
+                                        for (InternalStorage storage : filteredInternalStorages) {
+                                            if (storage.getPrice() <= budgetAllocation.get("Storage")) {
+                                                for (Case pcCase : filteredCases) {
+                                                    if (compatibilityChecker.isCompatible(pcCase, motherboard, gpu)) {
+                                                        for (PSU psu : filteredPSUs) {
+                                                            if (psu.getPrice() <= budgetAllocation.get("PSU") && compatibilityChecker.isCompatible(psu, pcCase, gpu)) {
+                                                                
+                                                              // Components are compatible and within budget
+                                                                // Display or return the recommended components
+                                                                System.out.println("Recommended components:");
+                                                                System.out.println(cpu);
+                                                                System.out.println(motherboard);
+                                                                System.out.println(gpu);
+                                                                System.out.println(ram);
+                                                                System.out.println(storage);
+                                                                System.out.println(pcCase);
+                                                                System.out.println(psu);
+                                                                return;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("No compatible components found within the specified budget.");
+    }
 
-    //Filter By Ram Needs
+    private Map<String, Double> allocateBudget(double totalBudget, String purpose) {
+        switch (purpose.toLowerCase()) {
+            case "gaming":
+                return Map.of(
+                    "CPU", totalBudget * 0.25,
+                    "GPU", totalBudget * 0.40,
+                    "RAM", totalBudget * 0.15,
+                    "Storage", totalBudget * 0.10,
+                    "PSU", totalBudget * 0.05,
+                    "Case", totalBudget * 0.05
+                );
+            case "workstation":
+                return Map.of(
+                    "CPU", totalBudget * 0.30,
+                    "GPU", totalBudget * 0.25,
+                    "RAM", totalBudget * 0.20,
+                    "Storage", totalBudget * 0.15,
+                    "PSU", totalBudget * 0.05,
+                    "Case", totalBudget * 0.05
+                );
+            case "general":
+                return Map.of(
+                    "CPU", totalBudget * 0.20,
+                    "GPU", totalBudget * 0.20,
+                    "RAM", totalBudget * 0.20,
+                    "Storage", totalBudget * 0.20,
+                    "PSU", totalBudget * 0.10,
+                    "Case", totalBudget * 0.10
+                );
+            default:
+                throw new IllegalArgumentException("Invalid purpose");
+        }
+    }
 
-    //Filter Case By formFactor
-    List<Case> FormFactorCases = otherFilter.filterByFormFactor(PriceCases, FormFactor);
+    private double totalBudget(String priceRange, UserPreferences userPreferences) {
+        double baseBudget;
+        switch (priceRange.toLowerCase()) {
+            case "low":
+                baseBudget = 25000;
+                break;
+            case "middle":
+                baseBudget = 50000;
+                break;
+            case "high":
+                baseBudget = 70000;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid price range: " + priceRange);
+        }
 
-    //SortPerformance
+        return adjustBudget(baseBudget, userPreferences);
+    }
 
-    //SortPrice
+    private double adjustBudget(double baseBudget, UserPreferences userPreferences) {
+        if (userPreferences.needsHighEndCooling()) {
+            baseBudget += 5000;
+        }
+        if (userPreferences.needsRGBLighting()) {
+            baseBudget += 3000;
+        }
+        if (userPreferences.needsWiFi()) {
+            baseBudget += 2000;
+        }
+        if (userPreferences.needsBluetooth()) {
+            baseBudget += 1500;
+        }
 
-    //SortSpecificAttributes
+        return baseBudget;
+    }
 
-    //SelectPCBuild from the List
-    
-  }
+    private List<CPU> filterAndSortCPUs() {
+        List<CPU> cpus = priceFilter.filterCPUByPrice(dataManager.getCpus(), userPreferences.getBudget());
+        cpus = purposeFilter.filterCPUsByPurpose(cpus, userPreferences.getPurpose());
+        cpus = brandFilter.CPUfilterByBrand(cpus, userPreferences.getCpuBrand());
+        return sortPerformance.sortCPUByPerformance(cpus);
+    }
+
+    private List<GPU> filterAndSortGPUs() {
+        List<GPU> gpus = priceFilter.filterGPUByPrice(dataManager.getGpus(), userPreferences.getBudget());
+        gpus = purposeFilter.filterGPUsByPurpose(gpus, userPreferences.getPurpose());
+        gpus = brandFilter.GPUfilterByBrand(gpus, userPreferences.getGpuBrand());
+        return sortPerformance.sortGPUByPerformance(gpus);
+    }
+
+    private List<Ram> filterAndSortRAMs() {
+        List<Ram> rams = priceFilter.filterRamByPrice(dataManager.getRams(), userPreferences.getBudget());
+        rams = purposeFilter.filterRAMsByPurpose(rams, userPreferences.getPurpose());
+        rams = otherFilter.filterByRAMNeeds(rams, userPreferences.getRam());
+        return sortPerformance.sortRamByPerformance(rams);
+    }
+
+    private List<InternalStorage> filterAndSortInternalStorages() {
+        List<InternalStorage> storages = priceFilter.filterInternalStorageByPrice(dataManager.getInternalStorages(), userPreferences.getBudget());
+        storages = storageFilter.filterInternalStorageByPurposeAndBudget(storages, userPreferences.getPurpose(), userPreferences.getBudget(), userPreferences.getStorage());
+        return sortSpecificAttributes.sortInternalStorageByStorage(storages);
+    }
+
+    private List<HDD> filterAndSortHDDs() {
+        List<HDD> hdds = priceFilter.filterHddByPrice(dataManager.getHdds(), userPreferences.getBudget());
+        hdds = storageFilter.filterHDDByPurposeAndBudget(hdds, userPreferences.getPurpose(), userPreferences.getBudget(), userPreferences.getStorage());
+        return sortSpecificAttributes.sortHDDbyStorage(hdds);
+    }
+
+    private List<SSD> filterAndSortSSDs() {
+        List<SSD> ssds = priceFilter.filterSSDByPrice(dataManager.getSsds(), userPreferences.getBudget());
+        ssds = storageFilter.filterSSDByPurposeAndBudget(ssds, userPreferences.getPurpose(), userPreferences.getBudget(), userPreferences.getStorage());
+        return sortSpecificAttributes.sortSSDbyStorage(ssds);
+    }
+
+    private List<Case> filterAndSortCases() {
+        List<Case> cases = priceFilter.filterCaseByPrice(dataManager.getCases(), userPreferences.getBudget());
+        cases = otherFilter.filterByFormFactor(cases, userPreferences.getFormFactor());
+        return sortPrice.sortCasesByPriceDescending(cases);
+    }
+
+    private List<PSU> filterAndSortPSUs() {
+        List<PSU> psus = priceFilter.filterPSUByPrice(dataManager.getPsus(), userPreferences.getBudget());
+        return sortSpecificAttributes.sortPSUbyWattage(psus);
+      }
+  
+      private List<Fan> filterAndSortFans() {
+          List<Fan> fans = priceFilter.filterFansByPrice(dataManager.getFans(), userPreferences.getBudget());
+          return sortPrice.sortFansByPriceDescending(fans);
+      }
+  
+      private List<MotherBoard> filterAndSortMotherBoards() {
+          List<MotherBoard> motherBoards = priceFilter.filterMotherBoardsByPrice(dataManager.getMotherboards(), userPreferences.getBudget());
+          return sortPrice.sortMotherBoardDescending(motherBoards);
+      }
 }
