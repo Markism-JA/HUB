@@ -4,19 +4,22 @@ import java.util.List;
 
 import main.Model.CSVUtil;
 
+//TODO: Add Integrated GPU Data Field
+
 public class CPU extends CSVUtil {
-  private String model, brand, socket;
+  private String model, brand, socket, type;
   private double price;
   private int wattage;
   private boolean status;
   private double clockSpeed;
   private int coreCount;
 
-      public CPU(String model, String brand, double price, String socket, int wattage, boolean status, double clockSpeed, int coreCount) {
+      public CPU(String model, String brand, double price, String socket, String type, int wattage, boolean status, double clockSpeed, int coreCount) {
           this.model = model;
           this.brand = brand;
           this.price = price;
           this.socket = socket;
+          this.type = type;
           this.wattage = wattage;
           this.status = status;
           this.clockSpeed = clockSpeed;
@@ -35,6 +38,9 @@ public class CPU extends CSVUtil {
       public String getSocket() { return socket; }
       public void setSocket(String socket) { this.socket = socket; }
 
+      public String getType() { return type; }
+      public void setType(String type) { this.type = type; }
+
       public int getWattage() { return wattage; }
       public void setWattage(int wattage) { this.wattage = wattage; }
 
@@ -49,15 +55,15 @@ public class CPU extends CSVUtil {
 
       @Override
       public String toString() {
-          return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", wattage=" + wattage + ", status=" + status + ", clockSpeed=" + clockSpeed + ", coreCount=" + coreCount + '}';
+          return "CPU{" + "model='" + model + '\'' + ", brand='" + brand + '\'' + ", price=" + price + ", socket='" + socket + '\'' + ", type=" + type + '\'' + ", wattage=" + wattage + ", status=" + status + ", clockSpeed=" + clockSpeed + ", coreCount=" + coreCount + '}';
           }
 
       public static List<CPU> readCPUFromCSV(String fileName) {
-          return readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5]), Double.parseDouble(data[6]), Integer.parseInt(data[7])));
+          return readFromCSV(fileName, data -> new CPU(data[0], data[1], Double.parseDouble(data[2]), data[3], data[4], Integer.parseInt(data[5]), Boolean.parseBoolean(data[6]), Double.parseDouble(data[7]), Integer.parseInt(data[8])));
           }
 
       public String toCSVString() {
-          return String.join(",", model, brand, Double.toString(price), socket, Integer.toString(wattage), Boolean.toString(status), Double.toString(clockSpeed), Integer.toString(coreCount));
+          return String.join(",", model, brand, Double.toString(price), socket, type, Integer.toString(wattage), Boolean.toString(status), Double.toString(clockSpeed), Integer.toString(coreCount));
       }
 
       public static void writeCPUToCSV(String fileName, List<CPU> cpus) { 

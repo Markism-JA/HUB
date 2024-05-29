@@ -30,11 +30,23 @@ public class CSVUtil {
         List<T> items = new ArrayList<>();
         String line;
         String splitBy = ",";
+        boolean isFirstLine = true;
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             while ((line = br.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false;  // Skip the header line
+                    continue;
+                }
                 String[] data = line.split(splitBy);
-                items.add(mapper.apply(data));
+                try {
+                    T item = mapper.apply(data);
+                    if (item != null) {
+                        items.add(item);
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println("Skipping invalid line: " + line);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -55,5 +67,5 @@ public class CSVUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }                                                                                                                               
 }
