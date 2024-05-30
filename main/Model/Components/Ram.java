@@ -5,16 +5,17 @@ import java.util.List;
 import main.Model.CSVUtil;
 
 public class Ram extends CSVUtil{
-  private String brand, model;
+  private String brand, model, ddr;
   private double price;
   private int wattage; 
   private float frequency;
   private boolean status;
   private int capacity;
 
-      public Ram(String brand, String model, double price, int wattage, float frequency, boolean status, int capacity) {
+      public Ram(String brand, String model, String ddr, double price, int wattage, float frequency, boolean status, int capacity) {
           this.brand = brand;
           this.model = model;
+          this.ddr = ddr;
           this.price = price;
           this.wattage = wattage;
           this.frequency = frequency;
@@ -27,6 +28,9 @@ public class Ram extends CSVUtil{
 
       public String getModel() { return model; }
       public void setModel (String model) { this.model = model; }
+
+      public String getDDR() { return ddr; }
+      public void setDDR(String ddr) { this.ddr = ddr; }
 
       public double getPrice() { return price; }
       public void setPrice(double price) { this.price = price; };
@@ -49,11 +53,11 @@ public class Ram extends CSVUtil{
       }
 
       public static List<Ram> readRamFromCSV(String fileName) {
-          return readFromCSV(fileName, data -> new Ram(data[0], data[1], Double.parseDouble(data[2]), Integer.parseInt(data[3]), Float.parseFloat(data[4]), Boolean.parseBoolean(data[5]), Integer.parseInt(data[6])));
+          return readFromCSV(fileName, data -> new Ram(data[0], data[1], data[2], Double.parseDouble(data[3]), Integer.parseInt(data[4]), Float.parseFloat(data[5]), Boolean.parseBoolean(data[6]), Integer.parseInt(data[7])));
       }
 
       public String toCSVString() {
-          return String.join(",", brand, model, Double.toString(price), Integer.toString(wattage), Float.toString(frequency), Boolean.toString(status), Integer.toString(capacity));
+          return String.join(",", brand, model, ddr, Double.toString(price), Integer.toString(wattage), Float.toString(frequency), Boolean.toString(status), Integer.toString(capacity));
       }
 
       public static void writeRamToCSV(String fileName, List<Ram> rams) {
