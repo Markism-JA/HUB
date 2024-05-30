@@ -4,7 +4,9 @@ import java.util.List;
 import main.Model.Components.*;
 import main.Model.Filters.*;
 import main.Model.Sorter.*;
+import main.Model.CompatibilityChecking;
 import java.util.Map;
+
 
 public class Recommendation {
     private DataManager dataManager;
@@ -20,6 +22,8 @@ public class Recommendation {
     private SortPrice sortPrice;
     private SortSpecificAttributes sortSpecificAttributes;
 
+    private CompatibilityChecking compatibilityChecking;
+
     public Recommendation(DataManager dataManager, UserPreferences userPreferences) {
         this.dataManager = dataManager;
         this.userPreferences = userPreferences;
@@ -33,6 +37,7 @@ public class Recommendation {
         this.sortPerformance = new SortPerformance();
         this.sortPrice = new SortPrice();
         this.sortSpecificAttributes = new SortSpecificAttributes();
+        this.compatibilityChecking = new CompatibilityChecking();
     }
 
     public void recommendComponents() {
@@ -96,6 +101,7 @@ public class Recommendation {
                 }
             }
         }
+        
         System.out.println("No compatible components found within the specified budget.");
     }
 
