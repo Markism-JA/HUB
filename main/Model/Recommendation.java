@@ -4,7 +4,7 @@ import java.util.List;
 import main.Model.Components.*;
 import main.Model.Filters.*;
 import main.Model.Sorter.*;
-import main.Model.CompatibilityChecking;
+import main.Model.CompatibilityChecker;
 import java.util.Map;
 
 
@@ -22,7 +22,7 @@ public class Recommendation {
     private SortPrice sortPrice;
     private SortSpecificAttributes sortSpecificAttributes;
 
-    private CompatibilityChecking compatibilityChecking;
+    private CompatibilityChecker compatibilityChecking;
 
     public Recommendation(DataManager dataManager, UserPreferences userPreferences) {
         this.dataManager = dataManager;
@@ -37,7 +37,7 @@ public class Recommendation {
         this.sortPerformance = new SortPerformance();
         this.sortPrice = new SortPrice();
         this.sortSpecificAttributes = new SortSpecificAttributes();
-        this.compatibilityChecking = new CompatibilityChecking();
+        this.compatibilityChecking = new CompatibilityChecker();
     }
 
     public void recommendComponents() {
@@ -49,6 +49,7 @@ public class Recommendation {
 
         Map<String, Double> budgetAllocation = allocateBudget(totalBudget, primaryPurpose);
 
+        //Filtering & Sorting List based on purpose & budget
         List<CPU> filteredCPUs = filterAndSortCPUs();
         List<GPU> filteredGPUs = filterAndSortGPUs();
         List<Ram> filteredRAMs = filterAndSortRAMs();
@@ -60,33 +61,89 @@ public class Recommendation {
         List<Fan> filteredFans = filterAndSortFans();
         List<MotherBoard> filteredMotherBoards = filterAndSortMotherBoards();
 
-        // Further processing or selection logic for the final PC build
-        for (CPU cpu : filteredCPUs) {
-            if (cpu.getPrice() <= budgetAllocation.get("CPU")) {
-                for (MotherBoard motherboard : filteredMotherBoards) {
-                    if (compatibilityChecker.isCompatible(cpu, motherboard)) {
-                        for (GPU gpu : filteredGPUs) {
-                            if (gpu.getPrice() <= budgetAllocation.get("GPU") && compatibilityChecker.isCompatible(gpu, motherboard)) {
-                                for (Ram ram : filteredRAMs) {
-                                    if (ram.getPrice() <= budgetAllocation.get("RAM") && compatibilityChecker.isCompatible(ram, motherboard)) {
-                                        for (InternalStorage storage : filteredInternalStorages) {
-                                            if (storage.getPrice() <= budgetAllocation.get("Storage")) {
-                                                for (Case pcCase : filteredCases) {
-                                                    if (compatibilityChecker.isCompatible(pcCase, motherboard, gpu)) {
-                                                        for (PSU psu : filteredPSUs) {
-                                                            if (psu.getPrice() <= budgetAllocation.get("PSU") && compatibilityChecker.isCompatible(psu, pcCase, gpu)) {
-                                                                
-                                                              // Components are compatible and within budget
-                                                                // Display or return the recommended components
-                                                                System.out.println("Recommended components:");
-                                                                System.out.println(cpu);
-                                                                System.out.println(motherboard);
-                                                                System.out.println(gpu);
-                                                                System.out.println(ram);
-                                                                System.out.println(storage);
-                                                                System.out.println(pcCase);
-                                                                System.out.println(psu);
-                                                                return;
+        //For Bottleneck
+        double clockSpeed = highestClockSpeed(dataManager.getCpus());
+        double coreCount = highestCoreCount(dataManager.getCpus());
+        double vram = highestVRAM(dataManager.getGpus());
+
+
+// Further processing or selection logic for the final PC build
+for (CPU cpu : filteredCPUs) {
+    if (cpu.getPrice() <= budgetAllocation.get("CPU")) {
+        for (MotherBoard motherboard : filteredMotherBoards) {
+            if (compatibilityChecking.SocketCompatibility(cpu, motherboard)) {
+                for (GPU gpu : filteredGPUs) {
+                    if (gpu.getPrice() <= budgetAllocation.get("GPU") && compatibilityChecking.BottleneckChecker(gpu, cpu, clockSpeed, coreCount, vram)) {
+                        for (Ram ram : filteredRAMs) {
+                            if (ram.getPrice() <= budgetAllocation.get("RAM") && compatibilityChecking.MemoryCompatibility(ram, motherboard)) {
+                                if (priceRange.equalsIgnoreCase("low")) {
+                                    for (InternalStorage storage : filteredInternalStorages) {
+                                        if (storage.getPrice() <= budgetAllocation.get("Storage")) {
+                                            for (HDD hdd : filteredHDDs) {
+                                                if (hdd.getPrice() + storage.getPrice() <= budgetAllocation.get("Storage")) {
+                                                        for (Case pcCase : filteredCases) {
+                                                            if (compatibilityChecking.FormFactorCompatibility(pcCase, motherboard)) {
+                                                                for (Fan fan : filteredFans) {
+                                                                    if (fan.getPrice() <= budgetAllocation.get("Fan") && compatibilityChecking.FanCaseCompatibility(fan, pcCase)) {
+                                                                        for (PSU psu : filteredPSUs) {
+                                                                            if (psu.getPrice() <= budgetAllocation.get("PSU") && compatibilityChecking.WattsComputationLow(cpu, gpu, motherboard, ram, storage, hdd, fan, psu)) {
+
+                                                                                // Components are compatible and within budget
+                                                                                // Display or return the recommended components
+                                                                                System.out.println("Recommended components:");
+                                                                                System.out.println(cpu.toString());
+                                                                                System.out.println(motherboard.toString());
+                                                                                System.out.println(gpu.toString());
+                                                                                System.out.println(ram.toString());
+                                                                                System.out.println(storage.toString());
+                                                                                System.out.println(hdd.toString());
+                                                                                System.out.println(pcCase.toString());
+                                                                                System.err.println(fan.toString());
+                                                                                System.out.println(psu.toString());
+                                                                                return;
+                                                                            }
+                                                                        }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else if (priceRange.equalsIgnoreCase("middle") || priceRange.equalsIgnoreCase("high")) {
+                                    for (InternalStorage storage : filteredInternalStorages) {
+                                        if (storage.getPrice() <= budgetAllocation.get("Storage")) {
+                                            for (HDD hdd : filteredHDDs) {
+                                                if (hdd.getPrice() + storage.getPrice() <= budgetAllocation.get("Storage")) {
+                                                        for (SSD ssd : filteredSSDs) {
+                                                            if (storage.getPrice() + hdd.getPrice() + ssd.getPrice() <= budgetAllocation.get("Storage")) {
+                                                                for (Case pcCase : filteredCases) {
+                                                                    for (Fan fan : filteredFans) {
+                                                                        if (fan.getPrice() <= budgetAllocation.get("Fan") && compatibilityChecking.FanCaseCompatibility(fan, pcCase)) {
+                                                                            if (compatibilityChecking.FormFactorCompatibility(pcCase, motherboard)) {
+                                                                                for (PSU psu : filteredPSUs) {
+                                                                                    if (psu.getPrice() <= budgetAllocation.get("PSU") && compatibilityChecking.WattsComputationHigh(cpu, gpu, motherboard, ram, storage, ssd, hdd, fan, psu)) {
+
+                                                                                        // Components are compatible and within budget
+                                                                                        // Display or return the recommended components
+                                                                                        System.out.println("Recommended components:");
+                                                                                        System.out.println(cpu.toString());
+                                                                                        System.out.println(motherboard.toString());
+                                                                                        System.out.println(gpu.toString());
+                                                                                        System.out.println(ram.toString());
+                                                                                        System.out.println(storage.toString());
+                                                                                        System.out.println(hdd.toString());
+                                                                                        System.out.println(ssd.toString());
+                                                                                        System.out.println(pcCase.toString());
+                                                                                        System.out.println(psu.toString());
+                                                                                        return;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -101,9 +158,10 @@ public class Recommendation {
                 }
             }
         }
-        
-        System.out.println("No compatible components found within the specified budget.");
     }
+
+System.out.println("No compatible components found within the specified budget.");
+}
 
     private Map<String, Double> allocateBudget(double totalBudget, String purpose) {
         switch (purpose.toLowerCase()) {
@@ -154,26 +212,26 @@ public class Recommendation {
             default:
                 throw new IllegalArgumentException("Invalid price range: " + priceRange);
         }
-
-        return adjustBudget(baseBudget, userPreferences);
-    }
-
-    private double adjustBudget(double baseBudget, UserPreferences userPreferences) {
-        if (userPreferences.needsHighEndCooling()) {
-            baseBudget += 5000;
-        }
-        if (userPreferences.needsRGBLighting()) {
-            baseBudget += 3000;
-        }
-        if (userPreferences.needsWiFi()) {
-            baseBudget += 2000;
-        }
-        if (userPreferences.needsBluetooth()) {
-            baseBudget += 1500;
-        }
-
         return baseBudget;
+        //return adjustBudget(baseBudget, userPreferences);
     }
+
+    //private double adjustBudget(double baseBudget, UserPreferences userPreferences) {
+        //if (userPreferences.needsHighEndCooling()) {
+            //baseBudget += 5000;
+        //}
+        //if (userPreferences.needsRGBLighting()) {
+            //baseBudget += 3000;
+        //}
+        //if (userPreferences.needsWiFi()) {
+            //baseBudget += 2000;
+        //}
+        //if (userPreferences.needsBluetooth()) {
+            //baseBudget += 1500;
+       //}
+
+        //return baseBudget;
+    //}
 
     private List<CPU> filterAndSortCPUs() {
         List<CPU> cpus = priceFilter.filterCPUByPrice(dataManager.getCpus(), userPreferences.getBudget());
@@ -181,6 +239,8 @@ public class Recommendation {
         cpus = brandFilter.CPUfilterByBrand(cpus, userPreferences.getCpuBrand());
         return sortPerformance.sortCPUByPerformance(cpus);
     }
+
+
 
     private List<GPU> filterAndSortGPUs() {
         List<GPU> gpus = priceFilter.filterGPUByPrice(dataManager.getGpus(), userPreferences.getBudget());
@@ -234,4 +294,38 @@ public class Recommendation {
           List<MotherBoard> motherBoards = priceFilter.filterMotherBoardsByPrice(dataManager.getMotherboards(), userPreferences.getBudget());
           return sortPrice.sortMotherBoardDescending(motherBoards);
       }
+
+      //getMaxDataField
+      private double highestClockSpeed(List <CPU> input) {
+        List<CPU> cpus = input;
+        double MAX = 0.0;
+        for (CPU cpu: cpus) {
+            if (cpu.getClockSpeed() > MAX) {
+                return MAX = cpu.getClockSpeed();
+            }
+        }
+        return MAX;
+    }
+
+    private double highestCoreCount(List <CPU> input) {
+        List<CPU> cpus = input;
+        double MAX = 0.0;
+        for (CPU cpu: cpus) {
+            if (cpu.getCoreCount() > MAX) {
+                return MAX = cpu.getCoreCount();
+            }
+        }
+        return MAX;
+    }
+
+    private double highestVRAM(List <GPU> input) {
+        List<GPU> gpus = input;
+        double MAX = 0.0;
+        for (GPU gpu: gpus) {
+            if (gpu.getMemory() > MAX) {
+                return MAX = gpu.getMemory();
+            }
+        }
+        return MAX;
+    }
 }
