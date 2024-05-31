@@ -1,0 +1,80 @@
+﻿brand,model,formFactor,price,socket,ddr,status
+MSI ,A520m Pro,matx,3250,AM4,ddr5,TRUE
+MSI ,B450M Pro,matx,4195,AM4,ddr5,TRUE
+MSI ,Mag B550m Pro,matx,6275,AM4,ddr5,TRUE
+Gigabyte ,GA-B450M,matx,4250,AM4,ddr5,TRUE
+Biostar ,A520MH,matx,2870,AM4,ddr5,TRUE
+Asus ,Rog Strix B550-A ,atx,11045,AM4 ,ddr5,TRUE
+Asrock ,X570S,matx,10120,AM4,ddr5,TRUE
+Gigabyte,B550M,matx,7339,AM4,ddr5,TRUE
+Asus,Prime B550M,matx,6825,AM4,ddr5,TRUE
+Asrock, B550M,matx,7250,AM4,ddr5,TRUE
+MSI ,MAG B550M,matx,9835,AM4,ddr5,TRUE
+Gigabyte,GA-B450M,matx,5095,AM4,ddr5,TRUE
+Gigabyte,B550M,matx,5345,AM4,ddr5,TRUE
+Asus ,ROG Strix B550-F,matx,12585,AM4,ddr5,TRUE
+Gigabyte,GA-A620M,matx,6170,AM5,ddr5,TRUE
+Gigabyte,A520M,matx,3950,AM4,ddr5,TRUE
+Asus ,Prime B760M-A,matx,8745,AM4,ddr5,TRUE
+Gigabyte,GA A320M S2H,matx,2850,AM4,ddr5,TRUE
+Gigabyte,GA-B450 Pro,matx,6595,AM4,ddr5,TRUE
+Gigabyte,GA-B450-M,matx,5199,AM4,ddr5,TRUE
+ASUS,EX-A320M,matx,3464,AM4,ddr5,TRUE
+Gigabyte ,X570,matx,8795,AM4,ddr5,TRUE
+MSI ,X570-A,matx,9490,AM4,ddr5,TRUE
+Gigabyte,GA A320M-H,matx,2895,AM4,ddr5,TRUE
+MSI ,B450,matx,5125,AM4,ddr5,TRUE
+MSI ,B450m,matx,5325,AM4,ddr5,TRUE
+Gigabyte ,GA A320M,matx,2835,AM4,ddr5,TRUE
+MSI ,A320M,matx,2875,AM4,ddr5,TRUE
+MSI ,X570,matx,10450,AM4,ddr5,TRUE
+Asus ,TUF X570 Plus,matx,9950,AM4,ddr5,TRUE
+Gigabyte ,AB350M-HD3,matx,4995,AM4,ddr5,TRUE
+ASUS,TUF B450M-PLUS,matx,5199,AM4,ddr5,TRUE
+ASUS,TUF 540M,matx,5399,AM4,ddr5,TRUE
+ASUS,ROG Strix X670E-E,atx,27500,AM5,ddr5,TRUE
+MSI,MPG B650 Carbon WiFi,atx,18000,AM5,ddr5,TRUE
+Gigabyte,X670 Aorus Elite AX,atx,15800,AM5,ddr5,TRUE
+ASRock,B650E Taichi,atx,22000,AM5,ddr5,TRUE
+ASUS,TUF Gaming B650-PLUS,atx,14500,AM5,ddr5,TRUE
+ASUS,Prime X670-P,atx,16000,AM5,ddr5,TRUE
+MSI,PRO X670-P WiFi,atx,19500,AM5,ddr5,TRUE
+Gigabyte,B650 Aorus Master,atx,21000,AM5,ddr5,TRUE
+ASRock,X670E Steel Legend,atx,23500,AM5,ddr5,TRUE
+ASUS,ROG Crosshair X670E Hero,atx,32000,AM5,ddr5,TRUE
+MSI,MAG B650 Tomahawk WiFi,atx,17500,AM5,ddr5,TRUE
+Gigabyte,X670E Aorus Master,atx,29000,AM5,ddr5,TRUE
+ASRock,B650 Pro RS,atx,13000,AM5,ddr5,TRUE
+ASUS,ProArt X670E-Creator WiFi,atx,31500,AM5,ddr5,TRUE
+MSI,MPG X670E Gaming Edge WiFi,atx,25000,AM5,ddr5,TRUE
+Gigabyte,B650M Aorus Pro AX,matx,14200,AM5,ddr5,TRUE
+ASRock,B650E PG Riptide WiFi,atx,18300,AM5,ddr5,TRUE
+ASUS,TUF Gaming X670E-PLUS,atx,24000,AM5,ddr5,TRUE
+Gigabyte,A520m Pro,matx,6695,LGA 1700,ddr5,TRUE
+Msi,PRO H610M-G,matx,5790,LGA 1700,ddr5,TRUE
+Gigabyte,H610M-H V3,matx,4685,LGA 1700,ddr5,TRUE
+Asus,TUF B760M-PLUS,matx,11325,LGA 1700,ddr5,TRUE
+Msi,B650M,matx,13995,LGA 1700,ddr5,TRUE
+Msi,MAG B760M,matx,12415,LGA 1700,ddr5,TRUE
+Asus,Prime Z790-P,matx,16695,LGA 1700,ddr5,TRUE
+Gigabyte,Z790,matx,16900,LGA 1700,ddr5,TRUE
+Asus,Prime H610-R,atx,4895,LGA 1700,ddr5,TRUE
+Msi,PRO H610M-E,matx,4450,LGA 1700,ddr5,TRUE
+Asus,Prime B760M,matx,8745,LGA 1700,ddr5,TRUE
+Gigabyte, H510M-K,matx,3935,LGA 1200,ddr5,TRUE
+Msi,Z490,matx,10195,LGA 1200,ddr5,TRUE
+Biostar,H410MH,matx,2999,LGA 1200,ddr5,TRUE
+Asus,Prime H410M-K,matx,3899,LGA 1200,ddr5,TRUE
+Gigabyte,H410M-H,matx,3950,LGA 1200,ddr5,TRUE
+Asus,Prime B460M-A R2.0,matx,5150,LGA 1200,ddr5,TRUE
+Gigabyte, H410M-S2H V3,matx,3950,LGA 1200,ddr5,TRUE
+Msi,Z590-A Pro,matx,9995,LGA 1200,ddr5,TRUE
+Gigabyte,H410M-H V3,matx,3555,LGA 1200,ddr5,TRUE
+Gigabyte,B560M-DS3H AC,matx,6825,LGA 1200,ddr5,TRUE
+Msi,H510M-A Pro Series,matx,4550,LGA 1200,ddr5,TRUE
+Asus,Ex H510M V3,matx,4050,LGA 1200,ddr5,TRUE
+Msi,H510M,matx,3789,LGA 1200,ddr5,TRUE
+Msi, Pro Z690-A,matx,12420,LGA 1700,ddr5,TRUE
+Msi,MPG Z690 Force,matx,22000,LGA 1700,ddr5,TRUE
+Gigabyte,Z690 Aero G Socket LGA 1700 Ddr5 Q-Flash,matx,15500,LGA 1700,ddr5,TRUE
+Gigabyte,B560M DS3H V2,matx,6156,LGA 1200,ddr5,TRUE
