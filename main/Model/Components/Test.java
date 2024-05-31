@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class Test {
   public static void main(String[] args) {
-    String fileName = "main/Resources/data/case.csv";
-    List<Fan> readCPUs = Fan.readFanFromCSV(fileName);
+    String fileName = "main/Resources/data/ssd.csv";
+    List<SSD> readCPUs = SSD.readSSDFromCSV(fileName);
 
-    for (Fan cpu : readCPUs) {
+    for (SSD cpu : readCPUs) {
       System.out.println(cpu.toString());
     }
     
