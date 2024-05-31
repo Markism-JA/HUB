@@ -14,13 +14,13 @@ import main.Model.Components.*;
     }
   }
     public boolean BottleNeckChecker(CPU cpu, GPU gpu){
-      DataManager datamanager = new DataManager("./data/");
-      List<CPU> CPUList = datamanager.getCpus(); 
-      List<GPU> GPUList = datamanager.getGpus(); 
+     double cpu_speed = cpu.getClockSpeed()/5.6 *100;
+     double gpu_speed = gpu.getMemory()/24 * 100;
 
-     if(CPUList.indexOf(cpu) - GPUList.indexOf(gpu) >= 9 || CPUList.indexOf(cpu) - GPUList.indexOf(gpu) <= -9){ 
+     if(cpu_speed - gpu_speed <= 20.0 || gpu_speed - cpu_speed <- 20.0){
       return false;
-     } 
+     }
+     
      else{
      return true;
      }
