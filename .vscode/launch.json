@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Test (Controller)",
+      "request": "launch",
+      "mainClass": "main.Controller.Test",
+      "projectName": "HUB_3a9df884",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Test (Components)",
+      "request": "launch",
+      "mainClass": "main.Model.Components.Test",
+      "projectName": "HUB_3a9df884",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "DataManager",
+      "request": "launch",
+      "mainClass": "main.Model.DataManager",
+      "projectName": "HUB_3a9df884",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Database",
+      "request": "launch",
+      "mainClass": "main.Model.Database",
+      "projectName": "HUB_3a9df884",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Test (Database)",
+      "request": "launch",
+      "mainClass": "main.Model.Database",
+      "projectName": "HUB_3a9df884",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    }
+  ]
+}
