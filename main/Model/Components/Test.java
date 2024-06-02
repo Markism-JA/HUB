@@ -9,12 +9,6 @@ import java.util.Scanner;
 
 public class Test {
   public static void main(String[] args) {
-    String fileName = "main/Resources/data/ssd.csv";
-    List<SSD> readCPUs = SSD.readSSDFromCSV(fileName);
-
-    for (SSD cpu : readCPUs) {
-      System.out.println(cpu.toString());
-    }
-    
+    System.out.println("Go");
   }
 }
