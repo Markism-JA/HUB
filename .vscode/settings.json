@@ -1,4 +1,6 @@
 {
+  "java.project.sourcePaths": ["main.Controller.Test"],
+    "java.project.outputPath": "bin",
   "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
   "java.project.referencedLibraries": [
     "lib/**/*.jar",
@@ -71,6 +73,12 @@
     "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.media.jar",
     "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.swing.jar",
     "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.web.jar",
-    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx-swt.jar"
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx-swt.jar",
+    "src/main/MainApp.java",
+"src/main/Controller/Signup.java",
+"src/main/Model/UserAccountManagement.java",
+"src/main/view/Signup.fxml",
+"src/main/view/Images/HUB.png",
+"src/main/view/Images/Lock.png",
   ]
 }

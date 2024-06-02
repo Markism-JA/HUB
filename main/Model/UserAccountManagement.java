@@ -12,6 +12,10 @@ public class UserAccountManagement {
         this.users = users;
     }
 
+    public UserAccountManagement(String username, String password) {
+        //TODO Auto-generated constructor stub
+    }
+
     public void registerUser(String username, String password) {
         // Check if the username already exists
         for (User user : users) {
