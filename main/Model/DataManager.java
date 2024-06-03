@@ -28,7 +28,7 @@ public class DataManager {
         loadComponent("Ram", Ram::readRamFromCSV);
         loadComponent("PSU", PSU::readPSUFromCSV);
         loadComponent("HDD", HDD::readHDDFromCSV);
-        loadComponent("SSD", SSD::readSDDFromCSV);
+        loadComponent("SSD", SSD::readSSDFromCSV);
         loadComponent("Fan", Fan::readFanFromCSV);
         loadComponent("InternalStorage", InternalStorage::readInternalStorageFromCSV);
         users = loadUsers();
