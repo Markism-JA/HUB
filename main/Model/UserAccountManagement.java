@@ -1,9 +1,6 @@
 package main.Model;
-import main.Model.DataManager.*;
-import main.Model.User.*;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Scanner;
 
 public class UserAccountManagement {
     private List<User> users;
@@ -12,7 +9,7 @@ public class UserAccountManagement {
         this.users = users;
     }
 
-    public void registerUser(String username, String password) {
+    public void registerUser(String username, String password, UserPreferences preferences) {
         // Check if the username already exists
         for (User user : users) {
             if (user.getUserName().equals(username)) {
@@ -21,8 +18,8 @@ public class UserAccountManagement {
             }
         }
 
-        // Create and add new user
-        User newUser = new User(username, password);
+        // Create and add new user with preferences
+        User newUser = new User(username, password, preferences);
         users.add(newUser);
         System.out.println("User registered successfully!");
     }
@@ -39,8 +36,12 @@ public class UserAccountManagement {
     }
 
     public void saveUserPreferences(User user, UserPreferences preferences) {
-        // Implementation of saving user preferences
+        // Save user preferences
         user.setPreferences(preferences);
         System.out.println("User preferences saved successfully!");
+    }
+
+    public void saveUsersToCSV(String fileName) {
+        User.writeUserToCSV(fileName, users);
     }
 }

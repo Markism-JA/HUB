@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#d6d8e2" height="102.0" layoutX="202.0" layoutY="102.0" stroke="WHITE" strokeType="INSIDE" width="441.0" />
+            <Text layoutX="187.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BUDGET" textAlignment="CENTER" wrappingWidth="470.7460174560547">
+               <font>
+                  <Font name="Noto Serif Hmong Nyiakeng Bold" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
