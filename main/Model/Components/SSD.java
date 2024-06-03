@@ -38,7 +38,7 @@ public class SSD extends CSVUtil{
         return "SDD{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +  ", price=" + price + ", status=" + status + '}';
       }
 
-      public static List<SSD> readSDDFromCSV(String fileName) {
+      public static List<SSD> readSSDFromCSV(String fileName) {
               return readFromCSV(fileName, data -> new SSD(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
       } 
           
