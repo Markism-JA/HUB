@@ -134,7 +134,16 @@ public class Recommendation {
                                                 System.err.println(fan.toString());
                                                 System.out.println(psu.toString());
 
-                                                lowPCBuild(cpu, gpu, ram, motherboard, storage, hdd, pcCase, fan, psu);
+                                                //setPCBuild
+                                                lowPCBuild.setCpu(cpu);
+                                                lowPCBuild.setMotherBoard(motherboard);
+                                                lowPCBuild.setGPU(gpu);
+                                                lowPCBuild.setRam(ram);
+                                                lowPCBuild.setInternalStorage(storage);
+                                                lowPCBuild.setHDD(hdd);
+                                                lowPCBuild.setCase(pcCase);
+                                                lowPCBuild.setFan(fan);
+                                                lowPCBuild.setPowerSupply(psu);
                                                 return true;
                                             }
                                         }
@@ -178,7 +187,17 @@ public class Recommendation {
                                                         System.out.println(pcCase.toString());
                                                         System.out.println(psu.toString());
 
-                                                        midHighPCBuild(cpu, gpu, ram, motherboard, storage, hdd, ssd, pcCase, fan, psu);
+
+                                                        midHighPCBuild.setCase(pcCase);
+                                                        midHighPCBuild.setCpu(cpu);
+                                                        midHighPCBuild.setGPU(gpu);
+                                                        midHighPCBuild.setMotherBoard(motherboard);
+                                                        midHighPCBuild.setRam(ram);
+                                                        midHighPCBuild.setInternalStorage(storage);
+                                                        midHighPCBuild.setHDD(hdd);
+                                                        midHighPCBuild.setSSD(ssd);
+                                                        midHighPCBuild.setFan(fan);
+                                                        midHighPCBuild.setPowerSupply(psu);
                                                         return true;
                                                     }
                                                 }
@@ -338,13 +357,4 @@ public class Recommendation {
     private double highestVRAM(List<GPU> gpus) {
         return gpus.stream().mapToDouble(GPU::getMemory).max().orElse(0.0);
     }
-
-    private void lowPCBuild(CPU cpu, GPU gpu, Ram ram, MotherBoard motherboard, InternalStorage storage, HDD hdd, Case pcCase, Fan fan, PSU psu) {
-        lowPCBuild(cpu, gpu, ram, motherboard, storage, hdd, pcCase, fan, psu);
-    }
-
-    private void midHighPCBuild(CPU cpu, GPU gpu, Ram ram, MotherBoard motherboard, InternalStorage storage, HDD hdd, SSD ssd, Case pcCase, Fan fan, PSU psu) {
-        midHighPCBuild(cpu, gpu, ram, motherboard, storage, hdd, ssd, pcCase, fan, psu);
-    }
-    
 }
