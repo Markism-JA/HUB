@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller.FrontController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="306.0" style="-fx-background-color: #0f0f10;" BorderPane.alignment="CENTER">
          <children>
@@ -40,17 +39,17 @@
                   <Image url="@Images/Lock.png" />
                </image>
             </ImageView>
-            <Button layoutX="139.0" layoutY="203.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="LOG IN">
+            <Button fx:id="loginButton" layoutX="139.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="LOG IN">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="139.0" layoutY="269.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="SIGN UP">
+            <Button fx:id="signUpButton" layoutX="139.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="SIGN UP">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="140.0" layoutY="335.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="ADMIN DATABASE ACCESS">
+            <Button fx:id="adminDatabaseAccessButton" layoutX="140.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleAdminDatabaseAccess" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="ADMIN DATABASE ACCESS">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>

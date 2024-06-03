@@ -16,7 +16,11 @@ public class MainApp extends Application{
   StackPane stackPane;
   Text text;
   public static void main(String[] args) {
+<<<<<<< Updated upstream
     launch(args)0;
+=======
+    launch(args);
+>>>>>>> Stashed changes
   }
 
   @Override
