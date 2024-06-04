@@ -1,5 +1,6 @@
 package main.Model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -13,11 +14,29 @@ public class DataManager {
     private Map<String, List<?>> components;
     private List<User> users;
     private String basePath;
+    private boolean allFilesReadSuccessfully;
 
     public DataManager(String basePath) {
-        this.basePath = basePath;
+        this.basePath = basePath.endsWith(File.separator) ? basePath : basePath + File.separator;
         components = new HashMap<>();
-        loadData();
+        allFilesReadSuccessfully = true; // Initialize the flag to true
+
+        File baseDir = new File(this.basePath);
+        if (baseDir.exists() && baseDir.isDirectory()) {
+            System.out.println("Folder found: " + this.basePath);
+            loadData();
+        } else {
+            System.err.println("Folder not found: " + this.basePath);
+            // Handle the case when the folder is not found, e.g., create the folder or throw an exception
+            allFilesReadSuccessfully = false; // Set flag to false if folder not found
+        }
+
+        // Print the final status of file reading
+        if (allFilesReadSuccessfully) {
+            System.out.println("All files read successfully.");
+        } else {
+            System.err.println("Some files could not be read.");
+        }
     }
 
     public void loadData() {
@@ -42,6 +61,7 @@ public class DataManager {
             // Handle exception and log error message
             System.err.println("Error loading component: " + componentType + " from " + filePath + ". Error: " + e.getMessage());
             components.put(componentType, new ArrayList<>());
+            allFilesReadSuccessfully = false; // Set flag to false if any file fails to load
         }
     }
 
@@ -52,6 +72,7 @@ public class DataManager {
         } catch (Exception e) {
             // Handle exception and log error message
             System.err.println("Error loading users from " + filePath + ". Error: " + e.getMessage());
+            allFilesReadSuccessfully = false; // Set flag to false if users file fails to load
             return new ArrayList<>();
         }
     }
@@ -107,13 +128,12 @@ public class DataManager {
         return (List<T>) components.getOrDefault(type, new ArrayList<>());
     }
 
+    public boolean allFilesReadSuccessfully() {
+        return allFilesReadSuccessfully;
+    }
+
     public static void main(String[] args) {
-        DataManager test = new DataManager("main/Resources/data");
-        test.loadData();
-
-
-
-        
-        test.saveData();
+        //DataManager test = new DataManager("main/Resources/data");
+        //test.loadData();
     }
 }

@@ -1,23 +1,23 @@
-﻿brand,storageSize,wattage,price,status
-Seagate Barracuda,1000,20,2014,TRUE
-Western Digital,8000,20,12994,TRUE
-Western Digital,1000,20,5020,TRUE
-Seagate Skyhawk,6000,20,8995,TRUE
-Seagate Skyhawk,1000,20,3083,TRUE
-Seagate ST1000DM014,1000,20,2813,TRUE
-Western Digital,4000,20,4894,TRUE
-Seagate Barracuda,4000,20,6150,TRUE
-Seagate Harddisk,320,20,795,TRUE
-Western Digital,2000,20,7171,TRUE
-Toshiba,500,20,1945,TRUE
-Western Digital,2000,20,3488,TRUE
-Western Digital,3000,20,4795,TRUE
-Western Digital,4000,20,5245,TRUE
-Seagate Skyhawk ST1000VX005,1000,20,2816,TRUE
-Adata AHD330-2TU31,2000,20,3530,TRUE
-Seagate,4000,20,5645,TRUE
-Seagate,10000,20,14765,TRUE
-Seagate One Touch,1000,20,3220,TRUE
-Seagate One Touch,2000,20,4550,TRUE
-Western Digital,10000,20,15195,TRUE
-Toshiba Canvio Basics,2000,20,3711,TRUE
+brand,storageSize,wattage,price,status
+Seagate Barracuda,1000,20,2014.0,true
+Western Digital,8000,20,12994.0,true
+Western Digital,1000,20,5020.0,true
+Seagate Skyhawk,6000,20,8995.0,true
+Seagate Skyhawk,1000,20,3083.0,true
+Seagate ST1000DM014,1000,20,2813.0,true
+Western Digital,4000,20,4894.0,true
+Seagate Barracuda,4000,20,6150.0,true
+Seagate Harddisk,320,20,795.0,true
+Western Digital,2000,20,7171.0,true
+Toshiba,500,20,1945.0,true
+Western Digital,2000,20,3488.0,true
+Western Digital,3000,20,4795.0,true
+Western Digital,4000,20,5245.0,true
+Seagate Skyhawk ST1000VX005,1000,20,2816.0,true
+Adata AHD330-2TU31,2000,20,3530.0,true
+Seagate,4000,20,5645.0,true
+Seagate,10000,20,14765.0,true
+Seagate One Touch,1000,20,3220.0,true
+Seagate One Touch,2000,20,4550.0,true
+Western Digital,10000,20,15195.0,true
+Toshiba Canvio Basics,2000,20,3711.0,true

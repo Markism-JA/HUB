@@ -3,6 +3,28 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Case",
+      "request": "launch",
+      "mainClass": "main.Model.Components.Case",
+      "projectName": "HUB_3a9df884"
+    },
+    {
+      "type": "java",
+      "name": "MainApp",
+      "request": "launch",
+      "mainClass": "main.View.Front.MainApp",
+      "projectName": "HUB_3a9df884",
+      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "SceneController",
+      "request": "launch",
+      "mainClass": "main.Controller.SceneController",
+      "projectName": "HUB_3a9df884"
+    },
+    {
+      "type": "java",
       "name": "MainApp",
       "request": "launch",
       "mainClass": "main.MainApp",

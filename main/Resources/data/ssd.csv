@@ -1,35 +1,35 @@
-﻿brand,storageSize,wattage,price,status
-Ramsta S800,128,3,775,TRUE
-Ramsta S801,512,3,2089,TRUE
-Ramsta S802,256,3,1175,TRUE
-Team Group GX2,256,3,1260,TRUE
-Kingston SSDNow,480,3,2290,TRUE
-Team Elite GX2,128,3,821,TRUE
-Adata SU650,256,3,1269,TRUE
-Crucial MX500,500,3,3295,TRUE
-Gigabyte GP-GSTFS31100TNTD,1000,3,4595,TRUE
-Lexar NS10 Lite,120,3,885,TRUE
-Team Group GX2,1000,3,3895,TRUE
-Kingmax,240,3,1629,TRUE
-Kingston SSDNow,240,3,1680,TRUE
-Kingston SKC600,512,3,3328,TRUE
-MSI Spatium S270,240,3,1420,TRUE
-PNY CS900,1000,3,4425,TRUE
-Adata SU650,512,3,2080,TRUE
-Storm Series,120,3,685,TRUE
-Storm Series,512,3,1895,TRUE
-Ovation BattleStar,128,3,770,TRUE
-Ovation BattleStar,256,3,1170,TRUE
-Team Group GX2,512,3,1989,TRUE
-Lexar NS10 Lite,240,3,1062,TRUE
-Team Group GX1,240,3,1195,TRUE
-Western Digital Green,240,3,2095,TRUE
-KINGMAX,960,3,3328,TRUE
-Adata SU800,128,3,1450,TRUE
-Western Digital Green,120,3,1645,TRUE
-Sandisk Plus,120,3,1275,TRUE
-Samsung 860,250,3,2375,TRUE
-Sandisk Plus,120,3,1275,TRUE
-Samsung 860 Evo,250,3,2375,TRUE
-Samsung 860 Evo ,500,3,3845,TRUE
-Western Digital,500,3,2555,TRUE
+brand,storageSize,wattage,price,status
+Ramsta S800,128,3,775.0,true
+Ramsta S801,512,3,2089.0,true
+Ramsta S802,256,3,1175.0,true
+Team Group GX2,256,3,1260.0,true
+Kingston SSDNow,480,3,2290.0,true
+Team Elite GX2,128,3,821.0,true
+Adata SU650,256,3,1269.0,true
+Crucial MX500,500,3,3295.0,true
+Gigabyte GP-GSTFS31100TNTD,1000,3,4595.0,true
+Lexar NS10 Lite,120,3,885.0,true
+Team Group GX2,1000,3,3895.0,true
+Kingmax,240,3,1629.0,true
+Kingston SSDNow,240,3,1680.0,true
+Kingston SKC600,512,3,3328.0,true
+MSI Spatium S270,240,3,1420.0,true
+PNY CS900,1000,3,4425.0,true
+Adata SU650,512,3,2080.0,true
+Storm Series,120,3,685.0,true
+Storm Series,512,3,1895.0,true
+Ovation BattleStar,128,3,770.0,true
+Ovation BattleStar,256,3,1170.0,true
+Team Group GX2,512,3,1989.0,true
+Lexar NS10 Lite,240,3,1062.0,true
+Team Group GX1,240,3,1195.0,true
+Western Digital Green,240,3,2095.0,true
+KINGMAX,960,3,3328.0,true
+Adata SU800,128,3,1450.0,true
+Western Digital Green,120,3,1645.0,true
+Sandisk Plus,120,3,1275.0,true
+Samsung 860,250,3,2375.0,true
+Sandisk Plus,120,3,1275.0,true
+Samsung 860 Evo,250,3,2375.0,true
+Samsung 860 Evo ,500,3,3845.0,true
+Western Digital,500,3,2555.0,true

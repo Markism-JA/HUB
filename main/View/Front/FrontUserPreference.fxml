@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" style="-fx-background-image: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.View.Front.FrontUserPreferenceController">
+   <center>
+      <AnchorPane prefHeight="628.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#d6d8e2" height="131.0" layoutX="140.0" layoutY="72.0" stroke="WHITE" strokeType="INSIDE" width="529.0" />
+            <Text layoutX="116.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick Parts. Build Your PC." textAlignment="CENTER" wrappingWidth="594.7460174560547">
+               <font>
+                  <Font name="Noto Serif Hmong Nyiakeng Bold" size="35.0" />
+               </font>
+            </Text>
+            <Text layoutX="224.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We provide part selection, Automated PC Building and Compatibility Checking." textAlignment="CENTER" wrappingWidth="373.3159942626953" />
+            <Line endX="-73.0" layoutX="442.0" layoutY="247.0" startX="-100.0" />
+            <Line endX="-73.0" layoutX="536.0" layoutY="247.0" startX="-100.0" />
+            <Text layoutX="282.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QUESTION" textAlignment="CENTER" wrappingWidth="59.31599426269531">
+               <font>
+                  <Font name="Noto Sans Mono CJK KR" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="359.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RECOMMENDATION" textAlignment="CENTER" wrappingWidth="100.31599426269531">
+               <font>
+                  <Font name="Noto Sans Mono CJK KR" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="465.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PC BUILD" textAlignment="CENTER" wrappingWidth="100.31599426269531">
+               <font>
+                  <Font name="Noto Sans Mono CJK KR" size="13.0" />
+               </font>
+            </Text>
+            <Button fx:id="startButton" layoutX="319.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="41.0" prefWidth="188.0" style="-fx-background-color: #0f0f10;" text="    Start Your Build" textAlignment="RIGHT" textFill="#fff9f9">
+               <font>
+                  <Font name="Noto Sans Mono CJK TC" size="13.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="103.0" fitWidth="85.0" layoutX="267.0" layoutY="203.0">
+               <image>
+                  <Image url="@../Images/6.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="82.0" layoutX="474.0" layoutY="205.0">
+               <image>
+                  <Image url="@../Images/8.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="148.0" fitWidth="123.0" layoutX="343.0" layoutY="174.0">
+               <image>
+                  <Image url="@../Images/7.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="77.0" fitWidth="64.0" layoutX="316.0" layoutY="320.0">
+               <image>
+                  <Image url="@../Images/9.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
