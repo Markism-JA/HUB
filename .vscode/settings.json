@@ -63,6 +63,14 @@
     "/home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib/libjfxwebkit.so",
     "/home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib/libprism_common.so",
     "/home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib/libprism_es2.so",
-    "/home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib/libprism_sw.so"
+    "/home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib/libprism_sw.so",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.base.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.controls.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.fxml.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.graphics.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.media.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.swing.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx.web.jar",
+    "d:\\comprogproject\\javafx-sdk-22.0.1\\lib\\javafx-swt.jar"
   ]
 }

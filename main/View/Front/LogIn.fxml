@@ -40,19 +40,19 @@
                   <Font name="Noto Sans Old Italic Regular" size="14.0" />
                </font>
             </Text>
-            <TextField layoutX="177.0" layoutY="222.0" prefHeight="26.0" prefWidth="209.0" />
+            <TextField fx:id="user" layoutX="177.0" layoutY="222.0" prefHeight="26.0" prefWidth="209.0" />
             <Text fill="#0f0f10" fontSmoothingType="LCD" layoutX="44.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" textAlignment="CENTER" wrappingWidth="158.13000106811523">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="14.0" />
                </font>
             </Text>
-            <Button layoutX="117.0" layoutY="334.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #0f0f10;" text="LOG IN" textFill="WHITE" />
+            <Button fx:id="login" layoutX="117.0" layoutY="334.0" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #0f0f10;" text="LOG IN" textFill="WHITE" />
             <ImageView fitHeight="82.0" fitWidth="68.0" layoutX="213.0" layoutY="121.0">
                <image>
                   <Image url="@../Images/Lock.png" />
                </image>
             </ImageView>
-            <PasswordField layoutX="177.0" layoutY="265.0" prefHeight="26.0" prefWidth="209.0" />
+            <PasswordField fx:id="password" layoutX="177.0" layoutY="265.0" prefHeight="26.0" prefWidth="209.0" />
          </children>
       </AnchorPane>
    </right>
