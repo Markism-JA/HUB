@@ -11,26 +11,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.View.Front.SignUpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.View.Front.SignUpController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="306.0" style="-fx-background-color: #0f0f10;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="189.0" fitWidth="240.0" layoutX="33.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="75.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" HUB PC BUILDER" textAlignment="CENTER" wrappingWidth="155.13000106811523">
-               <font>
-                  <Font name="Noto Sans Adlam Bold" size="15.0" />
-               </font>
-            </Text>
-            <Text fill="#d6d8e2" layoutX="134.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CS202">
-               <font>
-                  <Font name="Noto Sans Adlam Regular" size="13.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="200.0" fitWidth="166.0" layoutX="70.0" layoutY="127.0">
+            <ImageView fitHeight="200.0" fitWidth="166.0" layoutX="70.0" layoutY="144.0">
                <image>
                   <Image url="@../Images/HUB.png" />
                </image>
             </ImageView>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="45.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" HUB PC BUILDER" textAlignment="CENTER" wrappingWidth="217.13000106811523">
+               <font>
+                  <Font name="Noto Sans Adlam Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#d6d8e2" layoutX="134.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CS202">
+               <font>
+                  <Font name="Noto Sans Adlam Regular" size="13.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </left>
@@ -66,6 +65,11 @@
             </Label>
             <PasswordField fx:id="passwordField" layoutX="212.0" layoutY="265.0" onAction="#handleSignUp" prefHeight="26.0" prefWidth="208.0" />
             <PasswordField fx:id="passVerify" layoutX="211.0" layoutY="306.0" onAction="#handleSignUp" prefHeight="26.0" prefWidth="208.0" />
+            <Label fx:id="emptyLabel" layoutX="212.0" layoutY="247.0" onDragDetected="#handleSignUp" prefHeight="18.0" prefWidth="207.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

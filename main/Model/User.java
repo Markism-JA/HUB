@@ -13,7 +13,7 @@ public class User extends CSVUtil {
     public User(String username, String password, UserPreferences preferences) {
         this.username = username;
         this.password = hashPassword(password);
-        this.preferences = preferences;
+        this.preferences = preferences != null ? preferences : null;  // Set to null if not provided
     }
 
     public String getUserName() {
