@@ -9,7 +9,7 @@ public class UserAccountManagement {
         this.users = users;
     }
 
-    public void registerUser(String username, String password, UserPreferences preferences) {
+    public void registerUser(String username, String password) {
         // Check if the username already exists
         for (User user : users) {
             if (user.getUserName().equals(username)) {
@@ -19,7 +19,7 @@ public class UserAccountManagement {
         }
 
         // Create and add new user with preferences
-        User newUser = new User(username, password, preferences);
+        User newUser = new User(username, password, null);
         users.add(newUser);
         System.out.println("User registered successfully!");
     }

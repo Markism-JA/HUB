@@ -42,25 +42,35 @@ public class FrontController implements Initializable {
        
         try {
             if (event.getSource() == adminDatabaseAccessButton) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+                root = loader.load();
+                AdminController adminController = loader.getController();
+                adminController.setDataManager(dataManager);
                 stage = (Stage) adminDatabaseAccessButton.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
             } else if (event.getSource() == loginButton) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
+                root = loader.load();
+                LoginController logInController = loader.getController();
+                logInController.setDataManager(dataManager);
                 stage = (Stage) loginButton.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
             } else if (event.getSource() == signUpButton) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+                root = loader.load();
+                SignUpController signUpController = loader.getController();
+                signUpController.setDataManager(dataManager);
                 stage = (Stage) signUpButton.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
             }
-
+    
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    
         if (root != null) {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
     }
+    
 }
     
