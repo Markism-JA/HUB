@@ -133,7 +133,17 @@ public class DataManager {
     }
 
     public static void main(String[] args) {
-        //DataManager test = new DataManager("main/Resources/data");
-        //test.loadData();
-    }
+       
+            DataManager dataManager = new DataManager("main/Resources/data");
+            List<User> users = dataManager.getUsers();
+    
+            if (users.isEmpty()) {
+                System.out.println("No users found.");
+            } else {
+                System.out.println("Loaded users:");
+                for (User user : users) {
+                    System.out.println(user);
+                }
+            }
+        }
 }

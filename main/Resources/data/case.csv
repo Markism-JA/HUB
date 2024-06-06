@@ -1,4 +1,4 @@
-﻿ID,Brand,Model,formFactor,price,status
+﻿id,Brand,Model,formFactor,price,status
 1,InPlay,Wind 05,atx,2195,TRUE
 2,InPlay,Meteor 03,atx,1050,TRUE
 3,YGT,V300,matx,1090,TRUE

@@ -1,5 +1,8 @@
 package main.Model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.List;
 
 public class UserAccountManagement {
@@ -25,7 +28,10 @@ public class UserAccountManagement {
     }
 
     public boolean loginUser(String username, String password) {
-        // Check if the username and password match
+
+      
+
+        // Check if the username and hashed password match
         for (User user : users) {
             if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
                 return true;
@@ -33,6 +39,7 @@ public class UserAccountManagement {
         }
         return false;
     }
+
 
     public void saveUserPreferences(User user, UserPreferences preferences) {
         // Save user preferences
