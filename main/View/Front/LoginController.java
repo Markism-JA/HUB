@@ -1,16 +1,11 @@
 package main.View.Front;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 public class LoginController {
-    private MainApp mainApp;
-    private DataManager dataManager;
+    private UserService userService;
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
-    public void setDataManager(DataManager dataManager) {
-        this.dataManager = dataManager;
-    }
 }
