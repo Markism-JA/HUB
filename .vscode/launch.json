@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "MainApp",
+      "request": "launch",
+      "mainClass": "main.View.Front.MainApp",
+      "projectName": "HUB_82382db1"
+    },
+    {
+      "type": "java",
       "name": "Case",
       "request": "launch",
       "mainClass": "main.Model.Components.Case",
