@@ -1,28 +1,24 @@
 package main.View.Front;
 
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.Model.DataManager;
-import main.Model.UserAccountManagement;
-import main.Model.UserPreferences;
+import main.Model.User;
 
 public class SignUpController {
-    private MainApp mainApp;
-    private UserAccountManagement userAccountManagement;
-    private DataManager dataManager;
+    private UserService userService;
 
-
-    public void setDataManager(DataManager dataManager) {
-        this.dataManager = dataManager;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @FXML
@@ -30,15 +26,6 @@ public class SignUpController {
 
     @FXML
     private Label emptyLabel;
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
-
-    public void setUserAccountManagement() {
-        this.userAccountManagement = new UserAccountManagement(dataManager.getUsers());
-    }
-
 
     @FXML
     private TextField usernameField;
@@ -61,36 +48,48 @@ public class SignUpController {
         // Get the current stage from the signUpButton
         Stage stage = (Stage) signUpButton.getScene().getWindow();
         Parent root = null;
-        
-    
+
         if (!password.equals(verifyPassword)) {
             errorLabel.setText("Passwords do not match. Please re-enter your password.");
-
         } else if (password.equals("") && passVerify.equals("")) {
             errorLabel.setText("Please enter a password.");
-           
-        
-        } else if ( username.equals("")) {
+        } else if (username.equals("")) {
             emptyLabel.setText("Please enter a username.");
-            
         } else if (password.equals(verifyPassword) && !password.equals("")) {
-
             // Clear the error message if registration is successful
             errorLabel.setText("");
             emptyLabel.setText("");
-            
-            setUserAccountManagement();
 
-            // Register the user
-            userAccountManagement.registerUser(username, password);
+            // Register the user through UserService
+            userService.getUserAccountManagement().registerUser(username, password);
 
-            try {
-                root = FXMLLoader.load(getClass().getResource("FrontUserPreference.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (Exception e) {
-                System.out.println("Error loading preference scene: " + e.getMessage());
+            List<User> users = userService.getDataManager().getUsers();
+            User newUser = null;
+            for (User user : users) {
+                if (user.getUserName().equals(username)) {
+                    newUser = user;
+                    System.out.println(user.toString() + " = User Registered");  // Print user details using toString()
+                    break;
+                }
+            }
+
+            if (newUser != null) {
+                userService.setCurrentUser(newUser);  // Set the current user in UserService
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontUserPreference.fxml")); // Replace with the actual path
+                    loader.setControllerFactory(c -> {
+                        FrontUserPreferenceController controller = new FrontUserPreferenceController();
+                        controller.setUserService(userService);  // Inject UserService into FrontUserPreferenceController
+                        return controller;
+                    });
+                    root = loader.load();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (Exception e) {
+                    System.out.println("Error loading front Preference scene: " + e.getMessage());
+                }
             }
         }
     }

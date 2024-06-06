@@ -10,13 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.Model.DataManager;
-import main.View.Front.MainApp;
 
 public class AdminController {
-    private MainApp mainApp;
-    private final String ADMINNAME = "@admin", ADMINPASS = "@admin";
-    private DataManager dataManager;
+    private final String ADMINNAME = "@admin";
+    private final String ADMINPASS = "@admin";
+    
+    private UserService userService;
     
     @FXML
     private TextField adminName;
@@ -33,16 +32,12 @@ public class AdminController {
     @FXML
     private Button adminAccess;
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
-
-    public void setDataManager(DataManager dataManager) {
-        this.dataManager = dataManager;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @FXML
-    private void handleAdminAccess(ActionEvent  event) {
+    private void handleAdminAccess(ActionEvent event) {
         String name = adminName.getText();
         String pass = adminPass.getText();
 
@@ -58,7 +53,13 @@ public class AdminController {
             errorLabelPass.setText("");
 
             try {
-                root = FXMLLoader.load(getClass().getResource(null));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminDashboard.fxml")); // Replace with the actual path
+                loader.setControllerFactory(c -> {
+                    AdminDashboardController controller = new AdminDashboardController();
+                    controller.setUserService(userService);  // Inject UserService into AdminDashboardController
+                    return controller;
+                });
+                root = loader.load();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

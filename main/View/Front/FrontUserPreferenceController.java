@@ -7,9 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 public class FrontUserPreferenceController {
+    private UserService userService;
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
   
     @FXML
     private Button startButton;
@@ -20,15 +24,18 @@ public class FrontUserPreferenceController {
         Parent root = null;
 
         try {
-            // Load the Budget.fxml file
-            root = FXMLLoader.load(getClass().getResource("Budget.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Budget.fxml")); // Replace with the actual path
+            loader.setControllerFactory(c -> {
+                BudgetController controller = new BudgetController();
+                controller.setUserService(userService);  // Inject UserService into AdminDashboardController
+                return controller;
+            });
+            root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
-            // Log the error details
-            System.err.println("Error loading Budget.fxml: " + e.getMessage());
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Error loading front Budget scene: " + e.getMessage());
         }
     }
 }

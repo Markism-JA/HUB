@@ -11,17 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import main.Model.DataManager;
+
+import main.View.Front.UserService;
 
 import java.io.IOException;
 
 public class FrontController implements Initializable {
 
-    private DataManager dataManager;
+    private UserService userService;
 
-    public void setDataManager(DataManager dataManager) {
-        this.dataManager = dataManager;
-        dataManager.loadData();
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @FXML
@@ -45,19 +45,19 @@ public class FrontController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
                 root = loader.load();
                 AdminController adminController = loader.getController();
-                adminController.setDataManager(dataManager);
+                adminController.setUserService(userService);
                 stage = (Stage) adminDatabaseAccessButton.getScene().getWindow();
             } else if (event.getSource() == loginButton) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("LogIn.fxml"));
                 root = loader.load();
                 LoginController logInController = loader.getController();
-                logInController.setDataManager(dataManager);
+                logInController.setUserService(userService);
                 stage = (Stage) loginButton.getScene().getWindow();
             } else if (event.getSource() == signUpButton) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
                 root = loader.load();
                 SignUpController signUpController = loader.getController();
-                signUpController.setDataManager(dataManager);
+                signUpController.setUserService(userService);
                 stage = (Stage) signUpButton.getScene().getWindow();
             }
     
