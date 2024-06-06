@@ -5,53 +5,58 @@ import java.util.List;
 import main.Model.CSVUtil;
 
 public class PSU extends CSVUtil{
+  private int id;
   private String brand, model, rate;
   private double price;
   private int wattage;
   private boolean status;
 
-      public PSU(String brand, String model, double price, String rate, int wattage, boolean status) {
-          this.brand = brand;
-          this.model = model;
-          this.price = price;
-          this.rate = rate;
-          this.wattage = wattage;
-          this.status = status;
-      }
+  public PSU(int id, String brand, String model, double price, String rate, int wattage, boolean status) {
+      this.id = id;
+      this.brand = brand;
+      this.model = model;
+      this.price = price;
+      this.rate = rate;
+      this.wattage = wattage;
+      this.status = status;
+  }
 
-      public String getBrand() { return brand; }
-      public void setBrand(String brand) { this.brand = brand; }
+  public int getId() { return id; }
+  public void setId(int id) { this.id = id; }
 
-      public String getModel() { return model; }
-      public void setModel(String model) { this.model = model; }
+  public String getBrand() { return brand; }
+  public void setBrand(String brand) { this.brand = brand; }
 
-      public double getPrice() { return price; }
-      public void setPrice(double price) { this.price = price; }
+  public String getModel() { return model; }
+  public void setModel(String model) { this.model = model; }
 
-      public String getRate() { return rate; }
-      public void setRate(String rate) { this.rate = rate; }
+  public double getPrice() { return price; }
+  public void setPrice(double price) { this.price = price; }
 
-      public int getWattage() { return wattage; }
-      public void setWattage(int wattage) { this.wattage = wattage; }
+  public String getRate() { return rate; }
+  public void setRate(String rate) { this.rate = rate; }
 
-      public boolean getStatus() { return status; }
-      public void setStatus(boolean status) { this.status = status; }
+  public int getWattage() { return wattage; }
+  public void setWattage(int wattage) { this.wattage = wattage; }
 
-      @Override
-      public String toString() {
-          return "PSU{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", rate='" + rate + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
-      }
+  public boolean getStatus() { return status; }
+  public void setStatus(boolean status) { this.status = status; }
 
-      public static List<PSU> readPSUFromCSV(String fileName) {
-          return readFromCSV(fileName, data -> new PSU(data[0], data[1], Double.parseDouble(data[2]), data[3], Integer.parseInt(data[4]), Boolean.parseBoolean(data[5])));
-      }
+  @Override
+  public String toString() {
+      return "PSU{" + "id=" + id + ", brand='" + brand + '\'' + ", model='" + model + '\'' + ", price=" + price + ", rate='" + rate + '\'' + ", wattage=" + wattage + ", status=" + status + '}';
+  }
 
-      public String toCSVString() {
-          return String.join(",", brand, model, Double.toString(price), rate, Integer.toString(wattage), Boolean.toString(status));
-      }
+  public static List<PSU> readPSUFromCSV(String fileName) {
+      return readFromCSV(fileName, data -> new PSU(Integer.parseInt(data[0]), data[1], data[2], Double.parseDouble(data[3]), data[4], Integer.parseInt(data[5]), Boolean.parseBoolean(data[6])));
+  }
 
-      public static void writePSUToCSV(String fileName, List<PSU> psus) {
-          writeToCSV(fileName, psus, PSU::toCSVString);
-      }
+  public String toCSVString() {
+      return String.join(",", Integer.toString(id), brand, model, Double.toString(price), rate, Integer.toString(wattage), Boolean.toString(status));
+  }
+
+  public static void writePSUToCSV(String fileName, List<PSU> psus) {
+      writeToCSV(fileName, psus, PSU::toCSVString);
+  }
 
 }

@@ -7,7 +7,7 @@ import main.Model.Components.*;
 import main.Model.Filters.*;
 import main.Model.Sorter.*;
 import main.Model.CompatibilityChecker;
-import main.Model.PCBuild.PCBuild;
+import main.Model.PCBuild;
 import main.Model.UserPreferences;
 
 public class Recommendation {
