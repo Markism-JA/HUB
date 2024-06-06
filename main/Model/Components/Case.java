@@ -5,17 +5,22 @@ import java.util.List;
 import main.Model.CSVUtil;
 
 public class Case extends CSVUtil{
+  private int id;
   private String brand, model, formFactor;
   private double price;
   private boolean status;
 
-  public Case(String brand, String model, String formFactor, double price, boolean status) {
+  public Case(int id, String brand, String model, String formFactor, double price, boolean status) {
+      this.id = id;
       this.brand = brand;
       this.model = model;
       this.formFactor = formFactor;
       this.price = price;
       this.status = status;
   }
+
+  public int getId() { return id; }
+  public void setId(int id) { this.id = id; }
 
   public String getBrand() { return brand; }
   public void setBrand(String brand) { this.brand = brand; }
@@ -34,15 +39,15 @@ public class Case extends CSVUtil{
 
   @Override
   public String toString() {
-      return "Case{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", formFactor='" + formFactor + '\'' + ", price=" + price + ", status=" + status + '}';
+      return "Case{" + "id=" + id + ", brand='" + brand + '\'' + ", model='" + model + '\'' + ", formFactor='" + formFactor + '\'' + ", price=" + price + ", status=" + status + '}';
       }
 
   public static List<Case> readCaseFromCSV(String fileName) {
-      return readFromCSV(fileName, data -> new Case(data[0], data[1], data[2], Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+      return readFromCSV(fileName, data -> new Case(Integer.parseInt(data[0]), data[1], data[2], data[3], Double.parseDouble(data[4]), Boolean.parseBoolean(data[5])));
       }
 
   public String toCSVString() {
-      return String.join(",", brand, model, Double.toString(price), Boolean.toString(status));
+      return String.join(",", Integer.toString(id), brand, model, formFactor, Double.toString(price), Boolean.toString(status));
   }
 
   public static void writeCaseToCSV(String fileName, List<Case> cases) {
@@ -50,10 +55,5 @@ public class Case extends CSVUtil{
   }
 
   public static void main(String[] args) {
-        List<Case> cases = readCaseFromCSV("main/Resources/data/case.csv");
-
-        for (Case caseItem : cases) {
-            System.out.println(caseItem);
-        }
   }
 }

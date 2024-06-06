@@ -5,18 +5,23 @@ import java.util.List;
 import main.Model.CSVUtil;
 
 public class InternalStorage extends CSVUtil{
+  private int id;
   private String brand;
   private int storageSize, wattage;
   private double price;
   private boolean status;
 
-  public InternalStorage (String brand, int storageSize, int wattage, double price, boolean status) {
+  public InternalStorage(int id, String brand, int storageSize, int wattage, double price, boolean status) {
+      this.id = id;
       this.brand = brand;
       this.storageSize = storageSize;
       this.wattage = wattage;
       this.price = price;
       this.status = status;
   }
+
+  public int getId() { return id; }
+  public void setId(int id) { this.id = id; }
 
   public String getBrand() { return brand; }
   public void setBrand(String brand) { this.brand = brand; }
@@ -35,15 +40,15 @@ public class InternalStorage extends CSVUtil{
 
   @Override
   public String toString() {
-      return "InternalStorage{" + "brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +", price=" + price + ", status=" + status + '}';
+      return "InternalStorage{" + "id=" + id + ", brand='" + brand + '\'' + ", storageSize=" + storageSize + ", wattage=" + wattage +", price=" + price + ", status=" + status + '}';
   }
 
   public static List<InternalStorage> readInternalStorageFromCSV(String fileName) {
-      return readFromCSV(fileName, data -> new InternalStorage(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Double.parseDouble(data[3]), Boolean.parseBoolean(data[4])));
+      return readFromCSV(fileName, data -> new InternalStorage(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Double.parseDouble(data[4]), Boolean.parseBoolean(data[5])));
   }
 
   public String toCSVString() {
-      return String.join(",", brand, Integer.toString(storageSize), Integer.toString(wattage), Double.toString(price), Boolean.toString(status));
+      return String.join(",", Integer.toString(id), brand, Integer.toString(storageSize), Integer.toString(wattage), Double.toString(price), Boolean.toString(status));
   }
 
   public static void writeInternalStorageToCSV(String fileName, List<InternalStorage> internalStorages) {

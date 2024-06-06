@@ -54,8 +54,8 @@ public class UserAccountManagement {
     private int getNextUserID() {
         int maxUserID = 0;
         for (User user : users) {
-            if (user.getUserID() > maxUserID) {
-                maxUserID = user.getUserID();
+            if (user.getId() > maxUserID) {
+                maxUserID = user.getId();
             }
         }
         return maxUserID + 1;
