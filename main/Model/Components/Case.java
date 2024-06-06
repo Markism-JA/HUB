@@ -48,4 +48,12 @@ public class Case extends CSVUtil{
   public static void writeCaseToCSV(String fileName, List<Case> cases) {
     writeToCSV(fileName, cases, Case::toCSVString);
   }
+
+  public static void main(String[] args) {
+        List<Case> cases = readCaseFromCSV("main/Resources/data/case.csv");
+
+        for (Case caseItem : cases) {
+            System.out.println(caseItem);
+        }
+  }
 }

@@ -1,0 +1,94 @@
+﻿ID,brand,model,ddr,price,wattage,frequency,status,capacity
+1,Kingston,Fury Beast KF432C16BB/32 32 1x32 3200Mhz Ddr4 Memory Black,ddr4,4450,10,3200,TRUE,32
+2,Team Elite,TForce Delta 8 1x8 2666mhz Ddr4 RGB Memory White,ddr4,4230,10,2666,TRUE,8
+3,Kingston,Fury Beast 8 1x8 2666mhz Ddr4 Memory Black,ddr4,3845,10,2666,TRUE,8
+4,G.Skill,Trident Z 16 1x8 Memory 3600mhz Ddr4 RGB,ddr4,3717,10,3600,TRUE,16
+5,Kingston,Fury Beast 16 KF432C16BB2A/16 1x16 3200MT/s Ddr4 Memory RGB Black,ddr4,2998,10,3200,TRUE,16
+6,Kingston,Fury Beast 16 KF432C16BB12A/16 1x16 3200MT/s Ddr4 Memory RGB Black,ddr4,2974,10,3200,TRUE,16
+7,Kingston,Fury Beast 16 1x16 3200MT/s DDR4 Memory RGB White Special Edition,ddr4,2950,10,3200,TRUE,16
+8,Corsair,Vengeance Pro Memory 1x8 Ddr4 3200mhz Black RGB,ddr4,2898,10,3600,TRUE,8
+9,G.Skill,Trident Z F4-3600C18D-32GTZR 32 1x16 3600mhz Ddr4 RGB Memory,ddr4,2632,10,3600,TRUE,32
+10,Team Elite,Vulcan Z 16 1x8 3600mHz Gray DDR4 Memory,ddr4,2625,10,3200,TRUE,16
+11,Team Elite,TForce Delta 16 1x16 3200mhz Ddr4 RGB Memory White,ddr4,2620,10,3200,TRUE,16
+12,Kingston,Fury Beast 16 1x16 3200MT/s Ddr4 Memory RGB Black,ddr4,2565,10,3200,TRUE,16
+13,Avexir,Core 2 16 2x8 3200mhz Ddr4 2c2a RGB Memory Titanium,ddr4,2366,10,3200,TRUE,16
+14,TEAMGROUP,T-Create Expert TTCED416G3600HC18JDC01 16 2 x 8GB 3600MHz DDR4 CL18 Memory,ddr4,2360,10,3600,TRUE,16
+15,Corsair,Vengeance Pro SL 16 1x8 3200mhz Ddr4 RGB Memory White,ddr4,2357,10,3200,TRUE,16
+16,Avexir,Core 2 16 1x8 3200mhz Ddr4 2c2c RGB Memory Light Gray,ddr4,2335,10,3200,TRUE,16
+17,Corsair,Vengeance Pro SL 16 1x8 3200mhz Ddr4 RGB Memory Black,ddr4,2333,10,3200,TRUE,16
+18,Corsair,Vengeance Pro 16 2x8 Ddr4 3000MHz XMP 2.0 Aluminum Heat Spreader RGB LED Lighting White Gaming Memory,ddr4,2250,10,3000,TRUE,16
+19,Kingston,HyperX Fury Memory 1x8 Ddr4-2666 CL16 Black RGB,ddr4,2225,10,2666,TRUE,8
+20,Team Elite,TForce Delta 16 1x8 3600mhz Ddr4 RGB Memory Black,ddr4,2225,10,3600,TRUE,16
+21,Team Elite,Dark ZA 16 1x8 3600 Ddr4 Gaming Memory,ddr4,2075,10,3600,TRUE,16
+22,Crucial,Ballistix 8 Ddr4 3200mhz Desktop Gaming Memory White,ddr4,2050,10,3200,TRUE,8
+23,PNY,XLR8 8 8x1 3200Mhz Ddr4 RGB Gaming Memory,ddr4,1999,10,3200,TRUE,8
+24,Adata,Spectrix D60G 16 1x8 3200mhz Ddr4 RGB Lights Memory Tungsten Grey White,ddr4,1980,10,3200,TRUE,16
+25,G.Skill,Trident Z Neo 16 1x8 3600mhz Ddr4 RGB Memory,ddr4,1977,10,3600,TRUE,16
+26,Corsair,Vengeance LPX 8 1x8 3000Mhz Ddr4 C16 Memory Black,ddr4,1950,10,3000,TRUE,8
+27,Crucial,Ballistix 16 2x8 Ddr4 3200Mhz RGB Gaming Memory Black,ddr4,1925,10,3200,TRUE,16
+28,G.Skill,Trident Z Neo 16 2x8 Memory 3200mhz Ddr4 RGB,ddr4,1910,10,3200,TRUE,16
+29,Adata,Spectrix D50 8 1x8 3200mhz Ddr4 RGB Memory White with Heatsink,ddr4,1909,10,3200,TRUE,8
+30,Team Elite,TForce Delta 8 1x8 Memory 2400mhz Ddr4 RGB White,ddr4,1895,10,2400,TRUE,8
+31,Kingston,Fury Beast 8 1x8 3200MT/s DDR4 Memory RGB White Special Edition,ddr4,1888,10,3200,TRUE,8
+32,Kingston,KVR26N19S6/8 8 1x8 1Rx16 2666mhz Ddr4 Memory Black,ddr4,1785,10,2666,TRUE,8
+33,Patriot,PSP416G320081H1 1x16 3200Mhz Ddr4 Udimm w/ HeatShield Memory Black,ddr4,1760,10,3200,TRUE,16
+34,Adata,XPG Flame Memory 1x8 2666mhz Ddr4 Sodimm,ddr4,1750,10,2666,TRUE,8
+35,Crucial,Ballistix 8 Ddr4 3200mhz Desktop Gaming Memory Black,ddr4,1735,10,3200,TRUE,8
+36,Adata,Gammix D30 8 1x8 3200mhz Grey and Black Ddr4 Memory with Heatsink,ddr4,1680,10,3200,TRUE,8
+37,Datotek,8 1x8 Ddr4 2666 Value Memory,ddr4,1645,10,2666,TRUE,8
+38,PNY,XLR8 16 8x2 3200Mhz Ddr4 RGB Gaming Memory,ddr4,1598,10,3200,TRUE,16
+39,Team Elite,TForce Delta 16 1x8 3200mhz Ddr4 RGB Memory White,ddr4,1563,10,3200,TRUE,16
+40,GeIL,Orion 16 2x8 3200mhz Ddr4 RGB Memory Titanium Gray,ddr4,1528,10,3200,TRUE,16
+41,PNY,XLR8 16 8x2 3200Mhz Ddr4 RGB Gaming Memory White,ddr4,1504,10,3200,TRUE,16
+42,Adata,XPG Spectrix D50 16 2x8 3200mHz DDR4 RGB Memory Tungsten-Grey,ddr4,1470,10,3200,TRUE,16
+43,Adata,XPG Spectrix D50 16 1x8 3200mHz DDR4 RGB White Memory,ddr4,1416,10,3200,TRUE,16
+44,GeIL,Orion 8 1x8 3200mhz Ddr4 Stunning and smooth RGB effects Memory Titanium Gray,ddr4,1340,10,3200,TRUE,8
+45,Team Elite,Vulcan Z 16 1x8 3200mHz Gray DDR4 Memory,ddr4,1268,10,3200,TRUE,16
+46,Team Elite,Vulcan TUF 16 1x8 3200mhz Ddr4 Gaming Memory,ddr4,1265,10,3200,TRUE,16
+47,G.Skill,Ripjaws V 16 2x8 3200mhz Ddr4 Memory Black,ddr4,1239,10,3200,TRUE,16
+48,G.Skill,Ripjaws V 8 1x8 3200mhz Ddr4 Memory,ddr4,1239,10,3200,TRUE,8
+49,Ramsta,8 1x8 Ddr4-2666mhz Red Wide,ddr4,1195,10,2666,TRUE,8
+50,PNY,XLR8 MN8GSD43200XR-RB 8 1x8 3200mhz Ddr4 Sodimm Memory,ddr4,1180,10,3200,TRUE,8
+51,Team Elite,Plus 8 1x8 3200Mhz Black Gold Ddr4 Memory,ddr4,1163,10,3200,TRUE,8
+52,Adata,8 1x8 Memory 2400mhz Ddr4,ddr4,1148,10,2400,TRUE,8
+53,Lexar,Thor 8 LD4BU008G-R3200GSXG 1x8 3200Mhz DDR4 Memory Dark Grey,ddr4,1121,10,3200,TRUE,8
+54,Ramsta,8 1x8 3200mHz DDR4 Memory Red,ddr4,1060,10,3200,TRUE,8
+55,Team Elite,Plus 4 1x4 Memory 2400mhz Ddr4 Black Gold,ddr4,1050,10,2400,TRUE,4
+56,Adata,Memory 4 Ddr4-2666,ddr4,995,10,2666,TRUE,4
+57,Leven,Memory 1x4 2400mhz Ddr4,ddr4,950,10,2400,TRUE,4
+58,Ramsta,4 1x4 Ddr4-2666mhz DDR4 Memory,ddr4,850,10,2666,TRUE,4
+59,G.Skill,Trident Z5 Neo 64 1x32 6000mhz Ddr5 RGB Memory,ddr5,9120,15,6000,TRUE,64
+60,G.Skill,Trident Z5 64 1x32 6400mhz Ddr5 RGB Memory White,ddr5,7478,15,6400,TRUE,64
+61,G.Skill,Trident Z5 64 1x32 6400mhz Ddr5 RGB Memory,ddr5,7475,15,6400,TRUE,64
+62,Kingston,Fury Beast KF560C40BBA-32 32 (1x32) DDR5 6000MT/s CL40 Black RGB XMP,ddr5,6895,15,6000,TRUE,32
+63,Kingston,Fury Beast 32 KF556C40BBA-32 1x32 5600MT/s Ddr5 CL40 Memory RGB Black Intel XMP,ddr5,6495,15,5600,TRUE,32
+64,Kingston,Fury Beast 64 KF556C40BBAK2-64 1x32 5600MT/s Ddr5 CL40 Memory RGB Black Intel XMP,ddr5,6372,15,5600,TRUE,64
+65,Kingston,Fury Beast KF556C40BB-32 32 (1x32) DDR5 5600MT/s CL40 Black XMP,ddr5,6050,15,5600,TRUE,32
+66,Kingston,Fury Beast 64 KF556C40BBK2-64 1x32 5600MT/s Ddr5 CL40 Memory Black Intel XMP,ddr5,6000,15,5600,TRUE,64
+67,Kingston,Fury Beast 32 KF552C36BBE-32 1x32 5200MT/s Ddr5 CL36 Memory Black AMD EXPO,ddr5,5841,15,5200,TRUE,32
+68,Kingston,Fury Beast 32 KF552C40BB-32 1x32 5200MT/s Ddr5 CL40 Memory Black Intel XMP,ddr5,5750,15,5200,TRUE,32
+69,Kingston,Fury Beast 32 2x16 5200MT/s Ddr5 Memory Black,ddr5,5016,15,5200,TRUE,32
+70,G.Skill,Trident Z5 Neo 32 2x16 6400mhz Ddr5 RGB AMD Expo Memory,ddr5,4425,15,6400,TRUE,32
+71,PNY,MAKO 16 MD16GSD5600040MXRGB 1x16 6000MT/s Ddr5 CL40 Memory RGB Black,ddr5,4395,15,6000,TRUE,16
+72,G.Skill,Trident Z5 Neo 32 1x16 6000mhz Ddr5 RGB AMD Expo Memory,ddr5,4075,15,6000,TRUE,32
+73,Kingston,Fury Beast KF560C40BBA-16 16 (1x16) DDR5 6000MT/s CL40 Black RGB XMP,ddr5,4000,15,6000,TRUE,16
+74,G.Skill,Trident Z5 32 2x16 6000mhz Ddr5 Intel XMP Memory,ddr5,3998,15,6000,TRUE,32
+75,PNY,MAKO 16 MD16GSD5600040MXR 1x16 6000MT/s Ddr5 CL40 Memory Black,ddr5,3995,15,6000,TRUE,16
+76,G.SKILL,Trident Z5 32 2x16 F5-5600J3636C16GX2-TZ5RS 5600mHz DDR5 RGB Memory Silver,ddr5,3898,15,5600,TRUE,32
+77,G.SKILL,Trident Z5 32 1x16 F5-5600J3636C16GX2-TZ5RS 5600mHz DDR5 RGB Memory Silver Intel XMP,ddr5,3898,15,5600,TRUE,32
+78,Kingston,Fury Beast KF560C40BBAK2-32 32 (1x16) DDR5 6000MT/s CL40 Black RGB XMP,ddr5,3898,15,6000,TRUE,32
+79,Kingston,Fury Beast 16 KF552C40BBA-16 1x16 5200MT/s Ddr5 CL40 Memory,ddr5,3741,15,5200,TRUE,16
+80,Kingston,Fury Beast KF556C36BBEA-16 16 (1x16) DDR5 5600MT/s CL36 Black RGB EXPO,ddr5,3710,15,5600,TRUE,16
+81,Kingston,Fury Beast 32 KF556C40BBAK2-32 1x16 5600MT/s Ddr5 CL40 Memory RGB Black Intel XMP,ddr5,3640,15,5600,TRUE,32
+82,Kingston,Fury Beast KF556C36BBEAK2-32 32 (2x16) DDR5 5600MT/s CL36 Black RGB EXPO,ddr5,3598,15,5600,TRUE,32
+83,Kingston,Fury Beast KF560C40BBK2-32 32 2x16 6000MT/s DDR5 Memory Black,ddr5,3598,15,6000,TRUE,32
+84,Team Elite,TForce Delta 32 FF3D532G5600HC36BDC01 2x16 5600mhz Ddr5 RGB Memory Black,ddr5,3598,15,5600,TRUE,32
+85,TEAMGROUP,T-Create Expert OC 10L CTCED532G6000HC38ADC01 32 2x16GB 6000MHz DDR5 CL38 Memory,ddr5,3476,15,6000,TRUE,32
+86,TEAMGROUP,T-Create Classic 10L CTCCD532G6000HC48DC01 32 1 x 16GB 6000MHz DDR5 CL48,ddr5,3381,15,6000,TRUE,32
+87,Kingston,Fury Beast 32 KF556C40BBK2-32 1x16 5600MT/s Ddr5 CL40 Memory Black Intel XMP,ddr5,3363,15,5600,TRUE,32
+88,TEAMGROUP,T-Create Classic 10L CTCCD532G5600HC46DC01 32 1x 16GB 5600MHz DDR5 CL46,ddr5,3237,15,5600,TRUE,32
+89,Kingston,Fury Beast 8 KF552C40BBA-8 1x8 5200MT/s Ddr5 CL40 Memory RGB,ddr5,2650,15,5200,TRUE,8
+90,T-Force,Vulcan 32 2x16 5600mHz Black DDR5 Memory,ddr5,2438,15,5600,TRUE,32
+91,Kingston,Fury Beast KF560C40BBK2-16 16 (1x8) DDR5 6000MT/s CL40 Black XMP,ddr5,2118,15,6000,TRUE,16
+92,Kingston,Fury Beast KF556C40BBK2-16 16 (1x8) DDR5 5600MT/s CL40 Black XMP,ddr5,2075,15,5600,TRUE,16
+93,Kingston,Fury Beast 16 KF552C36BBEK2-16 1x8 5200MT/s Ddr5 CL36 Memory,ddr5,1888,15,5200,TRUE,16
