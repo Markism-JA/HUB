@@ -1,4 +1,4 @@
-package main.Model.PCBuild;
+package main.Model;
 
 import main.Model.Components.CPU;
 import main.Model.Components.Case;
@@ -11,7 +11,9 @@ import main.Model.Components.PSU;
 import main.Model.Components.Ram;
 import main.Model.Components.SSD;
 
-public class MidHighPCBuild {
+public class PCBuild {
+    private int ID;  
+
     private CPU cpu;
     private GPU gpu;
     private Case case1;
@@ -23,7 +25,7 @@ public class MidHighPCBuild {
     private HDD hdd;
     private SSD ssd;
 
-    public MidHighPCBuild (CPU cpu, GPU gpu, Case case1, MotherBoard motherBoard, Ram ram, InternalStorage storage, HDD hdd,SSD ssd, Fan fan, PSU powerSupply) {
+    public PCBuild ( CPU cpu, GPU gpu, Case case1, MotherBoard motherBoard, Ram ram, InternalStorage storage, HDD hdd,SSD ssd, Fan fan, PSU powerSupply) {
       this.cpu = cpu;
       this.gpu = gpu;
       this.case1 = case1;
@@ -34,6 +36,7 @@ public class MidHighPCBuild {
       this.fan = fan;
       this.hdd = hdd;
       this.ssd = ssd;
+      ID = 0;
     }
 
     public CPU getCpu() { return cpu; }
@@ -54,17 +57,28 @@ public class MidHighPCBuild {
     public InternalStorage getStorage() { return storage; }
     public void setInternalStorage(InternalStorage storage) { this.storage = storage; } 
 
-    public PSU powerSupply() { return powerSupply; }
+    public PSU getPowerSupply() { return powerSupply; }
     public void setPowerSupply(PSU powerSupply) { this.powerSupply = powerSupply; }
 
-    public Fan fan() { return fan; }
+    public Fan getFan() { return fan; }
     public void setFan(Fan fan) { this.fan = fan; }
 
-    public HDD hdd() { return hdd; }
+    public HDD getHdd() { return hdd; }
     public void setHDD(HDD hdd) { this.hdd = hdd; }
 
-    public SSD ssd() { return ssd; }
+    public SSD getSsd() { return ssd; }
     public void setSSD(SSD ssd) { this.ssd = ssd; }
+
+    public int getID() { return ID; }
+    public void setID(int ID) { this.ID = ID; }
+
+
+
+    @Override
+    public String toString() {
+      return "PCBuild{" + "ID=" + ID + "cpu=" + cpu.getBrand() + ", gpu=" + gpu.getBrand() + ", case1=" + case1.getBrand() + ", motherBoard=" + motherBoard.getBrand() + ", ram=" + ram.getBrand() + ", storage=" + storage.getBrand() + ", powerSupply=" + powerSupply.getBrand() + ", fan=" + fan.getBrand() + ", hdd=" + hdd.getBrand() + ", ssd=" + ssd.getBrand() + '}';
+    }
+
 
 }
 

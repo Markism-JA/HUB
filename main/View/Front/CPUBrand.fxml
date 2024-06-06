@@ -6,26 +6,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-border-radius: 100;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.View.Front.CPUBrandController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.View.Front.CPUBrandController">
    <center>
       <AnchorPane prefHeight="350.0" prefWidth="650.0" style="-fx-background-color: #fefefe;" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="115.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. What is the preferred CPU brand?" textAlignment="CENTER" wrappingWidth="470.1870002746582">
+            <Text layoutX="165.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. What is the preferred CPU brand?" textAlignment="CENTER" wrappingWidth="470.1870002746582">
                <font>
                   <Font name="Trebuchet MS" size="19.0" />
                </font>
             </Text>
-            <Button fx:id="Intel" layoutX="85.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="Intel">
+            <Button fx:id="Intel" layoutX="135.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="Intel">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="amd" layoutX="365.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="AMD">
+            <Button fx:id="amd" layoutX="415.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="AMD">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="NoPref" layoutX="225.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="No Preference">
+            <Button fx:id="NoPref" layoutX="275.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="No Preference">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>

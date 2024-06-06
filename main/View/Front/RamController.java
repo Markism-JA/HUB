@@ -16,28 +16,32 @@ public class RamController {
       this.userService = userService;
   }
 
-  private int storage; // String for budget tier
+  private int ram; // String for budget tier
 
   @FXML
-  private Button first, second, third, fourth;
+  private Button first, second, third, fourth, NoPref;
 
   @FXML
   private void handleButtonAction(ActionEvent event) throws InvalidBudgetException {
 
     if (event.getSource() == first) {
-      storage = 256;
+      ram = 8;
     } else if (event.getSource() == second) {
-      storage = 512;
+      ram = 16;
     } else if (event.getSource() == third) {
-      storage = 1000;
+      ram = 32;
+    } else if (event.getSource() == fourth) {
+      ram = 64;
+    } else if (event.getSource() == NoPref) {
+      ram = 0;
     }
 
     User currentUser = userService.getCurrentUser();
 
 
     // Set the user's budget preference
-    currentUser.getPreferences().setStorage(storage);
-    System.out.println(currentUser.getUserName() + " = Set Storage: " + storage);
+    currentUser.getPreferences().setStorage(ram);
+    System.out.println(currentUser.getUserName() + " = Set Ram: " + ram);
 
       // Load the new scene
       loadNewScene();
@@ -49,9 +53,9 @@ public class RamController {
       Parent root = null;
 
       try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("storage.fxml")); // Replace with the actual path
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CaseFormFactor.fxml")); // Replace with the actual path
         loader.setControllerFactory(c -> {
-            StorageController controller = new StorageController();
+            CaseController controller = new CaseController();
             controller.setUserService(userService);  // Inject UserService into AdminDashboardController
             return controller;
         });
@@ -60,7 +64,7 @@ public class RamController {
         stage.setScene(scene);
         stage.show();
     } catch (Exception e) {
-        System.out.println("Error loading front storage scene: " + e.getMessage());
+        System.out.println("Error loading front form factor scene: " + e.getMessage());
     }
   }
 

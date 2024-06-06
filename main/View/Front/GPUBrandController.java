@@ -1,5 +1,7 @@
 package main.View.Front;
 
+//import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +43,11 @@ public class GPUBrandController {
 
       // Load the new scene
       loadNewScene();
+      
+      //List<User> users = userService.getDataManager().getUsers();
+      //for (User user : users) {
+          //System.out.println(user.toString());
+      //}
   }
 
 

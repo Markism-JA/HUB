@@ -9,49 +9,58 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import main.Model.User;
 
-public class StorageController {
+import main.Model.Recommendation;
+
+import java.util.List;
+
+public class CaseController {
   private UserService userService;
 
   public void setUserService(UserService userService) {
       this.userService = userService;
   }
 
-  private int storage; // String for budget tier
+  private String formFactor; // String for budget tier
 
   @FXML
-  private Button first, second, third, fourth;
+  private Button ATX, MiniATX, MicroATX;
 
   @FXML
   private void handleButtonAction(ActionEvent event) throws InvalidBudgetException {
 
-    if (event.getSource() == first) {
-      storage = 256;
-    } else if (event.getSource() == second) {
-      storage = 512;
-    } else if (event.getSource() == third) {
-      storage = 1000;
-    } 
+    if (event.getSource() == ATX) {
+      formFactor = "ATX";
+    } else if (event.getSource() == MiniATX) {
+      formFactor = "Mini-ATX";
+    } else if (event.getSource() == MicroATX) {
+      formFactor = "Micro-ATX";
+    }
 
     User currentUser = userService.getCurrentUser();
 
 
     // Set the user's budget preference
-    currentUser.getPreferences().setStorage(storage);
-    System.out.println(currentUser.getUserName() + " = Set Storage: " + storage);
+    currentUser.getPreferences().setFormFactor(formFactor);
+    System.out.println(currentUser.getUserName() + " = Set Form Factor: " + formFactor);
 
-      // Load the new scene
-      loadNewScene();
+    Recommendation recommendation =  new Recommendation(userService.getDataManager(), userService.getCurrentUser().getPreferences());
+          
+    System.out.println(userService.getCurrentUser().getUserName() + ": Preferences Set ");
+      
+    loadNewScene();
+
+
   }
 
 
   private void loadNewScene() {
-      Stage stage = (Stage) first.getScene().getWindow();
+      Stage stage = (Stage) ATX.getScene().getWindow();
       Parent root = null;
 
       try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Ram.fxml")); // Replace with the actual path
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CaseFormFactor.fxml")); // Replace with the actual path
         loader.setControllerFactory(c -> {
-            RamController controller = new RamController();
+            CaseController controller = new CaseController();
             controller.setUserService(userService);  // Inject UserService into AdminDashboardController
             return controller;
         });
@@ -60,7 +69,7 @@ public class StorageController {
         stage.setScene(scene);
         stage.show();
     } catch (Exception e) {
-        System.out.println("Error loading front  scene: " + e.getMessage());
+        System.out.println("Error loading front form factor scene: " + e.getMessage());
     }
   }
 

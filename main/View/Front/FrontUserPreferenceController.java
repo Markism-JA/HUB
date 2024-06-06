@@ -34,6 +34,8 @@ public class FrontUserPreferenceController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+            System.out.println("Starting Build");
         } catch (Exception e) {
             System.out.println("Error loading front Budget scene: " + e.getMessage());
         }

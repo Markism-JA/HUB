@@ -7,8 +7,7 @@ import main.Model.Components.*;
 import main.Model.Filters.*;
 import main.Model.Sorter.*;
 import main.Model.CompatibilityChecker;
-import main.Model.PCBuild.LowPCBuild;
-import main.Model.PCBuild.MidHighPCBuild;
+import main.Model.PCBuild.PCBuild;
 import main.Model.UserPreferences;
 
 public class Recommendation {
@@ -27,8 +26,7 @@ public class Recommendation {
 
     private CompatibilityChecker compatibilityChecking;
     
-    private LowPCBuild lowPCBuild;
-    private MidHighPCBuild midHighPCBuild;
+    private PCBuild PCBuild;
 
     public Recommendation(DataManager dataManager, UserPreferences userPreferences) {
         this.dataManager = dataManager;
@@ -45,8 +43,7 @@ public class Recommendation {
         this.sortSpecificAttributes = new SortSpecificAttributes();
         this.compatibilityChecking = new CompatibilityChecker();
         
-        this.lowPCBuild = new LowPCBuild(null, null, null, null, null, null, null, null, null);
-        this.midHighPCBuild = new MidHighPCBuild(null, null, null, null, null, null, null, null, null, null);
+        this.PCBuild = new PCBuild(null, null, null, null, null, null, null, null, null, null);
     }
 
     public void recommendComponents() {
@@ -135,15 +132,16 @@ public class Recommendation {
                                                 System.out.println(psu.toString());
 
                                                 //setPCBuild
-                                                lowPCBuild.setCpu(cpu);
-                                                lowPCBuild.setMotherBoard(motherboard);
-                                                lowPCBuild.setGPU(gpu);
-                                                lowPCBuild.setRam(ram);
-                                                lowPCBuild.setInternalStorage(storage);
-                                                lowPCBuild.setHDD(hdd);
-                                                lowPCBuild.setCase(pcCase);
-                                                lowPCBuild.setFan(fan);
-                                                lowPCBuild.setPowerSupply(psu);
+                                                PCBuild.setCpu(cpu);
+                                                PCBuild.setMotherBoard(motherboard);
+                                                PCBuild.setGPU(gpu);
+                                                PCBuild.setRam(ram);
+                                                PCBuild.setInternalStorage(storage);
+                                                PCBuild.setHDD(hdd);
+                                                PCBuild.setCase(pcCase);
+                                                PCBuild.setFan(fan);
+                                                PCBuild.setSSD(null);
+                                                PCBuild.setPowerSupply(psu);
                                                 return true;
                                             }
                                         }
@@ -188,16 +186,16 @@ public class Recommendation {
                                                         System.out.println(psu.toString());
 
 
-                                                        midHighPCBuild.setCase(pcCase);
-                                                        midHighPCBuild.setCpu(cpu);
-                                                        midHighPCBuild.setGPU(gpu);
-                                                        midHighPCBuild.setMotherBoard(motherboard);
-                                                        midHighPCBuild.setRam(ram);
-                                                        midHighPCBuild.setInternalStorage(storage);
-                                                        midHighPCBuild.setHDD(hdd);
-                                                        midHighPCBuild.setSSD(ssd);
-                                                        midHighPCBuild.setFan(fan);
-                                                        midHighPCBuild.setPowerSupply(psu);
+                                                        PCBuild.setCase(pcCase);
+                                                        PCBuild.setCpu(cpu);
+                                                        PCBuild.setGPU(gpu);
+                                                        PCBuild.setMotherBoard(motherboard);
+                                                        PCBuild.setRam(ram);
+                                                        PCBuild.setInternalStorage(storage);
+                                                        PCBuild.setHDD(hdd);
+                                                        PCBuild.setSSD(ssd);
+                                                        PCBuild.setFan(fan);
+                                                        PCBuild.setPowerSupply(psu);
                                                         return true;
                                                     }
                                                 }

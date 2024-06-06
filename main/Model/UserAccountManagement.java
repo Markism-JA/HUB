@@ -10,24 +10,22 @@ public class UserAccountManagement {
     }
 
     public void registerUser(String username, String password) {
-        // Check if the username already exists
-        for (User user : users) {
-            if (user.getUserName().equals(username)) {
-                System.out.println("Username already exists. Please choose a different username.");
-                return;
-            }
+        if (isUsernameTaken(username)) {
+            System.out.println("Username already exists. Please choose a different username.");
+            return;
         }
 
-        // Create and add new user with preferences
-        User newUser = new User(username, password, null);
+        int newUserID = getNextUserID();
+
+        // Create and add new user with null preferences
+        User newUser = new User(newUserID, username, password, null);
         users.add(newUser);
         System.out.println("User registered successfully!");
     }
 
     public void loginUser(String username, String password) {
-        // Check if the username and password match
         for (User user : users) {
-            if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
+            if (user.getUserName().equals(username) && user.getPassword().equals(User.hashPassword(password))) {
                 System.out.println("Login successful!");
                 return;
             }
@@ -36,12 +34,30 @@ public class UserAccountManagement {
     }
 
     public void saveUserPreferences(User user, UserPreferences preferences) {
-        // Save user preferences
         user.setPreferences(preferences);
         System.out.println("User preferences saved successfully!");
     }
 
     public void saveUsersToCSV(String fileName) {
         User.writeUserToCSV(fileName, users);
+    }
+
+    private boolean isUsernameTaken(String username) {
+        for (User user : users) {
+            if (user.getUserName().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int getNextUserID() {
+        int maxUserID = 0;
+        for (User user : users) {
+            if (user.getUserID() > maxUserID) {
+                maxUserID = user.getUserID();
+            }
+        }
+        return maxUserID + 1;
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class CSVUtil {
+    public static final String NULL_VALUE = "NULL";
   //getHeader for each component class
   
     @FunctionalInterface
@@ -31,7 +32,7 @@ public class CSVUtil {
         String line;
         String splitBy = ",";
         boolean isFirstLine = true;
-
+    
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             while ((line = br.readLine()) != null) {
                 if (isFirstLine) {
@@ -40,6 +41,11 @@ public class CSVUtil {
                 }
                 String[] data = line.split(splitBy);
                 try {
+                    for (int i = 0; i < data.length; i++) {
+                        if (data[i].isEmpty() || data[i] == null) {
+                            data[i] = NULL_VALUE;
+                        }
+                    }
                     T item = mapper.apply(data);
                     if (item != null) {
                         items.add(item);
@@ -51,21 +57,25 @@ public class CSVUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    
         return items;
     }
+    
 
     //CSVWriter
     public static <T> void writeToCSV(String fileName, List<T> items, CSVMapper<T> mapper) {
         String header = getHeader(items.get(0).getClass());
         try (FileWriter writer = new FileWriter(fileName)) {
             writer.write(header + "\n"); // Write header
-
+    
             for (T item : items) {
-                writer.write(mapper.apply(item) + "\n");
+                String dataString = mapper.apply(item);
+                dataString = dataString.replaceAll(NULL_VALUE, ""); // Remove NULL_VALUE from non-null fields (optional)
+                writer.write(dataString + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }                                                                                                                               
+    }
+                                                                                                                                   
 }
