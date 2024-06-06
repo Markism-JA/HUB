@@ -7,20 +7,20 @@ import java.util.Base64;
 
 public class User extends CSVUtil {
     
-    private int id;
+    private int userID;
     private String username;
     private String password;
     private UserPreferences preferences;
 
     public User(int userID, String username, String password, UserPreferences preferences) {
-        this.id = userID;
+        this.userID = userID;
         this.username = username;
         this.password = hashPassword(password);
         this.preferences = preferences != null ? preferences : null;  // Set to null if not provided
     }
 
-    public int getId() {
-        return id;
+    public int getUserID() {
+        return userID;
     }
 
     public String getUserName() {
@@ -52,7 +52,7 @@ public class User extends CSVUtil {
 
     @Override
     public String toString() {
-        return "User [userID=" + id + ", username=" + username + ", password=" + password + ", preferences=" + preferences + "]";
+        return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", preferences=" + preferences + "]";
     }
 
     public static List<User> readUsersFromCSV(String fileName) {
@@ -64,7 +64,7 @@ public class User extends CSVUtil {
     }
 
     public String toCSVString() {
-        return String.join(",",Integer.toString(id), username, password, preferences.toCSVString());
+        return String.join(",",Integer.toString(userID), username, password, preferences.toCSVString());
     }
 
     public static void writeUserToCSV(String fileName, List<User> users) {
