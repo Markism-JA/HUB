@@ -15,17 +15,17 @@
                   <Font name="Trebuchet MS" size="19.0" />
                </font>
             </Text>
-            <Button layoutX="135.0" layoutY="192.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="LOW (15,000 - 25 ,000)">
+            <Button fx:id="low" layoutX="135.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="LOW (15,000 - 25 ,000)">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="415.0" layoutY="192.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="MID (25,000 - 50,000)">
+            <Button fx:id="mid" layoutX="415.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="MID (25,000 - 50,000)">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="275.0" layoutY="261.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="HIGH (70,000 &amp; Above)">
+            <Button fx:id="high" layoutX="275.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #d6d8e2;" text="HIGH (70,000 &amp; Above)">
                <font>
                   <Font name="Noto Sans Old Italic Regular" size="13.0" />
                </font>
