@@ -3,6 +3,7 @@ package main.Model.DatabaseComponent;
 import java.util.List;
 
 import main.Model.CSVUtil;
+import main.Model.Components.Case;
 
 public class CaseDatabase extends CSVUtil{
   private String name, formFactor;
@@ -39,4 +40,12 @@ public class CaseDatabase extends CSVUtil{
   public static void writeCaseToCSV(String fileName, List<CaseDatabase> cases) {
     writeToCSV(fileName, cases, CaseDatabase::toCSVString);
   }
+  public static void main(String[] args) {
+        List<CaseDatabase> cases = readCaseFromCSV("main/Resources/data/CaseDataBase.csv");
+
+        for (CaseDatabase caseItem : cases) {
+            System.out.println(caseItem);
+        }
+  }
+  
 }

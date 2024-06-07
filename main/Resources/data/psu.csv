@@ -1,4 +1,4 @@
-﻿ID,brand,model,rate,price,wattage,status
+﻿ID,brand,model,price,rate,wattage,status
 1,MSI,MAG A550BN,2793,bronze,550,TRUE
 2,Keytech,BTS 550,1083,bronze,550,TRUE
 3,Silverstone,SST-ST50F-ES230,1790,silver,500,TRUE

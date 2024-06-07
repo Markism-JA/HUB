@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CaseDatabase",
+      "request": "launch",
+      "mainClass": "main.Model.DatabaseComponent.CaseDatabase",
+      "projectName": "HUB_a425bee1"
+    },
+    {
+      "type": "java",
       "name": "Run MainApp (Front)",
       "request": "launch",
       "mainClass": "main.View.Front.MainApp",

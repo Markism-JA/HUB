@@ -1,4 +1,4 @@
-﻿ID,chipset,brand,memory,wattage,price,status
+﻿ID,chipset,brand,memory,price,wattage,status
 1,RTX 4090,ASUS ROG Strix,24,119995,630,TRUE
 2,RTX 4090,MSI Suprim X,24,116990,630,TRUE
 3,RTX 4090,Gigabyte AORUS Master,24,118500,630,TRUE
