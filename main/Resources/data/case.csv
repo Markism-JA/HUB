@@ -1,0 +1,106 @@
+﻿id,Brand,Model,formFactor,price,status
+1,InPlay,Wind 05,atx,2195,TRUE
+2,InPlay,Meteor 03,atx,1050,TRUE
+3,YGT,V300,matx,1090,TRUE
+4,Dark Flash, DLM21 Mesh,matx,2195,TRUE
+5,Rakk,Mirad,matx,1395,TRUE
+6,Fantech,Pulse CG71,atx,1462,TRUE
+7,Keytech ,Armor Knight Series,atx,1225,TRUE
+8,DarkFlash,C285P ATX,atx,2830,TRUE
+9,YGT ,V300,matx,1150,TRUE
+10,Fantech,Aero CG80,atx,2484,TRUE
+11,DarkFlash ,DLM22,matx,2149,TRUE
+12,Rakk ,DULUS ,atx,1395,TRUE
+13,Fantech,CG71 ,mitx,1576,TRUE
+14,Keytech,T-100,matx,995,TRUE
+15,MSI,MAG Forge M100A,matx,2183,TRUE
+16,Keytech,K6,matx,690,TRUE
+17,Rakk,Hamrus-M,matx,2695,TRUE
+18,MSI,MAG FORGE M100R,atx,3338,TRUE
+19,Neutron,2817,matx,1110,TRUE
+20,Keytech,Robin Mini Dual Chamber,matx,1980,TRUE
+21,DarkFlash ,C285P,atx,2995,TRUE
+22,MSI,MAG Shield M301,matx,1490,TRUE
+23,DarkFlash ,DS900,atx,2715,TRUE
+24,Rakk,Naya,atx,1195,TRUE
+25,Deepcool ,Smarter,matx,1444,TRUE
+26,Deepcool ,D-Shield v2,atx,1906,TRUE
+27,Fantech ,CG80 ,atx,2595,TRUE
+28,Corsair,4000D CS-CC-9011198,atx,5325,TRUE
+29,Neutron ,2817 Mini Atx Case,atx,1115,TRUE
+30,Keytech,T-1000 ,atx,1329,TRUE
+31,Deepcool,CG560,atx,4043,TRUE
+32,LianLi,O11D,atx,7392,TRUE
+33,Antec,NX200M,atx,1899,TRUE
+34,Neutron,165-5,matx,982,TRUE
+35,Lian Li,11 Dynamic Evo,atx,12128,TRUE
+36,Galax,Revolution 05,atx,3295,TRUE
+37,NZXT H7,Flow CM-H71FW-R1 ATX,atx,8529,TRUE
+38,Lian Li,Lancool 216,atx,5775,TRUE
+39,DarkFlash,DK352,atx,2403,TRUE
+40,DarkFlash ,DK352 PLUS,atx,2461,TRUE
+41,DarkFlash ,DK352 PLUS WHITE,atx,2550,TRUE
+42,NZXT,H9,atx,9085,TRUE
+43,Keytech,T-100,atx,1040,TRUE
+44,LianLi ,LanCool 216,atx,5487,TRUE
+45,MSI,MAG Forge 112R,atx,3465,TRUE
+46,MSI,MPG Velox 100R,atx,5891,TRUE
+47,Coolermaster,CMP 520,atx,2895,TRUE
+48,Silverstone,FARA H1 PRO,atx,3499,TRUE
+49,Silverstone,FARA R1 PRO,atx,3195,TRUE
+50,DarkFlash,DS900,atx,2946,TRUE
+51,Rakk,HAMRUS-M,atx,2695,TRUE
+52,Ovation,Trooper Lite,matx,795,TRUE
+53,Ovation,BattleStar 2.0,matx,734,TRUE
+54,Rakk,HAMRUS,atx,2495,TRUE
+55,Corsair,3000D,atx,4650,TRUE
+56,Rakk,Kaya,atx,595,TRUE
+57,Rakk,HUNUS,matx,1395,TRUE
+58,MSI,MAG PANO M100R,matx,5295,TRUE
+59,Keytech,Robin Cube,matx,1430,TRUE
+60,Keytech,T-850,atx,1075,TRUE
+61,Inplay,Seaview Pavilion,matx,1523,TRUE
+62,Keytech,Robin Cube Dua,matx,1495,TRUE
+63,Keytech,Cuirass,matx,1155,TRUE
+64,DarkFlash,DS900 Aquarium,atx,2888,TRUE
+65,Xtyle,PV3BL,matx,400,TRUE
+66,Rakk,Huna,atx,2495,TRUE
+67,Rakk,Marug,matx,2245,TRUE
+68,Rakk,Kisig,matx,2245,TRUE
+69,Neutron,2815,matx,1106,TRUE
+70,Rakk,Hawani,atx,2895,TRUE
+71,Rakk,Haliya,atx,2095,TRUE
+72,Rakk,Alpas,atx,1495,TRUE
+73,Aerocool,DS,matx,3300,TRUE
+74,Asus,ROG Strix,atx,16302,TRUE
+75,Rakk,Hawani,atx,1395,TRUE
+76,Aerocool,P7-C1 Pro,atx,5995,TRUE
+77,Aerocool,Cyclon Pro,atx,2750,TRUE
+78,Aerocool,Quartz Revo,atx,3685,TRUE
+79,Aerocool,Playa,atx,2750,TRUE
+80,Aerocool,P7-Co Pro,atx,5695,TRUE
+81,Aerocool,P7-C1,atx,6160,TRUE
+82,BeQuite,Dark Base Pro 900 TG,atx,14280,TRUE
+83,Inwin,A1 Plus,atx,8150,TRUE
+84,Aerocool,GT,atx,2095,TRUE
+85,Rakk,Anyag Micro,matx,1000,TRUE
+86,Neutron,2817,matx,1110,TRUE
+87,Trigon,TBZ-231,matx,850,TRUE
+88,Neutron,Fit FHGR,matx,795,TRUE
+89,MSI,MAG Vampiric 100R,atx,2619,TRUE
+90,Corsair,4000D CS-CC-9011199-WW,atx,5300,TRUE
+91,Neutron,2815,matx,1010,TRUE
+92,Gamdias,Talos-M1,atx,3090,TRUE
+93,Trigon,TBA-MO2,matx,969,TRUE
+94,Trigon,TBA-MO1R,matx,760,TRUE
+95,DarkFlash,DLM22,matx,2207,TRUE
+96,Thermaltake,H550,atx,5495,TRUE
+97,Thermaltake,Commander C34 TG ARGB Edition,atx,5950,TRUE
+98,NZXT,H510 Elite CA-H510E-W1,atx,7580,TRUE
+99,Rakk,GALURA,atx,3695,TRUE
+100,NZXT,H210,mitx,4399.45,TRUE
+101,Cooler Master,Elite 110,mitx,2749.45,TRUE
+102,Thermaltake, Core V1,mitx,2749.45,TRUR
+103,Fractal, DesignNode 202,mitx,4949.45,TRUE
+104,SilverStone, SG13,mitx,2749.45,TRUE
+105,In Win, A1 Plus, mitx,10999.45,TRUE
