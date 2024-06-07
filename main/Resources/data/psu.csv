@@ -1,0 +1,104 @@
+﻿ID,brand,model,price,rate,wattage,status
+1,MSI,MAG A550BN,2793,bronze,550,TRUE
+2,Keytech,BTS 550,1083,bronze,550,TRUE
+3,Silverstone,SST-ST50F-ES230,1790,silver,500,TRUE
+4,CoolerMaster,MWE,3420,bronze,650,TRUE
+5,Intelligent,700 watts Dual 12V Power Supply,389,none,700,TRUE
+6,Raidmax,RX-500XT,1357,none,500,TRUE
+7,Gigabyte,P550B 550 watts 80 Plus Bronze,2606,bronze,550,TRUE
+8,Intelligent,Awake AK600W 600W 80+ RGB Power Supply,1653,bronze,600,TRUE
+9,Silverstone,SST-ST60F-ES230,2349,silver,600,TRUE
+10,MSI,MAG A500DN,2326,none,500,TRUE
+11,Ramsta,RB750 750W 80+ Bronze Fully Modular,1983,bronze,750,TRUE
+12,SuperFlower,Legion GX Pro 750W Semi-Modular 80 Plus Gold,5381,gold,750,TRUE
+13,Acer,AC-550 550w Full Modular 80plus Bronze,1357,bronze,550,TRUE
+14,Raidmax,RX-700AC-V 700 Watts Vortex 80+ Bronze,2275,bronze,700,TRUE
+15,FSP,HV PRO 85+ FSP550-51AAC 550 watts 80+ Bronze,2531,bronze,550,TRUE
+16,Intelligent,Awake AK700W 700W 80+ RGB Power Supply,1824,bronze,700,TRUE
+17,Coolermaster,MWE650 V2 MPE-6501-AFAAG-TW 650watts Fully Modular 80+ Gold,5291,gold,650,TRUE
+18,Acer,AC-650 650w Full Modular 80plus Bronze,1927,bronze,650,TRUE
+19,Acer,AC-750 750w Full Modular 80plus Bronze,2303,bronze,750,TRUE
+20,Seasonic,Focus Plus 650W Fully Modular Platinum,7182,platinum,650,TRUE
+21,Seasonic,Focus SGX 650w Modular Gold,6840,gold,350,TRUE
+22,Asus,ROG Thor Power Supply 1200w RGB,22458,platinum,1200,TRUE
+23,Seasonic,Focus Gold 750W 80 Plus Multi-GPU setup Semi-Modular,4674,gold,550,TRUE
+24,Ramsta,RB650 650W 80+ Bronze Fully Modular,1596,bronze,650,TRUE
+25,RAKK,AGOS 550 Watts 80+ Bronze Power Supply,1795,bronze,550,TRUE
+26,Acer,AC-1000 1000w Full Modular 80plus Bronze,5650,bronze,1000,TRUE
+27,Keytech,Thunderbolt 700watts and 750watts,445,none,700,TRUE
+28,Corsair,CX650 650 watts 80 Plus Bronze,3132,bronze,650,TRUE
+29,Gigabyte,P450B 450 watts 80 Plus Bronze,2107,bronze,450,TRUE
+30,Seasonic,S12III 550W 80 Bronze Silent Fan Control,2907,bronze,550,TRUE
+31,Seasonic,Focus GX850 850 watts Fully Modular 80 Plus Gold,7980,gold,850,TRUE
+32,Coolermaster,MWE750 V2 MPE-7501-AFAAG-TW 750watts Fully Modular 80+ Gold,5665,gold,750,TRUE
+33,Coolermaster,MWE850 V2 MPE-8501-AFAAG-TW 850watts Fully Modular 80+ Gold,6306,gold,850,TRUE
+34,MSI,MAG A750GL 750Watts PCIE5 80+ Full Modular Gold,5415,gold,750,TRUE
+35,Seasonic,S12II 520 watts 80 Bronze,2895,bronze,520,TRUE
+36,Seasonic,S12II 620 watts 80 Plus Bronze,3350,bronze,620,TRUE
+37,Corsair,Vs450 450 watts,1850,none,450,TRUE
+38,Corsair,Vs550 550 watts,2495,none,550,TRUE
+39,Corsair,Vs650 650 watts,3050,none,650,TRUE
+40,RAKK,400watts ATX PSU,495,none,400,TRUE
+41,Xtyle,Mini 750 watts,370,none,750,TRUE
+42,Corsair,CX550M Semi Modular 80 Plus Bronze,3999,bronze,550,TRUE
+43,Thermaltake,Smart SPR0500 80 Power Supply RGB,2309,none,500,TRUE
+44,Thermaltake,Smart SPR0600 80 Power Supply RGB,2359,none,600,TRUE
+45,Corsair,CX650M 650watts Semi Modular 80 Plus Bronze,4490,bronze,650,TRUE
+46,Thermaltake,Litepower 2 APFC 650w,2245,none,650,TRUE
+47,Coolermaster,Elite 400 watts V3,1680,none,400,TRUE
+48,Aerocool,Rave Power Supply 500watts,2065,none,500,TRUE
+49,Aerocool,Rave Power Supply 600watts,2050,none,600,TRUE
+50,Coolermaster,MWE450 V2 450watts,1850,none,450,TRUE
+51,Coolermaster,MWE 750W V2 80+ Bronze,5156,bronze,750,TRUE
+52,Seasonic,Focus Plus 750W Fully Modular Platinum,7752,platinum,750,TRUE
+53,Seasonic,Focus Plus 850W Fully Modular Platinum,9006,platinum,850,TRUE
+54,Corsair,CV650 650 watts 80 Plus Bronze,3335,bronze,650,TRUE
+55,Seasonic,Prime 1300W Fully Modular Gold,13250,gold,1300,TRUE
+56,SuperFlower,Leadex III 550W 80+ Fully Modular RGB Gold,5895,gold,550,TRUE
+57,Corsair,CV550,2800,bronze,550,TRUE
+58,Trigon,700w Power Supply,100,none,700,TRUE
+59,Gigabyte,P650B 650 watts 80 Plus Bronze certified,3116,bronze,650,TRUE
+60,EVGA,600 BR 80 plus Bronze certified,3695,bronze,700,TRUE
+61,Thermaltake,Litepower 550 watts,1920,none,550,TRUE
+62,SuperFlower,Leadex III 650W Fully Modular 80 Plus Gold RGB,5814,gold,650,TRUE
+63,FSP,HYDRO G Pro 750W 80+ Gold Fully Modular,6384,gold,750,TRUE
+64,Seasonic,Prime 1300 watts Fully Modular Platinum,14480,platinum,1300,TRUE
+65,Corsair,SF450 450Watts 80+ Platinum SFX,6145,platinum,450,TRUE
+66,Seasonic,Prime SSR-1000TR 1000 Watts Fully Modular Titanium,15321,titanium,1000,TRUE
+67,Seasonic,Prime Ultra SSR-1300PD 1300 Watts Fully Modular Platinum,14739,platinum,1300,TRUE
+68,Cooler Master,MWE 550Watts /MWE V2 550Watts 80 PLUS Bronze,2725,bronze,550,TRUE
+69,Coolermaster,MWE 650W and 650W V2 80+ Bronze,3239,bronze,650,TRUE
+70,MSI,MPG A650GF 650Watts and A750GF 750Watts 80+ Full Modular Gold,5585,gold,750,TRUE
+71,MSI,MPG A750GF 750Watts 80+ Full Modular Gold,6783,gold,750,TRUE
+72,MSI,MPG A850GF 850Watts 80+ Full Modular Gold,7180,gold,850,TRUE
+73,FSP,HV PRO 85+ FSP650-51AAC 650 watts 80+ Bronze,2748,bronze,650,TRUE
+74,InPlay,GS450P 450 Watts,620,bronze,450,TRUE
+75,Cooler Master,MWE 750Watts 80+ Power Supply White,3295,none,750,TRUE
+76,Silverstone,Strider 700W Fully Modular Flat Cables 80 Plus Gold SFX,8200,gold,700,TRUE
+77,Silverstone,Essential 500W Fully Modular Flat Cables 80 Plus Gold,4680,gold,500,TRUE
+78,Seasonic,Prime Ultra SSR-850GD 850watts Fully Modular Gold,8110,gold,850,TRUE
+79,Silverstone,SST-ST70F-ES230 700 Watts 80 Plus,2497,none,700,TRUE
+80,XPG,Core Reactor 650 Watts 80+ Gold Fully Modular,5995,gold,650,TRUE
+81,XPG,PYLON - 550 Watts 80+ Bronze,4195,bronze,550,TRUE
+82,XPG,PYLON - 750 Watts 80+ Bronze,4995,bronze,750,TRUE
+83,Raidmax,Thunder 535 watts RX-535AP-R 80+ Bronze,2995,bronze,535,TRUE
+84,Raidmax,Hybrid 530 watts RX-530SS 80+ Bronze,2995,bronze,530,TRUE
+85,Deepcool,500W 80+ Bronze Non-modular,3550,bronze,500,TRUE
+86,Deepcool,V2L - 80+ Gold Full-modular,5995,gold,850,TRUE
+87,Silverstone,Strider Gold S 750W 80+ Gold Fully Modular,5310,gold,750,TRUE
+88,Corsair,CV750 750 watts 80 Plus Bronze,3750,bronze,750,TRUE
+89,Thermaltake,Toughpower GF2 ARGB 80PLUS Gold Fully Modular,7450,gold,650,TRUE
+90,Cooler Master,G500/ G600/ G700/ G800 80 Plus Gold Non-Modular,4199,gold,500,TRUE
+91,Montech,Century 850watts 80+ Gold Fully Modular,6450,gold,850,TRUE
+92,Montech,Gamma II 750watts 80+ Gold Fully Modular,5000,gold,750,TRUE
+93,Antec,Cuprum Strike CSK750H 750w Bronze Semi-Modular,3550,none,750,TRUE
+94,Antec,NeoEco 850w Gold Fully Modular,5595,gold,850,TRUE
+95,Antec,Signature Platinum SP1000 1000w Fully Modular,11322,platinum,1000,TRUE
+96,ATOM,G650 650 watts Fully Modular 80 Plus Gold,2995,gold,650,TRUE
+97,SuperFlower,Leadex III Pro 650W/850W 80 PLUS Bronze Fully Modular,4303,bronze,650,TRUE
+98,SuperFlower,Legion HX 750W Non-Modular 80 PLUS Gold,4155,gold,750,TRUE
+99,SuperFlower,Legion GX Pro 650W Semi-Modular 80 PLUS Gold,3790,gold,650,TRUE
+100,Deepcool,PQ750M 80 Plus Fully Modular Gold,5710,gold,750,TRUE
+101,Coolermaster,MWE Bronze Series 500W V2 80+ Bronze,2620,bronze,500,TRUE
+102,Antec,CSK750H 750 watts 80+ Semi Modular Bronze,3545,bronze,750,TRUE
+103,NZXT,C750 550Watts and 750 Watts 80+ Bronze Semi Modular,4015,bronze,550,TRUE

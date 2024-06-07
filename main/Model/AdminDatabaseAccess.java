@@ -24,15 +24,28 @@ public class AdminDatabaseAccess {
     private String ramFilePath;
     private String ssdFilePath;
     
-public AdminDatabaseAccess(String caseFilePath) {
+    public AdminDatabaseAccess(String caseFilePath, String cpuFilePath, String fanFilePath, String gpuFilePath, String hddFilePath, String internalStorageFilePath, String motherBoardFilePath, String psuFilePath, String ramFilePath, String ssdFilePath) {
         this.caseFilePath = caseFilePath;
+        this.cpuFilePath = cpuFilePath;
+        this.fanFilePath = fanFilePath;
+        this.gpuFilePath = gpuFilePath;
+        this.hddFilePath = hddFilePath;
+        this.internalStorageFilePath = internalStorageFilePath;
+        this.motherBoardFilePath = motherBoardFilePath;
+        this.psuFilePath = psuFilePath;
+        this.ramFilePath = ramFilePath;
+        this.ssdFilePath = ssdFilePath;
         
         this.cases = Case.readCaseFromCSV(caseFilePath);
-    }
-
-    public void addCase(Case newCase) {
-        cases.add(newCase);
-        saveCases(); 
+        this.cpus = CPU.readCPUFromCSV(cpuFilePath);
+        this.fans = Fan.readFanFromCSV(fanFilePath);
+        this.gpus = GPU.readGPUFromCSV(gpuFilePath);
+        this.hdds = HDD.readHDDFromCSV(hddFilePath);
+        this.internalStorages = InternalStorage.readInternalStorageFromCSV(internalStorageFilePath);
+        this.motherBoards = MotherBoard.readMotherBoardFromCSV(motherBoardFilePath);
+        this.psus = PSU.readPSUFromCSV(psuFilePath);
+        this.rams = Ram.readRamFromCSV(ramFilePath);
+        this.ssds = SSD.readSSDFromCSV(ssdFilePath);
     }
 
     public void removeCase(int index) {

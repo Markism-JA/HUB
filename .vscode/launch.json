@@ -3,80 +3,78 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Case",
+      "name": "CaseDatabase",
       "request": "launch",
-      "mainClass": "main.Model.Components.Case",
-      "projectName": "HUB_3a9df884"
+      "mainClass": "main.Model.DatabaseComponent.CaseDatabase",
+      "projectName": "HUB_a425bee1"
     },
     {
       "type": "java",
-      "name": "MainApp",
+      "name": "Run MainApp (Front)",
       "request": "launch",
       "mainClass": "main.View.Front.MainApp",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "SceneController",
-      "request": "launch",
-      "mainClass": "main.Controller.SceneController",
-      "projectName": "HUB_3a9df884"
-    },
-    {
-      "type": "java",
-      "name": "MainApp",
+      "name": "Run MainApp",
       "request": "launch",
       "mainClass": "main.MainApp",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "Test (Controller)",
+      "name": "Run Case",
+      "request": "launch",
+      "mainClass": "main.Model.Components.Case"
+    },
+    {
+      "type": "java",
+      "name": "Run SceneController",
+      "request": "launch",
+      "mainClass": "main.Controller.SceneController"
+    },
+    {
+      "type": "java",
+      "name": "Run Test (Controller)",
       "request": "launch",
       "mainClass": "main.Controller.Test",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "Current File",
+      "name": "Run Current File",
       "request": "launch",
       "mainClass": "${file}",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "Test (Components)",
+      "name": "Run Test (Components)",
       "request": "launch",
       "mainClass": "main.Model.Components.Test",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "DataManager",
+      "name": "Run DataManager",
       "request": "launch",
       "mainClass": "main.Model.DataManager",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "Database",
+      "name": "Run Database",
       "request": "launch",
       "mainClass": "main.Model.Database",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
-      "name": "Test (Database)",
+      "name": "Run Test (Database)",
       "request": "launch",
       "mainClass": "main.Model.Database",
-      "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"d:/comprogproject/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }
