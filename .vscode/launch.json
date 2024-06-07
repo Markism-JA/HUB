@@ -21,7 +21,7 @@
       "request": "launch",
       "mainClass": "main.View.Front.MainApp",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
@@ -36,7 +36,7 @@
       "request": "launch",
       "mainClass": "main.MainApp",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
@@ -44,14 +44,14 @@
       "request": "launch",
       "mainClass": "main.Controller.Test",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
       "name": "Current File",
       "request": "launch",
       "mainClass": "${file}",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
@@ -59,7 +59,7 @@
       "request": "launch",
       "mainClass": "main.Model.Components.Test",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
@@ -67,7 +67,7 @@
       "request": "launch",
       "mainClass": "main.Model.DataManager",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
@@ -75,7 +75,7 @@
       "request": "launch",
       "mainClass": "main.Model.Database",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     },
     {
       "type": "java",
@@ -83,7 +83,7 @@
       "request": "launch",
       "mainClass": "main.Model.Database",
       "projectName": "HUB_3a9df884",
-      "vmArgs": "--module-path /home/marky/Documents/openjfx-22.0.1_linux-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path \"C:/Users/Andrei/Downloads/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }
