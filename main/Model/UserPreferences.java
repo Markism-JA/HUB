@@ -43,7 +43,7 @@ public class UserPreferences {
 
     // Convert UserPreferences to a CSV string
     public String toCSVString() {
-        return String.join(",", budget, purpose, cpuBrand, gpuBrand, String.valueOf(storage), String.valueOf(ram), formFactor);
+        return String.join(";", budget, purpose, cpuBrand, gpuBrand, String.valueOf(storage), String.valueOf(ram), formFactor);
     }
 
     @Override

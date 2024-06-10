@@ -13,8 +13,8 @@ public class CompatibilityChecker {
     } 
   }
 
-  public boolean WattsComputationHigh(CPU cpu, GPU gpu, MotherBoard motherboard, Ram ram, InternalStorage nvme, SSD ssd, HDD hdd, Fan fan, PSU psu){
-    int total = cpu.getWattage() + gpu.getWattage() + motherboard.getWattage() + ram.getWattage() + nvme.getWattage() + ssd.getWattage() + hdd.getWattage() + fan.getWattage() + 50;
+  public boolean WattsComputation(CPU cpu, GPU gpu, MotherBoard motherboard, Ram ram, PSU psu){
+    int total = cpu.getWattage() + gpu.getWattage() + motherboard.getWattage() + ram.getWattage() + 100;
     
     if(total <= psu.getWattage()) {
         return true;
@@ -36,7 +36,7 @@ public class CompatibilityChecker {
 
     // Checking if any of the scaled values are significantly lower than the others
     double minScaledValue = Math.min(Math.min(vramCheck, coreCountCheck), clockSpeedCheck);
-    double threshold = 70; // Adjust the threshold as needed
+    double threshold = 90; // Adjust the threshold as needed
     return minScaledValue < threshold;
   }
 

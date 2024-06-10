@@ -59,4 +59,8 @@ public class GPU extends CSVUtil{
       writeToCSV(fileName, gpus, GPU::toCSVString);
   }
 
+  public static void main(String[] args) {
+    readGPUFromCSV("main/Resources/data/gpu.csv");
+  }
+
 }

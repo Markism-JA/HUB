@@ -1,0 +1,120 @@
+id,brand,model,formFactor,socket,ddr,price,wattage,status
+43,ASUS,ROG Crosshair X670E Hero,ATX,AM5,ddr4,32000.0,85,true
+47,ASUS,ProArt X670E-Creator WiFi,ATX,AM5,ddr4,31500.0,80,true
+105,Gigabyte,X670E Aorus Xtreme,ATX,AM5,DDR5,30000.0,100,true
+45,Gigabyte,X670E Aorus Master,ATX,AM5,ddr4,29000.0,80,true
+111,Asus,ROG Crosshair X670E Hero,ATX,AM5,DDR5,28500.0,100,true
+34,ASUS,ROG Strix X670E-E,ATX,AM5,ddr4,27500.0,85,true
+107,Asus,ProArt Z690-Creator WiFi,ATX,LGA 1700,DDR5,27000.0,90,true
+104,MSI,MEG Z690 Unify,ATX,LGA 1700,DDR5,26000.0,100,true
+48,MSI,MPG X670E Gaming Edge WiFi,ATX,AM5,ddr4,25000.0,80,true
+102,ASRock,Z790 Taichi,ATX,LGA 1700,DDR5,24500.0,95,true
+51,ASUS,TUF Gaming X670E-PLUS,ATX,AM5,ddr4,24000.0,60,true
+42,ASRock,X670E Steel Legend,ATX,AM5,ddr4,23500.0,95,true
+101,Gigabyte,Z690 Aorus Master,ATX,LGA 1700,DDR5,23000.0,90,true
+37,ASRock,B650E Taichi,ATX,AM5,ddr4,22000.0,80,true
+77,Msi,MPG Z690 Force,mATX,LGA 1700,ddr4,22000.0,75,true
+113,Gigabyte,B650E Aorus Master,ATX,AM5,DDR5,22000.0,85,true
+41,Gigabyte,B650 Aorus Master,ATX,AM5,ddr4,21000.0,90,true
+100,MSI,MPG Z690 Carbon WiFi,ATX,LGA 1700,DDR5,21000.0,85,true
+117,Gigabyte,X670I Aorus Ultra,mITX,AM5,DDR5,21000.0,85,true
+114,ASRock,Z790 LiveMixer,ATX,LGA 1700,DDR5,20500.0,90,true
+108,MSI,MPG X670E Carbon WiFi,ATX,AM5,DDR5,20000.0,90,true
+40,MSI,PRO X670-P WiFi,ATX,AM5,ddr4,19500.0,85,true
+99,Asus,ROG Strix Z790-E Gaming WiFi,ATX,LGA 1700,DDR5,19500.0,90,true
+110,ASRock,X670E PG Lightning,ATX,AM5,DDR5,19500.0,90,true
+95,ASUS,ROG Strix X670-I Gaming,mITX,AM5,ddr4,19000.0,85,true
+116,MSI,MEG Z690I Unify,mITX,LGA 1700,DDR5,19000.0,85,true
+90,ASUS,ROG Crosshair VIII Impact,mITX,AM4,ddr4,18500.0,85,true
+96,Gigabyte,X670I Aorus Ultra,mITX,AM5,ddr4,18500.0,80,true
+109,Gigabyte,Z790 Aorus Elite AX,ATX,LGA 1700,DDR5,18500.0,85,true
+50,ASRock,B650E PG Riptide WiFi,ATX,AM5,ddr4,18300.0,80,true
+35,MSI,MPG B650 Carbon WiFi,ATX,AM5,ddr4,18000.0,80,true
+94,MSI,MPG X670I Edge WiFi,mITX,AM5,ddr4,18000.0,80,true
+103,Asus,TUF Gaming X670E-PLUS WiFi,ATX,AM5,DDR5,18000.0,80,true
+112,MSI,MAG Z690 Tomahawk WiFi,ATX,LGA 1700,DDR5,18000.0,80,true
+44,MSI,MAG B650 Tomahawk WiFi,ATX,AM5,ddr4,17500.0,90,true
+98,ASUS,ROG Strix Z690-I Gaming,mITX,LGA 1700,ddr5,17500.0,80,true
+115,Asus,ROG Strix Z690-I Gaming WiFi,mITX,LGA 1700,DDR5,17500.0,80,true
+59,Gigabyte,Z790,mATX,LGA 1700,ddr4,16900.0,60,true
+58,Asus,Prime Z790-P,mATX,LGA 1700,ddr4,16695.0,65,true
+97,ASRock,Z690 Phantom Gaming-ITX/TB4,mITX,LGA 1700,ddr5,16500.0,75,true
+106,ASRock,B650E Steel Legend,ATX,AM5,DDR5,16500.0,85,true
+118,ASRock,Z690 Phantom Gaming-ITX/TB4,mITX,LGA 1700,DDR5,16500.0,75,true
+39,ASUS,Prime X670-P,ATX,AM5,ddr4,16000.0,85,true
+36,Gigabyte,X670 Aorus Elite AX,ATX,AM5,ddr4,15800.0,85,true
+78,Gigabyte,Z690 Aero G Socket LGA 1700 Ddr5 Q-Flash,mATX,LGA 1700,ddr5,15500.0,75,true
+38,ASUS,TUF Gaming B650-PLUS,ATX,AM5,ddr4,14500.0,80,true
+93,Gigabyte,B650I Aorus Ultra,mITX,AM5,ddr4,14500.0,70,true
+49,Gigabyte,B650M Aorus Pro AX,mATX,AM5,ddr4,14200.0,85,true
+92,ASUS,ROG Strix B650-I Gaming,mITX,AM5,ddr4,14000.0,75,true
+56,Msi,B650M,mATX,LGA 1700,ddr4,13995.0,85,true
+88,ASRock,X570 Phantom Gaming-ITX/TB3,mITX,AM4,ddr4,13500.0,85,true
+91,MSI,MPG B650I Edge WiFi,mITX,AM5,ddr4,13500.0,70,true
+119,Asus,TUF Gaming B660M-PLUS WiFi,mATX,LGA 1700,DDR5,13500.0,75,true
+46,ASRock,B650 Pro RS,ATX,AM5,ddr4,13000.0,85,true
+89,Gigabyte,X570I Aorus Pro WiFi,mITX,AM4,ddr4,13000.0,80,true
+14,Asus,ROG Strix B550-F,mATX,AM4,ddr4,12585.0,75,true
+76,Msi,Pro Z690-A,mATX,LGA 1700,ddr4,12420.0,90,true
+57,Msi,MAG B760M,mATX,LGA 1700,ddr4,12415.0,80,true
+84,ASUS,ROG Strix X570-I Gaming,mITX,AM4,ddr4,12000.0,80,true
+55,Asus,TUF B760M-PLUS,mATX,LGA 1700,ddr4,11325.0,75,true
+6,Asus,Rog Strix B550-A,ATX,AM4,ddr4,11045.0,75,true
+87,ASUS,ROG Strix B550-I Gaming,mITX,AM4,ddr4,10500.0,75,true
+29,MSI ,X570,mATX,AM4,ddr4,10450.0,80,true
+64,Msi,Z490,mATX,LGA 1200,ddr4,10195.0,50,true
+7,Asrock,X570S,mATX,AM4,ddr4,10120.0,85,true
+70,Msi,Z590-A Pro,mATX,LGA 1200,ddr4,9995.0,75,true
+30,Asus,TUF X570 Plus,mATX,AM4,ddr4,9950.0,85,true
+11,MSI ,MAG B550M,mATX,AM4,ddr4,9835.0,70,true
+86,Gigabyte,B550I Aorus Pro AX,mITX,AM4,ddr4,9800.0,70,true
+85,MSI,MPG B550I Gaming Edge WiFi,mITX,AM4,ddr4,9500.0,70,true
+23,MSI ,X570-A,mATX,AM4,ddr4,9490.0,80,true
+22,Gigabyte,X570,mATX,AM4,ddr4,8795.0,80,true
+17,Asus,Prime B760M-A,mATX,AM4,ddr4,8745.0,80,true
+62,Asus,Prime B760M,mATX,LGA 1700,ddr4,8745.0,80,true
+82,ASUS,ROG Strix B450-I Gaming,mITX,AM4,ddr4,7500.0,70,true
+8,Gigabyte,B550M,mATX,AM4,ddr4,7339.0,70,true
+10,Asrock,B550M,mATX,AM4,ddr4,7250.0,70,true
+83,Gigabyte,B450I Aorus Pro WiFi,mITX,AM4,ddr4,7200.0,60,true
+9,Asus,Prime B550M,mATX,AM4,ddr4,6825.0,75,true
+72,Gigabyte,B560M-DS3H AC,mATX,LGA 1200,ddr4,6825.0,65,true
+81,ASRock,B450 Gaming-ITX/ac,mITX,AM4,ddr4,6800.0,60,true
+52,Gigabyte,A520m Pro,mATX,LGA 1700,ddr4,6695.0,55,true
+19,Gigabyte,GA-B450 Pro,mATX,AM4,ddr4,6595.0,70,true
+80,MSI,B450I Gaming Plus AC,mITX,AM4,ddr4,6500.0,65,true
+3,MSI ,Mag B550m Pro,mATX,AM4,ddr4,6275.0,80,true
+15,Gigabyte,GA-A620M,mATX,AM5,ddr4,6170.0,55,true
+79,Gigabyte,B560M DS3H V2,mATX,LGA 1200,ddr4,6156.0,70,true
+53,Msi,PRO H610M-G,mATX,LGA 1700,ddr4,5790.0,75,true
+33,ASUS,TUF 540M,mATX,AM4,ddr4,5399.0,90,true
+13,Gigabyte,B550M,mATX,AM4,ddr4,5345.0,70,true
+26,MSI ,B450m,mATX,AM4,ddr4,5325.0,70,true
+20,Gigabyte,GA-B450-M,mATX,AM4,ddr4,5199.0,70,true
+32,ASUS,TUF B450M-PLUS,mATX,AM4,ddr4,5199.0,75,true
+68,Asus,Prime B460M-A R2.0,mATX,LGA 1200,ddr4,5150.0,85,true
+25,MSI ,B450,mATX,AM4,ddr4,5125.0,70,true
+12,Gigabyte,GA-B450M,mATX,AM4,ddr4,5095.0,60,true
+31,Gigabyte,AB350M-HD3,mATX,AM4,ddr4,4995.0,60,true
+60,Asus,Prime H610-R,ATX,LGA 1700,ddr4,4895.0,70,true
+54,Gigabyte,H610M-H V3,mATX,LGA 1700,ddr4,4685.0,70,true
+73,Msi,H510M-A Pro Series,mATX,LGA 1200,ddr4,4550.0,65,true
+61,Msi,PRO H610M-E,mATX,LGA 1700,ddr4,4450.0,65,true
+4,Gigabyte,GA-B450M,mATX,AM4,ddr4,4250.0,60,true
+2,MSI ,B450M Pro,mATX,AM4,ddr4,4195.0,75,true
+74,Asus,Ex H510M V3,mATX,LGA 1200,ddr4,4050.0,90,true
+16,Gigabyte,A520M,mATX,AM4,ddr4,3950.0,65,true
+67,Gigabyte,H410M-H,mATX,LGA 1200,ddr4,3950.0,50,true
+69,Gigabyte,H410M-S2H V3,mATX,LGA 1200,ddr4,3950.0,50,true
+63,Gigabyte,H510M-K,mATX,LGA 1200,ddr4,3935.0,55,true
+66,Asus,Prime H410M-K,mATX,LGA 1200,ddr4,3899.0,70,true
+75,Msi,H510M,mATX,LGA 1200,ddr4,3789.0,90,true
+71,Gigabyte,H410M-H V3,mATX,LGA 1200,ddr4,3555.0,65,true
+21,ASUS,EX-A320M,mATX,AM4,ddr4,3464.0,50,true
+1,MSI ,A520m Pro,mATX,AM4,ddr4,3250.0,65,true
+65,Biostar,H410MH,mATX,LGA 1200,ddr4,2999.0,50,true
+24,Gigabyte,GA A320M-H,mATX,AM4,ddr4,2895.0,50,true
+28,MSI ,A320M,mATX,AM4,ddr4,2875.0,50,true
+5,Biostar,A520MH,mATX,AM4,ddr4,2870.0,55,true
+18,Gigabyte,GA A320M S2H,mATX,AM4,ddr4,2850.0,50,true
+27,Gigabyte,GA A320M,mATX,AM4,ddr4,2835.0,50,true

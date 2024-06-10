@@ -23,14 +23,14 @@ public class UserAccountManagement {
         System.out.println("User registered successfully!");
     }
 
-    public void loginUser(String username, String password) {
+    public  boolean loginUser(String username, String password) {      
+        // Check if the username and hashed password match
         for (User user : users) {
-            if (user.getUserName().equals(username) && user.getPassword().equals(User.hashPassword(password))) {
-                System.out.println("Login successful!");
-                return;
+            if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
+                return true;
             }
         }
-        System.out.println("Invalid username or password.");
+        return false;
     }
 
     public void saveUserPreferences(User user, UserPreferences preferences) {
@@ -42,7 +42,7 @@ public class UserAccountManagement {
         User.writeUserToCSV(fileName, users);
     }
 
-    private boolean isUsernameTaken(String username) {
+    public boolean isUsernameTaken(String username) {
         for (User user : users) {
             if (user.getUserName().equals(username)) {
                 return true;
@@ -54,8 +54,8 @@ public class UserAccountManagement {
     private int getNextUserID() {
         int maxUserID = 0;
         for (User user : users) {
-            if (user.getUserID() > maxUserID) {
-                maxUserID = user.getUserID();
+            if (user.getId() > maxUserID) {
+                maxUserID = user.getId();
             }
         }
         return maxUserID + 1;

@@ -1,0 +1,33 @@
+id,brand,storageSize,wattage,price,status
+15,Kingston NV2 4TB PCIe 4.0 M.2 NVME,4000,10,14150.0,true
+12,Adata Legend,2000,10,8995.0,true
+20,SAMSUNG 1TB 990 PRO NVME M.2 Solid State Drive,1000,10,7150.0,true
+21,SAMSUNG 1TB 980 PRO NVME M.2 (MZ-V8P1T0BW) Solid State Drive,1000,10,6900.0,true
+28,SAMSUNG 1TB 990 EVO PCIe NVMe M.2 Solid State Drive,1000,10,6850.0,true
+18,Kingston Fury Renegade SFYRS 1TB PCIe 4.0 NVMe M.2 Solid State Drive,1000,10,6505.0,true
+2,Netac N950E 250GB M.2,1000,10,5840.0,true
+26,SAMSUNG 1TB 980 M.2 PCIE NVME (MZ-V8V1T0BW) Solid State Drive,1000,10,5800.0,true
+25,SAMSUNG 500GB 980 M.2 PCIE NVME (MZ-V8V500BW) Solid State Drive,500,10,5800.0,true
+14,Team Group MP33 PRO,1000,10,4425.0,true
+4,Western Digital Green SN350 ,1000,10,4331.0,true
+17,Kingston Fury Renegade SFYRS 500GB PCIe 4.0 NVMe M.2 Solid State Drive,500,10,4095.0,true
+19,KINGSTON 1TB NV2 PCIE NVME M.2 (SNV2S/1000G) Solid State Drive,1000,10,3650.0,true
+11,Crucial P3 Plus,500,10,3481.0,true
+8,Lexar NM610 Pro,1000,10,3480.0,true
+24,MSI 1TB SPATIUM M371 NVME PCIE M.2 Solid State Drive,1000,10,3400.0,true
+23,SAMSUNG 500GB 970 EVO Plus M.2 PCIE NVME Solid State Drive,500,10,3150.0,true
+30,HIKSEMI 1TB Wave Pro PCIe NVMe M.2 Solid State Drive,1000,10,3100.0,true
+3,MSI Spatium M450,500,10,2832.0,true
+16,KINGMAX 512GB M.2 2280 PCIe NVMe Solid State Drive Gen 3x4,512,10,2714.0,true
+1,Kingston NV1 PCIe M.2 3.0 NVME 500GB,500,10,2655.0,true
+5,Kingston,500,10,2655.0,true
+13,Western Digital,250,10,2495.0,true
+22,KINGSTON 500GB NV2 PCIE NVME M.2,500,10,2450.0,true
+6,Team Group MP33,512,10,2408.0,true
+32,TEAMGROUP 512GB MP33 M.2 PCIe NVMe Solid State Drive,512,10,2400.0,true
+10,Adata Legend 710,512,10,2254.0,true
+27,MSI 500GB SPATIUM M371 NVME PCIE M.2 Solid State Drive,500,10,2100.0,true
+29,KINGSTON 250GB NV2 PCIE NVME M.2 (SNV2S/250G) Solid State Drive,250,10,1850.0,true
+9,Adata Legend 710,256,10,1495.0,true
+7,Team Group MP33,256,10,1411.0,true
+31,ADATA 256GB LEGEND 700 PCIE M.2 (ALEG-700-256GCS) Solid State Drive,256,10,1200.0,true

@@ -106,7 +106,7 @@ public class PriceComparison {
     public void comparePricesHDD() {
         DataManager dataManager = new DataManager("./data/");
         List<HDD> hdds = dataManager.getHdds();
-        List<HDD> filteredHDDs = priceFilter.filterHddByPrice(hdds, userDecision);
+        List<HDD> filteredHDDs = priceFilter.filterHDDByPrice(hdds, userDecision);
 
         listComponentsHDD(filteredHDDs, userDecision + " End Components");
     }

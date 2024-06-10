@@ -60,5 +60,8 @@ public class Fan extends CSVUtil{
       writeToCSV(fileName, fans, Fan::toCSVString);
   }
 
+  public static void main(String[] args) {
+    readFanFromCSV("main/Resources/data/fan.csv");
+  }
   
 }

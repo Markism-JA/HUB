@@ -55,5 +55,6 @@ public class Case extends CSVUtil{
   }
 
   public static void main(String[] args) {
+    readCaseFromCSV("main/Resources/data/case.csv");
   }
 }

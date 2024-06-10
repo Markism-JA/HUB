@@ -1,0 +1,35 @@
+id,brand,storageSize,wattage,price,status
+9,Gigabyte GP-GSTFS31100TNTD,1000,3,4595.0,true
+11,Team Group GX2,1000,3,3895.0,true
+16,PNY CS900,1000,3,4425.0,true
+26,KINGMAX,960,3,3328.0,true
+2,Ramsta S801,512,3,2089.0,true
+14,Kingston SKC600,512,3,3328.0,true
+17,Adata SU650,512,3,2080.0,true
+19,Storm Series,512,3,1895.0,true
+22,Team Group GX2,512,3,1989.0,true
+8,Crucial MX500,500,3,3295.0,true
+33,Samsung 860 Evo ,500,3,3845.0,true
+34,Western Digital,500,3,2555.0,true
+5,Kingston SSDNow,480,3,2290.0,true
+3,Ramsta S802,256,3,1175.0,true
+4,Team Group GX2,256,3,1260.0,true
+7,Adata SU650,256,3,1269.0,true
+21,Ovation BattleStar,256,3,1170.0,true
+30,Samsung 860,250,3,2375.0,true
+32,Samsung 860 Evo,250,3,2375.0,true
+12,Kingmax,240,3,1629.0,true
+13,Kingston SSDNow,240,3,1680.0,true
+15,MSI Spatium S270,240,3,1420.0,true
+23,Lexar NS10 Lite,240,3,1062.0,true
+24,Team Group GX1,240,3,1195.0,true
+25,Western Digital Green,240,3,2095.0,true
+1,Ramsta S800,128,3,775.0,true
+6,Team Elite GX2,128,3,821.0,true
+20,Ovation BattleStar,128,3,770.0,true
+27,Adata SU800,128,3,1450.0,true
+10,Lexar NS10 Lite,120,3,885.0,true
+18,Storm Series,120,3,685.0,true
+28,Western Digital Green,120,3,1645.0,true
+29,Sandisk Plus,120,3,1275.0,true
+31,Sandisk Plus,120,3,1275.0,true

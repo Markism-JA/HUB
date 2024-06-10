@@ -54,4 +54,8 @@ public class HDD extends CSVUtil{
   public static void writeHDDToCSV(String fileName, List<HDD> hdds) {
       writeToCSV(fileName, hdds, HDD::toCSVString);
   }
+
+  public static void main(String[] args) {
+    readHDDFromCSV("main/Resources/data/hdd.csv");
+  }
 }

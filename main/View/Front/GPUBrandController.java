@@ -29,7 +29,7 @@ public class GPUBrandController {
     if (event.getSource() == NVIDIA) {
       gpuBrand = "NVIDIA";
     } else if (event.getSource() == AMD) {
-      gpuBrand = "AMD";
+      gpuBrand = "amd";
     } else if (event.getSource() == NoPref) {
       gpuBrand = "No Preference";
     }

@@ -1,15 +1,10 @@
 package main.Model;
 
-import main.Model.Components.CPU;
-import main.Model.Components.Case;
-import main.Model.Components.Fan;
-import main.Model.Components.GPU;
-import main.Model.Components.HDD;
-import main.Model.Components.InternalStorage;
-import main.Model.Components.MotherBoard;
-import main.Model.Components.PSU;
-import main.Model.Components.Ram;
-import main.Model.Components.SSD;
+import main.Model.Components.*;
+
+import java.util.List;
+
+import main.Model.CSVUtil;
 
 public class PCBuild {
     private int ID;  
@@ -25,7 +20,7 @@ public class PCBuild {
     private HDD hdd;
     private SSD ssd;
 
-    public PCBuild ( CPU cpu, GPU gpu, Case case1, MotherBoard motherBoard, Ram ram, InternalStorage storage, HDD hdd,SSD ssd, Fan fan, PSU powerSupply) {
+    public PCBuild ( CPU cpu, GPU gpu, Case case1, MotherBoard motherBoard, Ram ram, Fan fan, PSU powerSupply) {
       this.cpu = cpu;
       this.gpu = gpu;
       this.case1 = case1;
@@ -36,7 +31,6 @@ public class PCBuild {
       this.fan = fan;
       this.hdd = hdd;
       this.ssd = ssd;
-      ID = 0;
     }
 
     public CPU getCpu() { return cpu; }
@@ -72,13 +66,18 @@ public class PCBuild {
     public int getID() { return ID; }
     public void setID(int ID) { this.ID = ID; }
 
+    public static List<PCBuild> readPCBuildFromCSV(String fileName) {
+    return readFromCSV(fileName, data -> new PCBuild(null, null, null, null, null, null, null));
+    }
+
+    public String toCSVString() {
+        return String.join(",", Integer.toString(id), brand, model, formFactor, Double.toString(price), Boolean.toString(status));
+    }
 
 
     @Override
     public String toString() {
-      return "PCBuild{" + "ID=" + ID + "cpu=" + cpu.getBrand() + ", gpu=" + gpu.getBrand() + ", case1=" + case1.getBrand() + ", motherBoard=" + motherBoard.getBrand() + ", ram=" + ram.getBrand() + ", storage=" + storage.getBrand() + ", powerSupply=" + powerSupply.getBrand() + ", fan=" + fan.getBrand() + ", hdd=" + hdd.getBrand() + ", ssd=" + ssd.getBrand() + '}';
+      return "PCBuild{" + "ID=" + ID + "cpu=" + cpu.getId() + ", gpu=" + gpu.getId() + ", case1=" + case1.getId() + ", motherBoard=" + motherBoard.getId() + ", ram=" + ram.getId() + ", storage=" + storage.getId() + ", powerSupply=" + powerSupply.getId() + ", fan=" + fan.getId() + ", hdd=" + hdd.getId() + ", ssd=" + ssd.getId() + '}';
     }
-
-
 }
 

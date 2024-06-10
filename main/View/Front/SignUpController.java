@@ -55,6 +55,8 @@ public class SignUpController {
             errorLabel.setText("Please enter a password.");
         } else if (username.equals("")) {
             emptyLabel.setText("Please enter a username.");
+        } else if (userService.getUserAccountManagement().isUsernameTaken(username)) {
+            emptyLabel.setText("Username already exists. Please choose a different username.");
         } else if (password.equals(verifyPassword) && !password.equals("")) {
             // Clear the error message if registration is successful
             errorLabel.setText("");

@@ -19,7 +19,7 @@ public class StorageController {
   private int storage; // String for budget tier
 
   @FXML
-  private Button first, second, third, fourth;
+  private Button first, second, third, fourth, fifth;
 
   @FXML
   private void handleButtonAction(ActionEvent event) throws InvalidBudgetException {
@@ -30,7 +30,11 @@ public class StorageController {
       storage = 512;
     } else if (event.getSource() == third) {
       storage = 1000;
-    } 
+    } else if (event.getSource() == fourth) {
+      storage = 2000;
+    } else if (event.getSource() == fifth) {
+      storage = 0;
+    }
 
     User currentUser = userService.getCurrentUser();
 

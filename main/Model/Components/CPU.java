@@ -74,4 +74,8 @@ public class CPU extends CSVUtil {
   public static void writeCPUToCSV(String fileName, List<CPU> cpus) {
     writeToCSV(fileName, cpus, CPU::toCSVString);
   }
+
+  public static void main(String[] args) {
+    readCPUFromCSV("main/Resources/data/cpu.csv");
+  }
 }

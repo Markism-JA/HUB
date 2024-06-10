@@ -54,4 +54,9 @@ public class InternalStorage extends CSVUtil{
   public static void writeInternalStorageToCSV(String fileName, List<InternalStorage> internalStorages) {
       writeToCSV(fileName, internalStorages, InternalStorage::toCSVString);
   }
+
+  public static void main(String[] args) {
+    readInternalStorageFromCSV("main/Resources/data/internalstorage.csv");
+    
+  }
 }

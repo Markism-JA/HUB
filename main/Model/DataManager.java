@@ -65,6 +65,8 @@ public class DataManager {
         }
     }
 
+    
+
     private List<User> loadUsers() {
         String filePath = basePath + "user.csv";
         try {
@@ -76,6 +78,7 @@ public class DataManager {
             return new ArrayList<>();
         }
     }
+    
 
     public void saveData() {
         saveComponent("CPU", CPU::writeCPUToCSV);
@@ -132,8 +135,9 @@ public class DataManager {
         return allFilesReadSuccessfully;
     }
 
+    
     public static void main(String[] args) {
-        //DataManager test = new DataManager("main/Resources/data");
-        //test.loadData();
+        DataManager test = new DataManager("main/Resources/data");
+        test.loadData();
     }
 }

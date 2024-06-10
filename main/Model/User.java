@@ -7,37 +7,30 @@ import java.util.Base64;
 
 public class User extends CSVUtil {
     
-    private int userID;
+    private int id;
     private String username;
     private String password;
     private UserPreferences preferences;
+    private PCBuild pcBuild;
 
     public User(int userID, String username, String password, UserPreferences preferences) {
-        this.userID = userID;
+        this.id = userID;
         this.username = username;
         this.password = hashPassword(password);
         this.preferences = preferences != null ? preferences : null;  // Set to null if not provided
+        this.pcBuild = null;
     }
 
-    public int getUserID() {
-        return userID;
-    }
+    public int getId() { return id; }
 
-    public String getUserName() {
-        return username;
-    }
+    public String getUserName() { return username; }
+    public String getPassword() { return password; }
 
-    public String getPassword() {
-        return password;
-    }
+    public UserPreferences getPreferences() { return preferences; }
+    public void setPreferences(UserPreferences preferences) { this.preferences = preferences;}
 
-    public UserPreferences getPreferences() {
-        return preferences;
-    }
-
-    public void setPreferences(UserPreferences preferences) {
-        this.preferences = preferences;
-    }
+    public PCBuild getPCBuild() { return pcBuild; }
+    public void setPCBuild(PCBuild pcBuild) { this.pcBuild = pcBuild; }
 
     // Hash password using SHA-256
     public static String hashPassword(String password) {
@@ -52,22 +45,29 @@ public class User extends CSVUtil {
 
     @Override
     public String toString() {
-        return "User [userID=" + userID + ", username=" + username + ", password=" + password + ", preferences=" + preferences + "]";
+        return "User [userID=" + id + ", username=" + username + ", password=" + password + ", preferences=" + preferences + "]";
     }
 
     public static List<User> readUsersFromCSV(String fileName) {
         return readFromCSV(fileName, data -> {
+            if (data.length < 4) {
+                throw new IllegalArgumentException("Invalid data format in CSV");
+            }
             String[] prefs = data[3].split(";");
             UserPreferences preferences = new UserPreferences(prefs[0], prefs[1], prefs[2], prefs[3], Integer.parseInt(prefs[4]), Integer.parseInt(prefs[5]), prefs[6]);
             return new User(Integer.parseInt(data[0]),data[1], data[2], preferences);
         });
     }
+    
 
     public String toCSVString() {
-        return String.join(",",Integer.toString(userID), username, password, preferences.toCSVString());
+        return String.join(",",Integer.toString(id), username, password, preferences.toCSVString());
     }
 
     public static void writeUserToCSV(String fileName, List<User> users) {
         writeToCSV(fileName, users, User::toCSVString);
+    }
+
+    public static void main(String[] args) {
     }
 }

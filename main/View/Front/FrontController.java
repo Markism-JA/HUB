@@ -12,8 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import main.View.Front.UserService;
-
 import java.io.IOException;
 
 public class FrontController implements Initializable {

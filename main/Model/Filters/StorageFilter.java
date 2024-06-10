@@ -10,76 +10,106 @@ import main.Model.Components.SSD;
 
 public class StorageFilter {
 
-  public List<InternalStorage> filterInternalStorageByPurposeAndBudget(List<InternalStorage> internalStorages, String purpose, String budget, int storageNeed) {
-      List<String> validPurposes = Arrays.asList("Gaming", "Workstation", "General");
-      int storageSize;
+    public List<InternalStorage> filterInternalStorageByPurposeAndBudget(List<InternalStorage> internalStorages,
+    String purpose, String budget, int storageNeed) {
+List<String> validPurposes = Arrays.asList("gaming", "workstation", "general");
+int storageSize;
 
-      if (!validPurposes.contains(purpose)) {
-          throw new IllegalArgumentException("Invalid purpose");
-      }
+String purposeLower = purpose.toLowerCase();
+String budgetLower = budget.toLowerCase();
 
-      switch (budget) {
-          case "low":
-              storageSize = 256;
-              break;
-          case "middle":
-              storageSize = 500;
-              break;
-          case "high":
-              storageSize = 1000;
-              break;
-          default:
-              throw new IllegalArgumentException("Invalid budget");
-      }
+if (!validPurposes.contains(purposeLower)) {
+    throw new IllegalArgumentException("Invalid purpose");
+}
 
-      return internalStorages.stream().filter(InternalStorage -> InternalStorage.getStorageSize() == storageSize || InternalStorage.getStorageSize() >= storageNeed).collect(Collectors.toList());
-  }
+switch (budgetLower) {
+    case "low":
+        storageSize = 256;
+        break;
+    case "middle":
+        storageSize = 500;
+        break;
+    case "high":
+        storageSize = 1000;
+        break;
+    default:
+        throw new IllegalArgumentException("Invalid budget");
+}
 
-  public List<SSD> filterSSDByPurposeAndBudget(List<SSD> ssds, String purpose, String budget, int storageNeed) {
-      List<String> validPurposes = Arrays.asList("Gaming", "Workstation", "General");
-      int storageSize;
+if (storageNeed == 0) {
+    return internalStorages;
+}
 
-      if (!validPurposes.contains(purpose)) {
-          throw new IllegalArgumentException("Invalid purpose");
-      }
+return internalStorages.stream()
+        .filter(storage -> storage.getStorageSize() == storageSize || storage.getStorageSize() >= storageNeed)
+        .collect(Collectors.toList());
+}
 
-      switch (budget) {
-          case "middle":
-              storageSize = 1000;
-              break;
-          case "high":
-              storageSize = 2000;
-              break;
-          default:
-              throw new IllegalArgumentException("Invalid budget");
-      }
+public List<SSD> filterSSDByPurposeAndBudget(List<SSD> ssds, String purpose, String budget, int storageNeed) {
+List<String> validPurposes = Arrays.asList("gaming", "workstation", "general");
+int storageSize;
 
-      return ssds.stream().filter(SSD -> SSD.getStorageSize() == storageSize || SSD.getStorageSize() >= storageNeed).collect(Collectors.toList());
-  }
+String purposeLower = purpose.toLowerCase();
+String budgetLower = budget.toLowerCase();
 
-  public List<HDD> filterHDDByPurposeAndBudget(List<HDD> hdds, String purpose, String budget, int storageNeed) {
-      List<String> validPurposes = Arrays.asList("Gaming", "Workstation", "General");
-      int storageSize;
+if (!validPurposes.contains(purposeLower)) {
+    throw new IllegalArgumentException("Invalid purpose");
+}
 
-      if (!validPurposes.contains(purpose)) {
-          throw new IllegalArgumentException("Invalid purpose");
-      }
+switch (budgetLower) {
+    case "low":
+        return ssds; // Return the original list without filtering
+    case "middle":
+        storageSize = 1000;
+        break;
+    case "high":
+        storageSize = 2000;
+        break;
+    default:
+        throw new IllegalArgumentException("Invalid budget");
+}
 
-      switch (budget) {
-          case "low":
-              storageSize = 1000;
-              break;
-          case "middle":
-              storageSize = 2000;
-              break;
-          case "high":
-              storageSize = 4000;
-              break;
-          default:
-              throw new IllegalArgumentException("Invalid budget");
-      }
+if (storageNeed == 0) {
+    return ssds;
+}
 
-      return hdds.stream().filter(HDD -> HDD.getStorageSize() == storageSize || HDD.getStorageSize() >= storageNeed).collect(Collectors.toList());
-  }
+return ssds.stream()
+        .filter(storage -> storage.getStorageSize() == storageSize || storage.getStorageSize() >= storageNeed)
+        .collect(Collectors.toList());
+}
+
+public List<HDD> filterHDDByPurposeAndBudget(List<HDD> hdds, String purpose, String budget, int storageNeed) {
+List<String> validPurposes = Arrays.asList("gaming", "workstation", "general");
+int storageSize;
+
+String purposeLower = purpose.toLowerCase();
+String budgetLower = budget.toLowerCase();
+
+if (!validPurposes.contains(purposeLower)) {
+    throw new IllegalArgumentException("Invalid purpose");
+}
+
+switch (budgetLower) {
+    case "low":
+        storageSize = 1000;
+        break;
+    case "middle":
+        storageSize = 2000;
+        break;
+    case "high":
+        storageSize = 4000;
+        break;
+    default:
+        throw new IllegalArgumentException("Invalid budget");
+}
+
+if (storageNeed == 0) {
+    return hdds;
+}
+
+return hdds.stream()
+        .filter(storage -> storage.getStorageSize() >= storageSize || storage.getStorageSize() >= storageNeed)
+        .collect(Collectors.toList());
+}
 
 }
